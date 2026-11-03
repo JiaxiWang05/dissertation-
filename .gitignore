@@ -1,0 +1,16 @@
+# Code only. Data, labels, features, predictions, Optuna databases, models, logs, figures,
+# notes and forms stay local.
+*
+!*/
+!.gitignore
+!LICENSE
+!*.py
+!*.sh
+!*.slurm
+!*.md
+/archive/
+/results/
+/result/
+/notes/
+/template/
+__pycache__/
