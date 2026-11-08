@@ -37,13 +37,13 @@ def fig1_block_diagram():
     ax.set_xlim(0, 16.2)
     ax.set_ylim(0, 5.6)
     ax.axis('off')
-    steps = [('Fundus photo\nChákṣu\n1,338 images\n3 cameras', '#e8eef7'),
+    steps = [('Fundus photo\nChákṣu\n1,345 images\n3 cameras', '#e8eef7'),
              ('Resize to\n392 × 392 pixels\n(the size the model\nwas trained on)', '#e8eef7'),
              ('RETFound-Green\nViT-Small\n22 M parameters\nFROZEN', '#dfe9df'),
              ('384 features\nper image', '#dfe9df'),
-             ('Scale features\n(fitted on the\ntraining part only)', '#f4ecdc'),
+             ('Scale features\n(fitted on the\ntraining rows only)', '#f4ecdc'),
              ('Classifier\nlogistic regression,\nkNN, SVM or MLP', '#f4ecdc'),
-             ('Score\n→ threshold\n(set on validation)', '#f4ecdc'),
+             ('Score\n→ threshold\n(set on the\nout-of-fold scores)', '#f4ecdc'),
              ('Glaucoma\nor healthy', '#f6e0e0')]
     w, h, gap, y = 1.75, 1.6, 0.28, 3.6
     for i, (t, c) in enumerate(steps):
@@ -52,14 +52,15 @@ def fig1_block_diagram():
         if i:
             arrow(ax, x - gap, y + h / 2, x, y + h / 2)
     ax.text(0.1, 3.15, 'Fixed: never trained', fontsize=9, color='#2f6b2f')
-    ax.text(0.1 + 4 * (w + gap), 3.15, 'Learned from the training images; hyperparameters chosen by Optuna on validation',
+    ax.text(0.1 + 4 * (w + gap), 3.15, 'Learned from the training images; hyperparameters chosen by Optuna with 5-fold cross-validation',
             fontsize=9, color='#8a5a00')
     # the split
-    parts = [('Data split, made once and saved\nstratified: 14% glaucoma in each part\n'
-              'grouped by eye: no eye in two parts\n(chaksu_split.csv, 28 Oct)', '#eeeeee'),
-             ('Training 60%\n802 images (111 glaucoma)\nfits the classifier', '#f4ecdc'),
-             ('Validation 20%\n268 images (38 glaucoma)\nchooses hyperparameters,\nclassifier and threshold', '#f4ecdc'),
-             ('Test 20%\n268 images (38 glaucoma)\nused ONCE, at the end', '#f6e0e0')]
+    parts = [('Data split, made once and saved\nstratified by label and camera\n'
+              'grouped by eye: no eye in two parts\n7 exact copies kept with their original\n(chaksu_split.csv)', '#eeeeee'),
+             ('Training + validation 85%\n939 + 202 = 1,141 images\n(160 glaucoma)', '#f4ecdc'),
+             ('5-fold cross-validation\n5 × (913 fit / 228 held out)\ntunes, compares, sets thresholds;\n'
+              'then refit on all 1,141', '#f4ecdc'),
+             ('Test 15%\n204 images (28 glaucoma)\nused ONCE, at the end', '#f6e0e0')]
     w, gap = 3.55, 0.55
     for i, (t, c) in enumerate(parts):
         x = 0.1 + i * (w + gap)
@@ -83,7 +84,7 @@ def fig2_optuna():
     ax.scatter([b.params_C], [b.value], s=90, facecolors='none', edgecolors='k', lw=1.5)
     ax.set_xscale('log')
     ax.set_xlabel('C (smaller = stronger penalty)')
-    ax.set_ylabel('validation AUROC')
+    ax.set_ylabel('5-fold mean AUROC')
     ax.set_title(f'(a) Logistic regression, {len(d)} trials: best C = {b.params_C:.4f}, AUROC {b.value:.3f}', fontsize=9.5)
 
     d = trials('svm')
@@ -95,7 +96,7 @@ def fig2_optuna():
     ax.scatter([b.params_C], [b.value], s=90, facecolors='none', edgecolors='k', lw=1.5)
     ax.set_xscale('log')
     ax.set_xlabel('C (smaller = wider margin, more mistakes allowed)')
-    ax.set_ylabel('validation AUROC')
+    ax.set_ylabel('5-fold mean AUROC')
     ax.legend(fontsize=8, frameon=False)
     ax.set_title(f'(b) SVM, {len(d)} trials: best {b.params_kernel}, C = {b.params_C:.2g}, AUROC {b.value:.3f}',
                  fontsize=9.5)
@@ -108,22 +109,24 @@ def fig2_optuna():
     b = d.loc[d.value.idxmax()]
     ax.scatter([b.params_k], [b.value], s=90, facecolors='none', edgecolors='k', lw=1.5)
     ax.set_xlabel('k (number of neighbours that vote)')
-    ax.set_ylabel('validation AUROC')
+    ax.set_ylabel('5-fold mean AUROC')
     ax.legend(fontsize=8, frameon=False)
     ax.set_title(f'(c) kNN, all {len(d)} settings: best k = {int(b.params_k)}, {b.params_weights}, '
                  f'{b.params_metric}, AUROC {b.value:.3f}', fontsize=9.5)
 
     d = trials('mlp')
     ax = axs[1, 1]
+    low = 0.75                                     # a few settings that failed to learn sit far below
     ax.scatter(d.number + 1, d.value, s=14, color='tab:green', label='one trial')
     ax.plot(d.number + 1, d.value.cummax(), color='k', lw=1.2, label='best so far')
     b = d.loc[d.value.idxmax()]
+    ax.set_ylim(low, d.value.max() + 0.01)
     ax.set_xlabel('trial number (Optuna chooses each trial from the earlier ones)')
-    ax.set_ylabel('validation AUROC')
+    ax.set_ylabel('5-fold mean of AUROC over kept epoch ± 5')
     ax.legend(fontsize=8, frameon=False, loc='lower right')
-    ax.set_title(f'(d) MLP, {len(d)} trials: best {int(b.params_n_layers)} × {int(b.params_width)} neurons, '
-                 f'AUROC {b.value:.3f}', fontsize=9.5)
-    fig.suptitle('Optuna searches: every trial trains on the 802 training images and is scored on the 268 validation images',
+    ax.set_title(f'(d) MLP, {len(d)} trials ({int((d.value < low).sum())} below {low} not shown):\nbest '
+                 f'{int(b.params_n_layers)} × {int(b.params_width)} neurons, score {b.value:.3f}', fontsize=9.5)
+    fig.suptitle('Optuna searches: every trial is scored on the same 5 folds of the 1,141 training + validation images',
                  fontsize=10.5)
     fig.tight_layout()
     fig.savefig(OUT / 'fig2_optuna.png', dpi=200)
@@ -139,15 +142,16 @@ def fig3_learning_curve():
     a1.plot(h.epoch, h.val_loss, label='validation loss')
     a1.axvline(best, color='grey', ls='--', label=f'lowest validation loss (epoch {best})')
     a1.set_xlabel('epoch')
-    a1.set_ylabel('loss (binary cross-entropy)')
+    a1.set_ylabel('loss (weighted binary cross-entropy)')
     a1.legend(frameon=False)
     a2.plot(h.epoch, h.val_auroc, color='tab:orange')
     a2.axvline(best, color='grey', ls='--')
     a2.set_xlabel('epoch')
     a2.set_ylabel('validation AUROC')
-    fig.suptitle(f"MLP learning curves, best Optuna setting: {p['n_layers']} hidden layers × {p['width']} neurons, "
-                 f"dropout {p['dropout']:.2f}, learning rate {p['lr']:.1e}, weight decay {p['weight_decay']:.1e}; "
-                 f"trained all 200 epochs to show the whole curve", fontsize=9.5)
+    fig.suptitle(f"MLP learning curves, best 5-fold Optuna setting: {p['n_layers']} hidden layers × {p['width']} neurons, "
+                 f"dropout {p['dropout']:.2f}, learning rate {p['lr']:.1e}, weight decay {p['weight_decay']:.1e};\n"
+                 f"trained all {len(h)} epochs on the fixed training (939) / validation (202) split to show the whole curve",
+                 fontsize=9.5)
     fig.tight_layout()
     fig.savefig(OUT / 'fig3_learning_curve.png', dpi=200)
     plt.close(fig)
@@ -160,17 +164,19 @@ def fig4_comparison():
     fig, ax = plt.subplots(figsize=(9, 3.4))
     for i, r in t.iterrows():
         c = 'tab:red' if r.classifier == chosen else 'tab:blue'
-        ax.errorbar(r['val AUROC'], i, xerr=[[r['val AUROC'] - r['AUROC CI low']], [r['AUROC CI high'] - r['val AUROC']]],
+        ax.errorbar(r['out-of-fold AUROC'], i, xerr=[[r['out-of-fold AUROC'] - r['AUROC CI low']],
+                                                     [r['AUROC CI high'] - r['out-of-fold AUROC']]],
                     fmt='o', color=c, capsize=4)
         tie = 'best' if r['best minus this'] == 0 else ('tied with best' if r['tied with best'] else 'below best')
-        ax.text(0.935, i, f"{r['val AUROC']:.3f}  ({r['AUROC CI low']:.3f}–{r['AUROC CI high']:.3f})   {tie}",
+        ax.text(0.935, i, f"{r['out-of-fold AUROC']:.3f}  ({r['AUROC CI low']:.3f}–{r['AUROC CI high']:.3f})   {tie}",
                 va='center', fontsize=8.5)
     ax.set_yticks(range(len(t)))
     ax.set_yticklabels([NAMES[n] + (' (chosen)' if n == chosen else '') for n in t.classifier])
     ax.set_xlim(0.68, 1.17)
     ax.set_xticks(np.arange(0.70, 0.95, 0.05))
-    ax.set_xlabel('validation AUROC with 95% CI (2,000 bootstrap resamples of eyes)')
-    ax.set_title('Classifier comparison on the 268 validation images (38 glaucoma)', fontsize=10)
+    ax.set_xlabel('out-of-fold AUROC with 95% CI (2,000 bootstrap resamples of eyes)')
+    ax.set_title('Classifier comparison, 5-fold cross-validation:\nout-of-fold scores of the 1,141 training + validation '
+                 'images (160 glaucoma)', fontsize=10)
     fig.tight_layout()
     fig.savefig(OUT / 'fig4_comparison.png', dpi=200)
     plt.close(fig)
@@ -187,16 +193,16 @@ def fig5_test():
     ax.plot(fpr, tpr, color='tab:red', label=f"test AUROC {res['AUROC']:.3f} "
             f"(95% CI {res['AUROC 95% CI'][0]:.3f}–{res['AUROC 95% CI'][1]:.3f})")
     ax.plot([0, 1], [0, 1], color='grey', ls=':', label='guessing (0.5)')
-    for key, lab, m in [('at 90% recall threshold (from validation)', '90%-recall threshold', 'o'),
-                        ("at Youden's J threshold (from validation)", "Youden's J threshold", 's')]:
+    for key, lab, m in [('at 90% recall threshold (from out-of-fold scores)', '90%-recall threshold', 'o'),
+                        ("at Youden's J threshold (from out-of-fold scores)", "Youden's J threshold", 's')]:
         r = res[key]
         ax.plot(1 - r['specificity'], r['sensitivity'], m, color='k', ms=7, mfc='white', label=lab)
     ax.set_xlabel('1 − specificity (false-alarm rate)')
     ax.set_ylabel('sensitivity (share of glaucoma found)')
     ax.legend(fontsize=8, frameon=False, loc='lower right')
-    ax.set_title(f"ROC curve, {NAMES[info['classifier']]}, 268 test images", fontsize=10)
-    for ax, key, title in [(axs[1], 'at 90% recall threshold (from validation)', '90%-recall threshold'),
-                           (axs[2], "at Youden's J threshold (from validation)", "Youden's J threshold")]:
+    ax.set_title(f"ROC curve, {NAMES[info['classifier']]}, {len(y)} test images", fontsize=10)
+    for ax, key, title in [(axs[1], 'at 90% recall threshold (from out-of-fold scores)', '90%-recall threshold'),
+                           (axs[2], "at Youden's J threshold (from out-of-fold scores)", "Youden's J threshold")]:
         r = res[key]
         m = np.array([[r['TP'], r['FN']], [r['FP'], r['TN']]])
         ax.imshow(m, cmap='Blues', vmin=0, vmax=m.max() * 1.6)
@@ -205,7 +211,7 @@ def fig5_test():
         ax.set_xticks([0, 1])
         ax.set_xticklabels(['called glaucoma', 'called healthy'])
         ax.set_yticks([0, 1])
-        ax.set_yticklabels(['glaucoma (38)', 'healthy (230)'])
+        ax.set_yticklabels([f'glaucoma ({int(y.sum())})', f'healthy ({int((y == 0).sum())})'])
         ax.set_title(f"{title}\nsensitivity {r['sensitivity']:.2f}, specificity {r['specificity']:.2f}", fontsize=10)
         for sp in ax.spines.values():
             sp.set_visible(False)

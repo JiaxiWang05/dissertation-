@@ -45,17 +45,26 @@ def part(lab, X, y, name):
     return X[m], y[m]
 
 
-def cv_folds(lab, X, y, n_splits=5):
-    """5-fold cross-validation on training + validation (never test). The images of one eye stay in one fold;
+def cv_split(lab, n_splits=5):
+    """The 5 folds of training + validation (never test). The images of one eye stay in one fold;
     each fold has about the same share of glaucoma per camera (as in step1_make_split.py).
-    Returns, per fold, (X_train, y_train, X_val, y_val), scaled by a StandardScaler fitted on that fold's training rows."""
+    Returns the mask of training + validation rows and, per fold, (train, val) row numbers within those rows."""
     keep = lab['part'].isin(['train', 'val']).to_numpy()
-    X, y, sub = X[keep], y[keep], lab[keep]
+    sub = lab[keep]
     strata = sub['label_majority'].astype(str) + '_' + sub['camera']
     eyes = sub['eye'].to_numpy()
-    folds = []
-    for tr, va in StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=SEED).split(X, strata, eyes):
+    splits = list(StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=SEED).split(sub, strata, eyes))
+    for tr, va in splits:
         assert not set(eyes[tr]) & set(eyes[va])        # no eye on both sides
+    return keep, splits
+
+
+def cv_folds(lab, X, y, n_splits=5):
+    """Per fold of cv_split: (X_train, y_train, X_val, y_val), scaled by a StandardScaler fitted on that fold's training rows."""
+    keep, splits = cv_split(lab, n_splits)
+    X, y = X[keep], y[keep]
+    folds = []
+    for tr, va in splits:
         scaler = StandardScaler().fit(X[tr])
         folds.append((scaler.transform(X[tr]), y[tr], scaler.transform(X[va]), y[va]))
     return folds
@@ -97,12 +106,18 @@ def make_loss(params, pos_weight):
     return loss_fn
 
 
-def train_mlp(params, Xtr, ytr, Xva, yva, max_epochs=300, patience=30, seed=SEED):
+def train_mlp(params, Xtr, ytr, Xva=None, yva=None, max_epochs=300, patience=30, seed=SEED):
     """Train on the training part; after every epoch measure the loss on training and validation.
     Keep the weights of the epoch with the lowest validation loss; stop when it has not improved for `patience` epochs.
     params: n_layers, width, dropout, lr, weight_decay, and optionally optimizer, l1, batch_size, loss, focal_gamma,
-    lr_schedule ('constant' or 'plateau': halve the learning rate after 11 epochs without a lower validation loss)."""
+    lr_schedule ('constant' or 'plateau': halve the learning rate after 11 epochs without a lower validation loss),
+    noise (standard deviation of Gaussian noise added to every training batch; the features are standardised, so
+    0.3 = 30 % of one standard deviation; validation is never changed).
+    Without a validation part (Xva=None; the final fit on training + validation): train exactly max_epochs and keep
+    the last weights; a plateau schedule then follows the training loss."""
     torch.manual_seed(seed)
+    noise = params.get('noise', 0.0)
+    noise_gen = torch.Generator().manual_seed(seed)   # own random numbers: batch order and dropout stay the same as without noise
     model = make_mlp(params['n_layers'], params['width'], params['dropout'], Xtr.shape[1])
     opt = OPTIMIZERS[params.get('optimizer', 'adam')](model.parameters(), lr=params['lr'],
                                                        weight_decay=params['weight_decay'])
@@ -113,7 +128,8 @@ def train_mlp(params, Xtr, ytr, Xva, yva, max_epochs=300, patience=30, seed=SEED
     pos_weight = torch.tensor([(ytr == 0).sum() / (ytr == 1).sum()], dtype=torch.float32)  # about 6: glaucoma is rare
     loss_fn = make_loss(params, pos_weight)
     Xt, yt = torch.tensor(Xtr, dtype=torch.float32), torch.tensor(ytr, dtype=torch.float32)
-    Xv, yv = torch.tensor(Xva, dtype=torch.float32), torch.tensor(yva, dtype=torch.float32)
+    if Xva is not None:
+        Xv, yv = torch.tensor(Xva, dtype=torch.float32), torch.tensor(yva, dtype=torch.float32)
     history, best_loss, best_state, best_epoch, wait = [], float('inf'), None, 0, 0
     for epoch in range(1, max_epochs + 1):
         model.train()                                   # training mode: dropout on
@@ -121,7 +137,10 @@ def train_mlp(params, Xtr, ytr, Xva, yva, max_epochs=300, patience=30, seed=SEED
         for start in range(0, len(Xt), batch_size):
             idx = order[start:start + batch_size]
             opt.zero_grad()
-            loss = loss_fn(model(Xt[idx]).squeeze(1), yt[idx])
+            xb = Xt[idx]
+            if noise:                                   # a new random version of each training image's features every time
+                xb = xb + noise * torch.randn(xb.shape, generator=noise_gen)
+            loss = loss_fn(model(xb).squeeze(1), yt[idx])
             if l1:
                 loss = loss + l1 * sum(w.abs().sum() for w in weights)   # L1 penalty: pushes small weights to 0
             loss.backward()
@@ -129,8 +148,14 @@ def train_mlp(params, Xtr, ytr, Xva, yva, max_epochs=300, patience=30, seed=SEED
         model.eval()                                    # evaluation mode: dropout off
         with torch.no_grad():
             train_loss = loss_fn(model(Xt).squeeze(1), yt).item()
-            val_score = model(Xv).squeeze(1)
-            val_loss = loss_fn(val_score, yv).item()
+            if Xva is not None:
+                val_score = model(Xv).squeeze(1)
+                val_loss = loss_fn(val_score, yv).item()
+        if Xva is None:                                 # final fit: nothing to stop on, train all max_epochs
+            history.append({'epoch': epoch, 'train_loss': train_loss, 'lr': opt.param_groups[0]['lr']})
+            if sched:
+                sched.step(train_loss)
+            continue
         if not torch.isfinite(val_score).all():         # training blew up (e.g. learning rate far too high): stop here
             break
         history.append({'epoch': epoch, 'train_loss': train_loss, 'val_loss': val_loss,
@@ -143,6 +168,8 @@ def train_mlp(params, Xtr, ytr, Xva, yva, max_epochs=300, patience=30, seed=SEED
             wait += 1
             if wait >= patience:
                 break
+    if Xva is None:
+        return model, pd.DataFrame(history), max_epochs
     if best_state is not None:                          # None only if it blew up in the first epoch (best_epoch = 0)
         model.load_state_dict(best_state)
     return model, pd.DataFrame(history), best_epoch
