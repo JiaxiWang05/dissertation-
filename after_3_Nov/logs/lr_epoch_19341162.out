@@ -1,0 +1,22 @@
+code: /home/tggq61/glaucoma/after_3_Nov  host: cn025.ham8.dur.ac.uk  Tue  3 Nov 18:54:36 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== check_lr_epoch  18:56:01
+    lr  fold  kept epoch  AUROC  val minus train loss  lowest val loss
+0.0002     0          13 0.8311                0.2241           0.8617
+0.0002     1          13 0.7953                0.3862           0.9846
+0.0002     2          12 0.7962                0.2963           0.9415
+0.0002     3          10 0.7910                0.2224           0.9443
+0.0002     4          16 0.8691                0.2466           0.7932
+0.0000     0         129 0.8282                0.2644           0.8754
+0.0000     1         110 0.7833                0.3513           0.9931
+0.0000     2         129 0.8048                0.3390           0.9324
+0.0000     3         106 0.7964                0.2600           0.9362
+0.0000     4         152 0.8699                0.2606           0.8036
+          kept epoch   AUROC  val minus train loss  lowest val loss
+lr                                                                 
+0.000176        12.8  0.8165                0.2751           0.9050
+0.000018       125.2  0.8165                0.2950           0.9081
+===== step4_learning_curve  18:56:53
+lowest validation loss at epoch 61
+saved mlp_learning_curve.png and mlp_learning_curve.csv
+done Tue  3 Nov 18:57:54 GMT 2026

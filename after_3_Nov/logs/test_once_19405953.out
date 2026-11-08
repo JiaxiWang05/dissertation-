@@ -1,0 +1,8 @@
+code: /home/tggq61/glaucoma/after_3_Nov  host: cn057.ham8.dur.ac.uk  Sun  8 Nov 21:20:29 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== step6_test  21:22:07
+logreg: test AUROC 0.872 (95% CI 0.810-0.923), AUPRC 0.538 (guessing 0.137)
+At the 90%-recall threshold: found 28 of 28 glaucoma (sensitivity 1.00); 86 false alarms among 176 healthy (specificity 0.51); PPV 0.25, NPV 1.00, balanced accuracy 0.76, MCC 0.35
+At the Youden's J threshold: found 22 of 28 glaucoma (sensitivity 0.79); 46 false alarms among 176 healthy (specificity 0.74); PPV 0.32, NPV 0.96, balanced accuracy 0.76, MCC 0.38
+saved test_results.json and test_scores.csv
+done Sun  8 Nov 21:22:19 GMT 2026

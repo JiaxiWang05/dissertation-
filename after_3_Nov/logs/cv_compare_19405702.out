@@ -1,0 +1,11 @@
+code: /home/tggq61/glaucoma/after_3_Nov  host: cn025.ham8.dur.ac.uk  Sun  8 Nov 18:05:42 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== step5_compare  18:05:45
+classifier                                                                size  out-of-fold AUROC  AUROC CI low  AUROC CI high  mean of fold AUROCs  fold AUROC sd  best minus this  diff CI low  diff CI high  tied with best  AUPRC  sensitivity @90% recall  specificity @90% recall
+    logreg                    trainable parameters: 385 (384 weights + 1 bias)              0.814         0.779          0.848                0.814          0.033            0.003       -0.014         0.021            True  0.414                      0.9                    0.518
+       knn trainable parameters: 0 (stores the training images x 384 features)              0.747         0.708          0.785                0.749          0.027            0.070        0.037         0.104           False  0.337                      0.9                    0.455
+       svm                              support vectors: 531 (mean over folds)              0.817         0.784          0.850                0.818          0.028            0.000        0.000         0.000            True  0.426                      0.9                    0.495
+       mlp     trainable parameters: 460289 (kept epochs [58, 59, 63, 45, 66])              0.813         0.780          0.846                0.816          0.029            0.004       -0.013         0.021            True  0.414                      0.9                    0.527
+
+highest out-of-fold AUROC: svm   chosen: logreg   refitted on 1141 images   thresholds from the out-of-fold scores: 0.2828 (90% recall), 0.4724 (Youden's J)
+done Sun  8 Nov 18:07:18 GMT 2026

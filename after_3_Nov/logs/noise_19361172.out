@@ -1,0 +1,86 @@
+code: /home/tggq61/glaucoma/after_3_Nov  host: cn012.ham8.dur.ac.uk  Wed  4 Nov 21:45:13 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== check_lr_epoch  21:46:43
+    lr  fold  kept epoch  AUROC  val minus train loss  lowest val loss
+0.0002     0          13 0.8311                0.2241           0.8617
+0.0002     1          13 0.7953                0.3862           0.9846
+0.0002     2          12 0.7962                0.2963           0.9415
+0.0002     3          10 0.7910                0.2224           0.9443
+0.0002     4          16 0.8691                0.2466           0.7932
+0.0000     0         129 0.8282                0.2644           0.8754
+0.0000     1         110 0.7833                0.3513           0.9931
+0.0000     2         129 0.8048                0.3390           0.9324
+0.0000     3         106 0.7964                0.2600           0.9362
+0.0000     4         152 0.8699                0.2606           0.8036
+          kept epoch   AUROC  val minus train loss  lowest val loss
+lr                                                                 
+0.000176        12.8  0.8165                0.2751           0.9050
+0.000018       125.2  0.8165                0.2950           0.9081
+===== check_noise  21:47:45
+3 Nov setting (Adam, 2 x 128), noise 0.0: done
+3 Nov setting (Adam, 2 x 128), noise 0.1: done
+3 Nov setting (Adam, 2 x 128), noise 0.2: done
+3 Nov setting (Adam, 2 x 128), noise 0.3: done
+3 Nov setting (Adam, 2 x 128), noise 0.5: done
+3 Nov setting (Adam, 2 x 128), noise 1.0: done
+3 Nov setting (Adam, 2 x 128), noise 2.0: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.0: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.1: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.2: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.3: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.5: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 1.0: done
+trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 2.0: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 0.0: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 0.1: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 0.2: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 0.3: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 0.5: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 1.0: done
+trial 112 (5-fold search best, Adam, 2 x 512), noise 2.0: done
+                                                     AUROC (mean of 5 seeds)  lowest seed  highest seed  kept epoch (median)  val minus train loss  lowest val loss  AUROC minus noise 0  folds better than noise 0 (of 5)
+setting                                       noise                                                                                                                                                                       
+3 Nov setting (Adam, 2 x 128)                 0.0                      0.805        0.801         0.817                 12.0                 0.259            0.924                0.000                                 0
+                                              0.1                      0.806        0.801         0.817                 12.0                 0.259            0.923                0.002                                 5
+                                              0.2                      0.807        0.803         0.816                 13.0                 0.253            0.922                0.002                                 4
+                                              0.3                      0.808        0.802         0.816                 14.0                 0.260            0.920                0.003                                 4
+                                              0.5                      0.807        0.799         0.812                 15.0                 0.253            0.917                0.002                                 3
+                                              1.0                      0.809        0.804         0.816                 25.0                 0.247            0.911                0.004                                 2
+                                              2.0                      0.805        0.801         0.811                 73.0                 0.174            0.927                0.001                                 3
+trial 72 (RMSprop, 2 x 64, dropout 0.65)      0.0                      0.816        0.813         0.818                 18.0                 0.194            0.903                0.000                                 0
+                                              0.1                      0.815        0.809         0.822                 22.0                 0.212            0.899               -0.001                                 2
+                                              0.2                      0.811        0.808         0.816                 21.0                 0.197            0.907               -0.005                                 1
+                                              0.3                      0.816        0.809         0.828                 24.0                 0.210            0.903                0.001                                 3
+                                              0.5                      0.817        0.809         0.821                 28.0                 0.190            0.899                0.001                                 3
+                                              1.0                      0.817        0.813         0.820                 40.0                 0.150            0.903                0.001                                 3
+                                              2.0                      0.799        0.794         0.809                 45.0                 0.065            0.959               -0.016                                 0
+trial 112 (5-fold search best, Adam, 2 x 512) 0.0                      0.808        0.805         0.813                 58.0                 0.292            0.924                0.000                                 0
+                                              0.1                      0.809        0.804         0.812                 64.0                 0.291            0.923                0.000                                 2
+                                              0.2                      0.808        0.804         0.812                 64.0                 0.286            0.921                0.000                                 2
+                                              0.3                      0.808        0.803         0.812                 66.0                 0.275            0.919               -0.000                                 3
+                                              0.5                      0.808        0.805         0.811                 74.0                 0.261            0.914               -0.000                                 2
+                                              1.0                      0.809        0.807         0.812                126.0                 0.241            0.909                0.001                                 2
+                                              2.0                      0.803        0.800         0.806                268.0                 0.149            0.936               -0.005                                 0
+curve 3 Nov setting (Adam, 2 x 128), noise 0.0: lowest validation loss at epoch 15
+curve 3 Nov setting (Adam, 2 x 128), noise 0.1: lowest validation loss at epoch 15
+curve 3 Nov setting (Adam, 2 x 128), noise 0.2: lowest validation loss at epoch 15
+curve 3 Nov setting (Adam, 2 x 128), noise 0.3: lowest validation loss at epoch 15
+curve 3 Nov setting (Adam, 2 x 128), noise 0.5: lowest validation loss at epoch 15
+curve 3 Nov setting (Adam, 2 x 128), noise 1.0: lowest validation loss at epoch 18
+curve 3 Nov setting (Adam, 2 x 128), noise 2.0: lowest validation loss at epoch 67
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.0: lowest validation loss at epoch 22
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.1: lowest validation loss at epoch 30
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.2: lowest validation loss at epoch 26
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.3: lowest validation loss at epoch 50
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 0.5: lowest validation loss at epoch 195
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 1.0: lowest validation loss at epoch 52
+curve trial 72 (RMSprop, 2 x 64, dropout 0.65), noise 2.0: lowest validation loss at epoch 101
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 0.0: lowest validation loss at epoch 61
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 0.1: lowest validation loss at epoch 61
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 0.2: lowest validation loss at epoch 61
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 0.3: lowest validation loss at epoch 61
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 0.5: lowest validation loss at epoch 72
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 1.0: lowest validation loss at epoch 158
+curve trial 112 (5-fold search best, Adam, 2 x 512), noise 2.0: lowest validation loss at epoch 287
+saved check_noise.csv and check_noise_curves.csv
+done Wed  4 Nov 23:18:27 GMT 2026

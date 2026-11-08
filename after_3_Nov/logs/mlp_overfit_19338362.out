@@ -1,0 +1,90 @@
+code: /home/tggq61/glaucoma/after_3_Nov  host: cn033.ham8.dur.ac.uk  Tue  3 Nov 13:16:24 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== step2_check_split  13:18:04
+features: (1345, 384)   glaucoma: 188   healthy: 1157
+       images  glaucoma  healthy  glaucoma_%
+part                                        
+train     939       132      807        14.1
+val       202        28      174        13.9
+test      204        28      176        13.7
+eyes in more than one part: 0 (must be 0)
+part     train  val  test
+camera                   
+Bosch      103   22    20
+Forus       88   18    20
+Remidio    748  162   164
+===== step3_mlp  13:18:13
+[I 2026-11-03 13:18:23,063] A new study created in RDB with name: mlp
+[I 2026-11-03 13:18:47,972] Trial 0 finished with value: 0.8318965517241379 and parameters: {'n_layers': 2, 'width': 32, 'dropout': 0.04065852851773962, 'optimizer': 'adam', 'lr': 0.07579479953348005, 'weight_decay': 0.014528246637516038, 'l1': 1.1526449540315595e-07, 'batch_size': 256, 'loss': 'weighted_bce'}. Best is trial 0 with value: 0.8318965517241379.
+[I 2026-11-03 13:19:23,423] Trial 1 finished with value: 0.8288177339901478 and parameters: {'n_layers': 4, 'width': 512, 'dropout': 0.1397716475108518, 'optimizer': 'rmsprop', 'lr': 4.809461967501571e-05, 'weight_decay': 2.114744796061573e-06, 'l1': 0.000555172168524472, 'batch_size': 32, 'loss': 'weighted_bce'}. Best is trial 0 with value: 0.8318965517241379.
+[I 2026-11-03 13:19:25,833] Trial 2 finished with value: 0.8345648604269293 and parameters: {'n_layers': 1, 'width': 128, 'dropout': 0.21819775326258767, 'optimizer': 'rmsprop', 'lr': 0.012604664585649461, 'weight_decay': 0.04983043837494914, 'l1': 0.00029794544625913623, 'batch_size': 64, 'loss': 'focal', 'focal_gamma': 1.471693224223705}. Best is trial 2 with value: 0.8345648604269293.
+[I 2026-11-03 13:19:38,545] Trial 3 finished with value: 0.8136288998357964 and parameters: {'n_layers': 2, 'width': 32, 'dropout': 0.5615378865278278, 'optimizer': 'adamw', 'lr': 1.0521761868451132e-05, 'weight_decay': 0.011948328168545455, 'l1': 3.422052903270691e-05, 'batch_size': 64, 'loss': 'focal', 'focal_gamma': 2.058245317068895}. Best is trial 2 with value: 0.8345648604269293.
+[I 2026-11-03 13:19:49,659] Trial 4 finished with value: 0.847495894909688 and parameters: {'n_layers': 2, 'width': 256, 'dropout': 0.6210489198034286, 'optimizer': 'rmsprop', 'lr': 0.0017583640270008513, 'weight_decay': 0.0071587286315002, 'l1': 2.944272359149678e-06, 'batch_size': 32, 'loss': 'focal', 'focal_gamma': 1.2858899526908167}. Best is trial 4 with value: 0.847495894909688.
+[I 2026-11-03 13:19:52,267] Trial 5 finished with value: 0.8082922824302134 and parameters: {'n_layers': 3, 'width': 32, 'dropout': 0.05388593688015509, 'optimizer': 'sgd', 'lr': 0.0034167643418329683, 'weight_decay': 0.02276685024868625, 'l1': 0.00010431827200054897, 'batch_size': 64, 'loss': 'weighted_bce'}. Best is trial 4 with value: 0.847495894909688.
+[I 2026-11-03 13:19:54,045] Trial 6 finished with value: 0.8479064039408867 and parameters: {'n_layers': 1, 'width': 256, 'dropout': 0.35752311180429597, 'optimizer': 'adam', 'lr': 0.059106986190885426, 'weight_decay': 4.1306144511331714e-05, 'l1': 3.926025433552806e-06, 'batch_size': 128, 'loss': 'focal', 'focal_gamma': 1.252195774541924}. Best is trial 6 with value: 0.8479064039408867.
+[I 2026-11-03 13:19:59,409] Trial 7 finished with value: 0.842159277504105 and parameters: {'n_layers': 2, 'width': 64, 'dropout': 0.6357861201766576, 'optimizer': 'rmsprop', 'lr': 9.294394155644992e-05, 'weight_decay': 0.002294445450760201, 'l1': 6.428328717564119e-05, 'batch_size': 64, 'loss': 'weighted_bce'}. Best is trial 6 with value: 0.8479064039408867.
+[I 2026-11-03 13:20:08,823] Trial 8 finished with value: 0.8327175697865353 and parameters: {'n_layers': 1, 'width': 32, 'dropout': 0.47429505328959765, 'optimizer': 'rmsprop', 'lr': 4.9827112000811324e-05, 'weight_decay': 0.0028489753426125656, 'l1': 8.583743499363274e-07, 'batch_size': 32, 'loss': 'weighted_bce'}. Best is trial 6 with value: 0.8479064039408867.
+[I 2026-11-03 13:20:12,044] Trial 9 finished with value: 0.8407224958949098 and parameters: {'n_layers': 2, 'width': 64, 'dropout': 0.06517193746412944, 'optimizer': 'adamw', 'lr': 0.00024936660834465205, 'weight_decay': 0.004263619053601756, 'l1': 0.0003058801537139059, 'batch_size': 32, 'loss': 'focal', 'focal_gamma': 2.016072649148975}. Best is trial 6 with value: 0.8479064039408867.
+[I 2026-11-03 13:20:58,540] Trial 10 finished with value: 0.8407224958949097 and parameters: {'n_layers': 5, 'width': 256, 'dropout': 0.5465431329916852, 'optimizer': 'adam', 'lr': 1.6809341019701672e-05, 'weight_decay': 3.22149287579553e-05, 'l1': 3.801925734189836e-07, 'batch_size': 128, 'loss': 'focal', 'focal_gamma': 0.5968129999029572}. Best is trial 6 with value: 0.8479064039408867.
+[I 2026-11-03 13:21:00,384] Trial 11 finished with value: 0.8251231527093597 and parameters: {'n_layers': 1, 'width': 256, 'dropout': 0.35140154392678224, 'optimizer': 'adam', 'lr': 0.08625065400790843, 'weight_decay': 4.9558954571679855e-06, 'l1': 2.44908924931108e-05, 'batch_size': 128, 'loss': 'focal', 'focal_gamma': 1.1290619228641652}. Best is trial 6 with value: 0.8479064039408867.
+[I 2026-11-03 13:21:11,606] Trial 12 finished with value: 0.8501642036124795 and parameters: {'n_layers': 2, 'width': 256, 'dropout': 0.5704979359063944, 'optimizer': 'rmsprop', 'lr': 0.001753285283303116, 'weight_decay': 0.009689417266956978, 'l1': 3.4849529371996503e-06, 'batch_size': 32, 'loss': 'focal', 'focal_gamma': 1.2578275383537822}. Best is trial 12 with value: 0.8501642036124795.
+[I 2026-11-03 13:21:15,780] Trial 13 finished with value: 0.7701149425287357 and parameters: {'n_layers': 2, 'width': 256, 'dropout': 0.43339351315483166, 'optimizer': 'adam', 'lr': 0.03738938196138428, 'weight_decay': 0.04861796190919237, 'l1': 4.896070021396163e-05, 'batch_size': 128, 'loss': 'focal', 'focal_gamma': 2.679551974740815}. Best is trial 12 with value: 0.8501642036124795.
+[W 2026-11-03 13:21:16,520] Trial 14 failed with parameters: {'n_layers': 2, 'width': 256, 'dropout': 0.4562155322291146, 'optimizer': 'adam', 'lr': 0.007774727790436592, 'weight_decay': 0.00015452655576849938, 'l1': 7.733761633396728e-05, 'batch_size': 256, 'loss': 'focal', 'focal_gamma': 0.7766516167660025} because of the following error: ValueError('Input contains NaN.').
+Traceback (most recent call last):
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/home/tggq61/glaucoma/after_3_Nov/step3_mlp.py", line 31, in objective
+    model, history, best_epoch = train_mlp(params, Xtr_s, ytr, Xva_s, yva)   # early stopping on validation loss
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tggq61/glaucoma/after_3_Nov/common.py", line 112, in train_mlp
+    'val_auroc': roc_auc_score(yva, val_score.numpy())})
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/metrics/_ranking.py", line 710, in roc_auc_score
+    y_score = check_array(y_score, ensure_2d=False)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1090, in check_array
+    _assert_all_finite(
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/validation.py", line 137, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/validation.py", line 186, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.
+[W 2026-11-03 13:21:16,592] Trial 14 failed with value None.
+Traceback (most recent call last):
+  File "/home/tggq61/glaucoma/after_3_Nov/step3_mlp.py", line 45, in <module>
+    study.optimize(objective, n_trials=N_TRIALS)
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/optuna/study/study.py", line 502, in optimize
+    _optimize(
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/optuna/study/_optimize.py", line 68, in _optimize
+    _optimize_sequential(
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/optuna/study/_optimize.py", line 165, in _optimize_sequential
+    frozen_trial_id = _run_trial(study, func, catch)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/optuna/study/_optimize.py", line 263, in _run_trial
+    raise func_err
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/home/tggq61/glaucoma/after_3_Nov/step3_mlp.py", line 31, in objective
+    model, history, best_epoch = train_mlp(params, Xtr_s, ytr, Xva_s, yva)   # early stopping on validation loss
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tggq61/glaucoma/after_3_Nov/common.py", line 112, in train_mlp
+    'val_auroc': roc_auc_score(yva, val_score.numpy())})
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/metrics/_ranking.py", line 710, in roc_auc_score
+    y_score = check_array(y_score, ensure_2d=False)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/validation.py", line 1090, in check_array
+    _assert_all_finite(
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/validation.py", line 137, in _assert_all_finite
+    _assert_all_finite_element_wise(
+  File "/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/sklearn/utils/validation.py", line 186, in _assert_all_finite_element_wise
+    raise ValueError(msg_err)
+ValueError: Input contains NaN.

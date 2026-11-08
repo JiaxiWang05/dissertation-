@@ -1,0 +1,25 @@
+run,head,protocol,preproc,run_label,camera,votes,n_wrong,kind
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",All cameras,0,1,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",All cameras,1,1,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",All cameras,2,0,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",All cameras,3,73,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",All cameras,4,65,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",All cameras,5,47,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Bosch,0,0,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Bosch,1,0,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Bosch,2,0,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Bosch,3,9,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Bosch,4,7,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Bosch,5,3,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Forus,0,1,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Forus,1,1,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Forus,2,0,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Forus,3,7,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Forus,4,4,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Forus,5,5,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Remidio,0,0,dangerous
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Remidio,1,0,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Remidio,2,0,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Remidio,3,57,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Remidio,4,54,safe
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",Remidio,5,39,dangerous

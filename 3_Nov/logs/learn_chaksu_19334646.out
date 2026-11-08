@@ -1,0 +1,114 @@
+code: /home/tggq61/glaucoma/learn  host: cn028.ham8.dur.ac.uk  Tue  3 Nov 09:22:13 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== step3_svm  09:23:24
+[I 2026-11-03 09:23:35,341] A new study created in RDB with name: svm
+[I 2026-11-03 09:23:35,815] Trial 0 finished with value: 0.6558352402745996 and parameters: {'kernel': 'rbf', 'C': 1.330324510152291, 'gamma': 0.024810409748678097}. Best is trial 0 with value: 0.6558352402745996.
+[I 2026-11-03 09:23:35,935] Trial 1 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 2.550264850403285e-05}. Best is trial 1 with value: 0.768421052631579.
+[I 2026-11-03 09:23:36,069] Trial 2 finished with value: 0.6489702517162471 and parameters: {'kernel': 'linear', 'C': 0.9047071957568393}. Best is trial 1 with value: 0.768421052631579.
+[I 2026-11-03 09:23:36,200] Trial 3 finished with value: 0.7879862700228834 and parameters: {'kernel': 'rbf', 'C': 6.715811311069946, 'gamma': 0.0007068974950624604}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:36,362] Trial 4 finished with value: 0.7210526315789474 and parameters: {'kernel': 'rbf', 'C': 0.0013480180290890802, 'gamma': 0.012561043700013555}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:36,473] Trial 5 finished with value: 0.6645308924485125 and parameters: {'kernel': 'linear', 'C': 0.19185373703841915}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:36,638] Trial 6 finished with value: 0.7597254004576659 and parameters: {'kernel': 'rbf', 'C': 0.0036688748954991825, 'gamma': 0.006672367170464205}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:36,730] Trial 7 finished with value: 0.7340961098398169 and parameters: {'kernel': 'linear', 'C': 0.039777828308111905}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:36,837] Trial 8 finished with value: 0.6649885583524027 and parameters: {'kernel': 'linear', 'C': 0.17898389848671595}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:36,981] Trial 9 finished with value: 0.6371853546910755 and parameters: {'kernel': 'linear', 'C': 43.873144324354044}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:37,161] Trial 10 finished with value: 0.7664759725400457 and parameters: {'kernel': 'rbf', 'C': 82.75746465996832, 'gamma': 0.0001287790224034275}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:37,287] Trial 11 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 1.2428335047221699e-05}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:37,486] Trial 12 finished with value: 0.5 and parameters: {'kernel': 'rbf', 'C': 1.3097658908020463e-05, 'gamma': 0.7282354993594201}. Best is trial 3 with value: 0.7879862700228834.
+[I 2026-11-03 09:23:37,613] Trial 13 finished with value: 0.837299771167048 and parameters: {'kernel': 'linear', 'C': 0.001685558804363999}. Best is trial 13 with value: 0.837299771167048.
+[I 2026-11-03 09:23:37,773] Trial 14 finished with value: 0.8443935926773455 and parameters: {'kernel': 'rbf', 'C': 4.308224319348849, 'gamma': 0.00015681694641610672}. Best is trial 14 with value: 0.8443935926773455.
+[I 2026-11-03 09:23:37,898] Trial 15 finished with value: 0.8455377574370709 and parameters: {'kernel': 'linear', 'C': 0.0003518444919575297}. Best is trial 15 with value: 0.8455377574370709.
+[I 2026-11-03 09:23:38,028] Trial 16 finished with value: 0.8250572082379862 and parameters: {'kernel': 'linear', 'C': 0.00018473216578410935}. Best is trial 15 with value: 0.8455377574370709.
+[I 2026-11-03 09:23:38,219] Trial 17 finished with value: 0.5 and parameters: {'kernel': 'rbf', 'C': 0.09320542378226482, 'gamma': 0.5523921577573466}. Best is trial 15 with value: 0.8455377574370709.
+[I 2026-11-03 09:23:38,395] Trial 18 finished with value: 0.7734553775743707 and parameters: {'kernel': 'rbf', 'C': 0.007968557062295802, 'gamma': 0.00012170348483016116}. Best is trial 15 with value: 0.8455377574370709.
+[I 2026-11-03 09:23:38,581] Trial 19 finished with value: 0.6550343249427917 and parameters: {'kernel': 'rbf', 'C': 7.433283033151964e-05, 'gamma': 0.07927186376153508}. Best is trial 15 with value: 0.8455377574370709.
+[I 2026-11-03 09:23:38,690] Trial 20 finished with value: 0.8037757437070938 and parameters: {'kernel': 'linear', 'C': 0.008849197651391008}. Best is trial 15 with value: 0.8455377574370709.
+[I 2026-11-03 09:23:38,814] Trial 21 finished with value: 0.8525171624713959 and parameters: {'kernel': 'linear', 'C': 0.00041280118286741063}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:38,940] Trial 22 finished with value: 0.8279176201372997 and parameters: {'kernel': 'linear', 'C': 0.00019995795176437292}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,061] Trial 23 finished with value: 0.8516018306636156 and parameters: {'kernel': 'linear', 'C': 0.0005294981831195067}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,178] Trial 24 finished with value: 0.8513729977116704 and parameters: {'kernel': 'linear', 'C': 0.0005287548708928304}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,286] Trial 25 finished with value: 0.8216247139588102 and parameters: {'kernel': 'linear', 'C': 0.004082821605141206}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,408] Trial 26 finished with value: 0.8493135011441647 and parameters: {'kernel': 'linear', 'C': 0.0007075897963585811}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,545] Trial 27 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 5.801753193870956e-05}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,650] Trial 28 finished with value: 0.784096109839817 and parameters: {'kernel': 'linear', 'C': 0.013751013354744818}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,762] Trial 29 finished with value: 0.8312356979405034 and parameters: {'kernel': 'linear', 'C': 0.002017423510400068}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:39,881] Trial 30 finished with value: 0.8520594965675057 and parameters: {'kernel': 'linear', 'C': 0.0005243735164710936}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,009] Trial 31 finished with value: 0.7737986270022883 and parameters: {'kernel': 'linear', 'C': 6.839746300538798e-05}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,127] Trial 32 finished with value: 0.8513729977116705 and parameters: {'kernel': 'linear', 'C': 0.0005937592353756223}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,314] Trial 33 finished with value: 0.5890160183066361 and parameters: {'kernel': 'rbf', 'C': 0.00016515834106935166, 'gamma': 0.15627843030794564}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,442] Trial 34 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 3.352561498482413e-05}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,559] Trial 35 finished with value: 0.8467963386727689 and parameters: {'kernel': 'linear', 'C': 0.0009000149368579291}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,668] Trial 36 finished with value: 0.8237986270022883 and parameters: {'kernel': 'linear', 'C': 0.0035763498556861026}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,773] Trial 37 finished with value: 0.7622425629290618 and parameters: {'kernel': 'linear', 'C': 0.022798022058442405}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:40,897] Trial 38 finished with value: 0.8212814645308925 and parameters: {'kernel': 'linear', 'C': 0.00016736674584485193}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:41,098] Trial 39 finished with value: 0.7859267734553775 and parameters: {'kernel': 'rbf', 'C': 0.0005300571821635768, 'gamma': 0.0016787152247935654}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:41,240] Trial 40 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 2.6272376572386994e-05}. Best is trial 21 with value: 0.8525171624713959.
+[I 2026-11-03 09:23:41,368] Trial 41 finished with value: 0.8526315789473684 and parameters: {'kernel': 'linear', 'C': 0.0004096324567450035}. Best is trial 41 with value: 0.8526315789473684.
+[I 2026-11-03 09:23:41,511] Trial 42 finished with value: 0.852745995423341 and parameters: {'kernel': 'linear', 'C': 0.00040834310660518906}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:41,647] Trial 43 finished with value: 0.8441647597254005 and parameters: {'kernel': 'linear', 'C': 0.0003257222431317446}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:41,786] Trial 44 finished with value: 0.8024027459954233 and parameters: {'kernel': 'linear', 'C': 0.00010386345486812139}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:41,896] Trial 45 finished with value: 0.824370709382151 and parameters: {'kernel': 'linear', 'C': 0.0033182145073263453}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,013] Trial 46 finished with value: 0.8414187643020595 and parameters: {'kernel': 'linear', 'C': 0.0012688673161852417}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,143] Trial 47 finished with value: 0.7897025171624714 and parameters: {'kernel': 'linear', 'C': 9.075492305088935e-05}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,334] Trial 48 finished with value: 0.7770022883295195 and parameters: {'kernel': 'rbf', 'C': 0.001162174071688278, 'gamma': 0.0027456927235330135}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,457] Trial 49 finished with value: 0.8447368421052632 and parameters: {'kernel': 'linear', 'C': 0.00033219611572393216}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,571] Trial 50 finished with value: 0.8346681922196797 and parameters: {'kernel': 'linear', 'C': 0.0018358545324693813}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,688] Trial 51 finished with value: 0.8511441647597254 and parameters: {'kernel': 'linear', 'C': 0.0006398277098379288}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,809] Trial 52 finished with value: 0.849771167048055 and parameters: {'kernel': 'linear', 'C': 0.00038255043421248075}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:42,923] Trial 53 finished with value: 0.8448512585812357 and parameters: {'kernel': 'linear', 'C': 0.0010163240295796502}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,049] Trial 54 finished with value: 0.8189931350114417 and parameters: {'kernel': 'linear', 'C': 0.00014136974934293576}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,177] Trial 55 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 4.658949431069404e-05}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,306] Trial 56 finished with value: 0.768421052631579 and parameters: {'kernel': 'linear', 'C': 1.9102015951904383e-05}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,494] Trial 57 finished with value: 0.6266590389016018 and parameters: {'kernel': 'rbf', 'C': 0.00026507679097662236, 'gamma': 0.05320445324953073}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,605] Trial 58 finished with value: 0.8279176201372999 and parameters: {'kernel': 'linear', 'C': 0.0024519864862243695}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,709] Trial 59 finished with value: 0.8165903890160183 and parameters: {'kernel': 'linear', 'C': 0.005073855165516921}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,814] Trial 60 finished with value: 0.8109839816933638 and parameters: {'kernel': 'linear', 'C': 0.00710135586328581}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:43,941] Trial 61 finished with value: 0.8502288329519451 and parameters: {'kernel': 'linear', 'C': 0.0006603895397034879}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,091] Trial 62 finished with value: 0.6403890160183067 and parameters: {'kernel': 'linear', 'C': 1.22521908491016}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,210] Trial 63 finished with value: 0.8519450800915331 and parameters: {'kernel': 'linear', 'C': 0.00047012381053152}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,333] Trial 64 finished with value: 0.8327231121281464 and parameters: {'kernel': 'linear', 'C': 0.00021955117801323}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,454] Trial 65 finished with value: 0.8520594965675057 and parameters: {'kernel': 'linear', 'C': 0.0004811778665152193}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,569] Trial 66 finished with value: 0.8423340961098398 and parameters: {'kernel': 'linear', 'C': 0.0012069677408762952}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,750] Trial 67 finished with value: 0.7832951945080091 and parameters: {'kernel': 'rbf', 'C': 0.002199147031066231, 'gamma': 0.0003855217345447933}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:44,910] Trial 68 finished with value: 0.6371853546910755 and parameters: {'kernel': 'linear', 'C': 87.14672724356305}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,097] Trial 69 finished with value: 0.5367276887871854 and parameters: {'kernel': 'rbf', 'C': 4.480866103369932e-05, 'gamma': 0.18395730677410557}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,221] Trial 70 finished with value: 0.8160183066361556 and parameters: {'kernel': 'linear', 'C': 0.00012858364094158964}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,341] Trial 71 finished with value: 0.8520594965675057 and parameters: {'kernel': 'linear', 'C': 0.000532022827443893}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,463] Trial 72 finished with value: 0.8518306636155607 and parameters: {'kernel': 'linear', 'C': 0.00043751004241582856}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,585] Trial 73 finished with value: 0.8390160183066362 and parameters: {'kernel': 'linear', 'C': 0.000268055075173858}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,705] Trial 74 finished with value: 0.8504576659038902 and parameters: {'kernel': 'linear', 'C': 0.0003860526408749354}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:45,863] Trial 75 finished with value: 0.6371853546910755 and parameters: {'kernel': 'linear', 'C': 28.427096893883967}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,052] Trial 76 finished with value: 0.7628146453089245 and parameters: {'kernel': 'rbf', 'C': 0.013607230599578626, 'gamma': 0.00613239907506936}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,188] Trial 77 finished with value: 0.7783752860411899 and parameters: {'kernel': 'linear', 'C': 7.361363856825263e-05}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,377] Trial 78 finished with value: 0.7884439359267734 and parameters: {'kernel': 'rbf', 'C': 0.0044176005718164855, 'gamma': 0.001008695998925653}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,502] Trial 79 finished with value: 0.8331807780320366 and parameters: {'kernel': 'linear', 'C': 0.0002249477303421567}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,619] Trial 80 finished with value: 0.8471395881006866 and parameters: {'kernel': 'linear', 'C': 0.0008928359969226878}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,739] Trial 81 finished with value: 0.8518306636155607 and parameters: {'kernel': 'linear', 'C': 0.0005129458390584656}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:46,858] Trial 82 finished with value: 0.8519450800915331 and parameters: {'kernel': 'linear', 'C': 0.0004702949482018304}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,042] Trial 83 finished with value: 0.5 and parameters: {'kernel': 'rbf', 'C': 0.00011651077968072658, 'gamma': 0.29607240812830055}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,160] Trial 84 finished with value: 0.8511441647597254 and parameters: {'kernel': 'linear', 'C': 0.0004620883386084473}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,352] Trial 85 finished with value: 0.6483981693363845 and parameters: {'kernel': 'rbf', 'C': 0.0008088706149229771, 'gamma': 0.031151978222989866}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,467] Trial 86 finished with value: 0.8377574370709382 and parameters: {'kernel': 'linear', 'C': 0.0014830974242473263}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,592] Trial 87 finished with value: 0.8209382151029748 and parameters: {'kernel': 'linear', 'C': 0.00016313684751794578}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,703] Trial 88 finished with value: 0.8294050343249427 and parameters: {'kernel': 'linear', 'C': 0.00267174520202725}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,831] Trial 89 finished with value: 0.805491990846682 and parameters: {'kernel': 'linear', 'C': 0.00010908073521639897}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:47,952] Trial 90 finished with value: 0.8421052631578947 and parameters: {'kernel': 'linear', 'C': 0.000299432485302649}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,073] Trial 91 finished with value: 0.8519450800915331 and parameters: {'kernel': 'linear', 'C': 0.0005253975744866719}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,190] Trial 92 finished with value: 0.8495423340961098 and parameters: {'kernel': 'linear', 'C': 0.0007391292944826638}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,304] Trial 93 finished with value: 0.8377574370709382 and parameters: {'kernel': 'linear', 'C': 0.001595441377965335}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,423] Trial 94 finished with value: 0.8511441647597254 and parameters: {'kernel': 'linear', 'C': 0.0004589038523572632}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,540] Trial 95 finished with value: 0.8450800915331808 and parameters: {'kernel': 'linear', 'C': 0.001036323370453677}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,712] Trial 96 finished with value: 0.8391304347826087 and parameters: {'kernel': 'rbf', 'C': 0.42163082486928066, 'gamma': 0.000356717342014716}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,837] Trial 97 finished with value: 0.8335240274599542 and parameters: {'kernel': 'linear', 'C': 0.00022976666025194972}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:48,952] Trial 98 finished with value: 0.8493135011441647 and parameters: {'kernel': 'linear', 'C': 0.0007061900568059624}. Best is trial 42 with value: 0.852745995423341.
+[I 2026-11-03 09:23:49,075] Trial 99 finished with value: 0.8236842105263158 and parameters: {'kernel': 'linear', 'C': 0.00017930281855979682}. Best is trial 42 with value: 0.852745995423341.
+best validation AUROC: 0.853   best hyperparameters: {'kernel': 'linear', 'C': 0.00040834310660518906}
+===== step5_compare  09:23:49
+classifier                                                                    size  val AUROC  AUROC CI low  AUROC CI high  best minus this  diff CI low  diff CI high  tied with best  val AUPRC  sensitivity @90% recall  specificity @90% recall
+    logreg                        trainable parameters: 385 (384 weights + 1 bias)      0.853         0.787          0.909            0.017       -0.002         0.036            True      0.537                    0.921                    0.600
+       knn trainable parameters: 0 (stores all 802 training images x 384 features)      0.803         0.727          0.870            0.067        0.003         0.128           False      0.391                    0.921                    0.435
+       svm                        trainable parameters: 385 (384 weights + 1 bias)      0.853         0.788          0.909            0.017       -0.004         0.039            True      0.546                    0.921                    0.548
+       mlp                             trainable parameters: 65921 (kept epoch 14)      0.870         0.805          0.924            0.000        0.000         0.000            True      0.610                    0.921                    0.561
+
+highest validation AUROC: mlp   chosen: logreg   thresholds set on validation: 0.433 (90% recall), 0.5477 (Youden's J)
+done Tue  3 Nov 09:24:56 GMT 2026

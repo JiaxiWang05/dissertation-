@@ -1,0 +1,10 @@
+{
+  "classifier": "logreg",
+  "hyperparameters": {
+    "C": 0.007250175039761133
+  },
+  "trained on": "training + validation (1141 images)",
+  "thresholds from": "out-of-fold scores",
+  "threshold_recall90": 0.28279680013656616,
+  "threshold_youden": 0.47242751717567444
+}

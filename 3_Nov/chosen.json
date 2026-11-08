@@ -1,0 +1,8 @@
+{
+  "classifier": "logreg",
+  "hyperparameters": {
+    "C": 0.001118699356554396
+  },
+  "threshold_recall90": 0.4329531788825989,
+  "threshold_youden": 0.5476620197296143
+}

@@ -1,0 +1,214 @@
+[
+  {
+    "kind": "input",
+    "name": "optic-disc crop",
+    "run": "frozen_lr_tuned_disc_crop_sens90",
+    "baseline": "frozen_lr_tuned_resize",
+    "papila": {
+      "metric": "auroc",
+      "diff": 0.0048324186255220836,
+      "ci95": [
+        -0.020824121641845057,
+        0.030571625394431454
+      ],
+      "verdict": "no clear winner (0 in CI)"
+    },
+    "chaksu": {
+      "All cameras": {
+        "metric": "auroc",
+        "diff": 0.01821712809600573,
+        "ci95": [
+          -0.011892238234279498,
+          0.04726297172782319
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Remidio": {
+        "metric": "auroc",
+        "diff": 0.02839105339105341,
+        "ci95": [
+          -0.006034084534760889,
+          0.0642691397031606
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Bosch": {
+        "metric": "auroc",
+        "diff": -0.024767801857585092,
+        "ci95": [
+          -0.13675494350282483,
+          0.06723312806904133
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Forus": {
+        "metric": "auroc",
+        "diff": -0.015432098765432056,
+        "ci95": [
+          -0.09229627630868867,
+          0.06206177262108033
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      }
+    }
+  },
+  {
+    "kind": "input",
+    "name": "retina crop + pad",
+    "run": "frozen_lr_tuned_fov_square",
+    "baseline": "frozen_lr_tuned_resize",
+    "papila": {
+      "metric": "auroc",
+      "diff": -0.005695350522936682,
+      "ci95": [
+        -0.02209868421052637,
+        0.010864391455409059
+      ],
+      "verdict": "no clear winner (0 in CI)"
+    },
+    "chaksu": {
+      "All cameras": {
+        "metric": "auroc",
+        "diff": -0.0072338863671209674,
+        "ci95": [
+          -0.028696993567404686,
+          0.01555028823113613
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Remidio": {
+        "metric": "auroc",
+        "diff": 0.0056709956709957154,
+        "ci95": [
+          -0.020407032335846634,
+          0.032159378264075604
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Bosch": {
+        "metric": "auroc",
+        "diff": -0.16231755860238828,
+        "ci95": [
+          -0.2613119336803547,
+          -0.06602358457507305
+        ],
+        "verdict": "B better"
+      },
+      "Forus": {
+        "metric": "auroc",
+        "diff": -0.04578189300411517,
+        "ci95": [
+          -0.09174909858887982,
+          -0.0029218999202551667
+        ],
+        "verdict": "B better"
+      }
+    }
+  },
+  {
+    "kind": "model",
+    "name": "Optuna head (frozen)",
+    "run": "optuna_head_resize",
+    "baseline": "frozen_lr_tuned_resize",
+    "papila": {
+      "metric": "auroc",
+      "diff": 0.0,
+      "ci95": [
+        -0.01163590755481612,
+        0.010509810126690526
+      ],
+      "verdict": "no clear winner (0 in CI)"
+    },
+    "chaksu": {
+      "All cameras": {
+        "metric": "auroc",
+        "diff": 0.004822590911413904,
+        "ci95": [
+          0.0024759064787247625,
+          0.007132002335294945
+        ],
+        "verdict": "A better"
+      },
+      "Remidio": {
+        "metric": "auroc",
+        "diff": 0.006010101010101021,
+        "ci95": [
+          0.0032128228839018863,
+          0.00915865364874156
+        ],
+        "verdict": "A better"
+      },
+      "Bosch": {
+        "metric": "auroc",
+        "diff": -0.005307386112339607,
+        "ci95": [
+          -0.017205228031145724,
+          0.005868809523809531
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Forus": {
+        "metric": "auroc",
+        "diff": 0.005658436213991758,
+        "ci95": [
+          -0.0016211349531472655,
+          0.014623454782043015
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      }
+    }
+  },
+  {
+    "kind": "model",
+    "name": "Optuna fine-tuning",
+    "run": "optuna_finetune_resize",
+    "baseline": "frozen_lr_tuned_resize",
+    "papila": {
+      "metric": "auroc",
+      "diff": 0.00831866349107735,
+      "ci95": [
+        -0.018257126919640636,
+        0.03717504026823318
+      ],
+      "verdict": "no clear winner (0 in CI)"
+    },
+    "chaksu": {
+      "All cameras": {
+        "metric": "auroc",
+        "diff": -0.03691976751209136,
+        "ci95": [
+          -0.06327246244428554,
+          -0.011024414408680312
+        ],
+        "verdict": "B better"
+      },
+      "Remidio": {
+        "metric": "auroc",
+        "diff": -0.040122655122655115,
+        "ci95": [
+          -0.07120715805369635,
+          -0.007318246733908276
+        ],
+        "verdict": "B better"
+      },
+      "Bosch": {
+        "metric": "auroc",
+        "diff": -0.07386112339672712,
+        "ci95": [
+          -0.17001873106966367,
+          0.016043412553197894
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      },
+      "Forus": {
+        "metric": "auroc",
+        "diff": 0.050668724279835375,
+        "ci95": [
+          0.0,
+          0.12091660998463762
+        ],
+        "verdict": "no clear winner (0 in CI)"
+      }
+    }
+  }
+]

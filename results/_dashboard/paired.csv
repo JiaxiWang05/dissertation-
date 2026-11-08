@@ -1,0 +1,3 @@
+run,head,protocol,preproc,run_label,comparison,diff,lo,hi,verdict
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize","image minus clinical (age, sex)",0.03038,-0.05374,0.11213,no clear winner (0 in CI)
+frozen_lr_paper_resize,Logistic regression,paper,resize,"Logistic regression (paper), resize",image + clinical minus image,0.00639,-0.00501,0.01716,no clear winner (0 in CI)

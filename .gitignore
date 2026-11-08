@@ -1,16 +1,12 @@
-# Code only. Data, labels, features, predictions, Optuna databases, models, logs, figures,
-# notes and forms stay local.
-*
-!*/
-!.gitignore
-!LICENSE
-!*.py
-!*.sh
-!*.slurm
-!*.md
-/archive/
-/results/
+# Not uploaded: department templates, ethics and risk forms, notes, the old pipeline backup, caches.
+# Fundus images are not in this folder (download them from the dataset pages in DATA_LICENSES.md).
+/template/
 /result/
 /notes/
-/template/
+/archive/
 __pycache__/
+.DS_Store
+Icon?
+
+# QC montage of fundus crops: one crop shows a patient ID, exam date and MRN burned in by the camera
+disc_crops_qc.jpg

@@ -1,0 +1,36 @@
+{
+  "classifier": "logreg",
+  "test images": 204,
+  "test glaucoma": 28,
+  "AUROC": 0.8715503246753247,
+  "AUROC 95% CI": [
+    0.8098386709216181,
+    0.9228891192044427
+  ],
+  "AUPRC": 0.5381611185903118,
+  "AUPRC of guessing": 0.13725490196078433,
+  "at 90% recall threshold (from out-of-fold scores)": {
+    "TP": 28,
+    "FN": 0,
+    "FP": 86,
+    "TN": 90,
+    "sensitivity": 1.0,
+    "specificity": 0.5113636363636364,
+    "PPV": 0.24561403508771928,
+    "NPV": 1.0,
+    "balanced_accuracy": 0.7556818181818181,
+    "MCC": 0.3543982027668903
+  },
+  "at Youden's J threshold (from out-of-fold scores)": {
+    "TP": 22,
+    "FN": 6,
+    "FP": 46,
+    "TN": 130,
+    "sensitivity": 0.7857142857142857,
+    "specificity": 0.7386363636363636,
+    "PPV": 0.3235294117647059,
+    "NPV": 0.9558823529411765,
+    "balanced_accuracy": 0.7621753246753247,
+    "MCC": 0.3827659079120556
+  }
+}
