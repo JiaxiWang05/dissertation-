@@ -1,0 +1,81 @@
+code: /home/tggq61/glaucoma/after_10_Nov  host: cn004.ham8.dur.ac.uk  Tue 10 Nov 15:42:45 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== check_losses.py  15:42:52
+plain cross-entropy (no class weight) done
+weighted cross-entropy, weight 6.1 (healthy / glaucoma) done
+weighted cross-entropy, weight 12.3 (2 x) done
+focal loss (gamma 2), weight 6.1 done
+as found by Optuna done
+best small MLP: {'dropout': 0.07248756818173137, 'optimizer': 'adamw', 'lr': 0.00013648454900247372, 'lr_schedule': 'plateau', 'weight_decay': 0.0025904964212622532, 'l1': 0.00697097574389041, 'batch_size': 32, 'n_layers': 2, 'widths': [32, 64]}
+                                                          auprc                   auroc                 kept_epoch loss_gap
+                                                           mean     min     max    mean     min     max     median     mean
+loss                                                                                                                       
+as found by Optuna                                       0.4264  0.4075  0.4382  0.8034  0.7919  0.8098       59.0   0.2841
+focal loss (gamma 2), weight 6.1                         0.3084  0.2681  0.3438  0.7170  0.6502  0.7514        9.0   0.0019
+plain cross-entropy (no class weight)                    0.3176  0.1429  0.4037  0.7335  0.5090  0.8034      285.0   0.0242
+weighted cross-entropy, weight 12.3 (2 x)                0.4260  0.4066  0.4336  0.8031  0.7916  0.8092       61.0   0.3000
+weighted cross-entropy, weight 6.1 (healthy / glaucoma)  0.4056  0.3766  0.4205  0.7940  0.7845  0.7981       79.0   0.1959
+===== step4_learning_curve.py  16:05:50
+setting: {'dropout': 0.07248756818173137, 'optimizer': 'adamw', 'lr': 0.00013648454900247372, 'lr_schedule': 'plateau', 'weight_decay': 0.0025904964212622532, 'l1': 0.00697097574389041, 'batch_size': 32, 'loss': 'weighted_bce', 'pos_weight_scale': 1.8264801902807855, 'n_layers': 2, 'widths': [32, 64]}
+trainable parameters: 14497
+lowest validation loss at epoch 92 | validation loss there 1.222 | at epoch 300: 1.236 | training loss at 300: 0.823
+validation AUPRC at the lowest loss 0.349 | AUROC 0.818
+===== step5_compare.py  16:06:24
+                 classifier  AUPRC  AUPRC CI low  AUPRC CI high  AUROC  AUROC CI low  AUROC CI high  best minus this (AUPRC)  diff CI low  diff CI high  tied with best                          fold AUPRC
+logreg (8 Nov, AUROC-tuned)  0.414         0.344          0.505  0.814         0.779          0.848                    0.013       -0.025         0.049            True  [0.44, 0.438, 0.387, 0.404, 0.511]
+                     logreg  0.415         0.345          0.507  0.814         0.779          0.848                    0.011       -0.026         0.048            True [0.441, 0.437, 0.389, 0.404, 0.513]
+                        svm  0.427         0.355          0.514  0.817         0.785          0.850                    0.000        0.000         0.000            True  [0.477, 0.41, 0.391, 0.423, 0.537]
+                        knn  0.337         0.270          0.413  0.747         0.708          0.785                    0.090        0.025         0.161           False  [0.33, 0.308, 0.306, 0.434, 0.389]
+                  mlp_small  0.414         0.345          0.506  0.803         0.764          0.841                    0.013       -0.030         0.049            True [0.422, 0.433, 0.405, 0.399, 0.537]
+                 classifier  threshold rule  TP  FN  FP  TN  sensitivity  specificity   PPV    F1   MCC
+logreg (8 Nov, AUROC-tuned) 90% sensitivity 144  16 473 508        0.900        0.518 0.233 0.371 0.291
+logreg (8 Nov, AUROC-tuned)      Youden's J 118  42 234 747        0.738        0.761 0.335 0.461 0.375
+                     logreg 90% sensitivity 144  16 473 508        0.900        0.518 0.233 0.371 0.291
+                     logreg      Youden's J 118  42 234 747        0.738        0.761 0.335 0.461 0.375
+                        svm 90% sensitivity 144  16 483 498        0.900        0.508 0.230 0.366 0.284
+                        svm      Youden's J 120  40 239 742        0.750        0.756 0.334 0.462 0.379
+                        knn 90% sensitivity 144  16 535 446        0.900        0.455 0.212 0.343 0.251
+                        knn      Youden's J 147  13 540 441        0.919        0.450 0.214 0.347 0.261
+                  mlp_small 90% sensitivity 144  16 441 540        0.900        0.550 0.246 0.387 0.313
+                  mlp_small      Youden's J 128  32 296 685        0.800        0.698 0.302 0.438 0.358
+{
+  "best hyperparameters": {
+    "logreg": {
+      "C": 0.007725443697522373
+    },
+    "svm": {
+      "kernel": "rbf",
+      "C": 6.055286457910599,
+      "gamma": 0.0005741621088974824
+    },
+    "knn": {
+      "k": 39,
+      "weights": "distance",
+      "metric": "cosine"
+    },
+    "mlp_small": {
+      "width1": 32,
+      "width2": 64,
+      "dropout": 0.07248756818173137,
+      "optimizer": "adamw",
+      "lr": 0.00013648454900247372,
+      "lr_schedule": "plateau",
+      "weight_decay": 0.0025904964212622532,
+      "l1": 0.00697097574389041,
+      "batch_size": 32,
+      "loss": "weighted_bce",
+      "pos_weight_scale": 1.8264801902807855
+    }
+  },
+  "mlp_small trainable parameters": 14497,
+  "mlp_small kept epochs per fold": [
+    104,
+    94,
+    83,
+    52,
+    111
+  ],
+  "highest AUPRC": "svm",
+  "chosen (simplest tied)": "logreg (8 Nov, AUROC-tuned)"
+}
+done Tue 10 Nov 16:10:11 GMT 2026

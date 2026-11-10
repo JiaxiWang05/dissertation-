@@ -1,0 +1,12 @@
+Remidio disc side: {'disc left': 518, 'disc right': 499, 'centre': 57}
+disc x / width, 10 bins 0-1, per camera:
+  Bosch: [0, 0, 8, 15, 42, 61, 16, 3, 0, 0]
+  Forus: [0, 0, 6, 36, 25, 22, 26, 11, 0, 0]
+  Remidio: [0, 6, 180, 291, 76, 44, 151, 272, 53, 1]
+consecutive Remidio numbers with both sides clear: 807; opposite sides: 93% (two random images: 50%)
+pseudo patients (disjoint pairs): 433; same label in a pair: 85% (chance 76%); both glaucoma: 27
+pairs split across training / validation / test: 216 of 433; with one image in test and the other in training or validation: 121
+test images whose likely fellow eye is in training or validation: 121 of 204
+groups: by image group 1308, by pseudo patient 875
+image groups (as used so far): out-of-fold AUROC 0.814 (range 0.805-0.821), AUPRC 0.413 (range 0.396-0.430) over 10 fold seeds
+pseudo patients (fellow eyes together): out-of-fold AUROC 0.810 (range 0.801-0.823), AUPRC 0.412 (range 0.392-0.444) over 10 fold seeds

@@ -1,0 +1,368 @@
+code: /home/tggq61/glaucoma/after_10_Nov  host: cn004.ham8.dur.ac.uk  Tue 10 Nov 15:02:45 GMT 2026
+torch 2.5.1+cu121 sklearn 1.9.1 optuna 5.0.0 pandas 3.0.6
+===== step3_auprc.py logreg  15:03:58
+[I 2026-11-10 15:04:14,696] A new study created in RDB with name: logreg_auprc
+[I 2026-11-10 15:04:24,827] Trial 0 finished with value: 0.430600962050268 and parameters: {'C': 0.017670169402947963}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:05:26,968] Trial 1 finished with value: 0.3217914936764347 and parameters: {'C': 50.61576888752309}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:06:13,902] Trial 2 finished with value: 0.34574382742201565 and parameters: {'C': 2.465832945854912}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:06:39,858] Trial 3 finished with value: 0.37187573606786656 and parameters: {'C': 0.39079671568228835}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:06:43,330] Trial 4 finished with value: 0.3960378034039163 and parameters: {'C': 0.0008632008168602544}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:06:46,951] Trial 5 finished with value: 0.3960378034039163 and parameters: {'C': 0.0008629132190071859}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:06:49,536] Trial 6 finished with value: 0.36123238280489123 and parameters: {'C': 0.00022310108018679258}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:07:52,637] Trial 7 finished with value: 0.32816677740039557 and parameters: {'C': 15.741890047456648}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:08:21,948] Trial 8 finished with value: 0.37112526596731504 and parameters: {'C': 0.4042872735027334}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:09:07,056] Trial 9 finished with value: 0.34921960827529946 and parameters: {'C': 1.7718847354806828}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:09:17,802] Trial 10 finished with value: 0.421585724923122 and parameters: {'C': 0.02977751217076364}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:09:27,383] Trial 11 finished with value: 0.4261842736414551 and parameters: {'C': 0.021883188527768254}. Best is trial 0 with value: 0.430600962050268.
+[I 2026-11-10 15:09:36,098] Trial 12 finished with value: 0.43158143336612625 and parameters: {'C': 0.015199855220182483}. Best is trial 12 with value: 0.43158143336612625.
+[I 2026-11-10 15:09:44,882] Trial 13 finished with value: 0.4290010522536978 and parameters: {'C': 0.012053282859112405}. Best is trial 12 with value: 0.43158143336612625.
+[I 2026-11-10 15:09:49,781] Trial 14 finished with value: 0.42659442817202536 and parameters: {'C': 0.0033796714846719617}. Best is trial 12 with value: 0.43158143336612625.
+[I 2026-11-10 15:10:09,260] Trial 15 finished with value: 0.4004312993952577 and parameters: {'C': 0.11418506911622124}. Best is trial 12 with value: 0.43158143336612625.
+[I 2026-11-10 15:10:14,697] Trial 16 finished with value: 0.4290056452575164 and parameters: {'C': 0.0037391092194502314}. Best is trial 12 with value: 0.43158143336612625.
+[I 2026-11-10 15:10:29,973] Trial 17 finished with value: 0.40471220548075093 and parameters: {'C': 0.09522628764561855}. Best is trial 12 with value: 0.43158143336612625.
+[I 2026-11-10 15:10:37,123] Trial 18 finished with value: 0.4336062557995663 and parameters: {'C': 0.005265949018671068}. Best is trial 18 with value: 0.4336062557995663.
+[I 2026-11-10 15:10:39,479] Trial 19 finished with value: 0.3471157452099501 and parameters: {'C': 0.00011750483012368076}. Best is trial 18 with value: 0.4336062557995663.
+[I 2026-11-10 15:10:45,219] Trial 20 finished with value: 0.43253964751683294 and parameters: {'C': 0.00483688459407744}. Best is trial 18 with value: 0.4336062557995663.
+[I 2026-11-10 15:10:51,650] Trial 21 finished with value: 0.42590155652434836 and parameters: {'C': 0.0032976389207860753}. Best is trial 18 with value: 0.4336062557995663.
+[I 2026-11-10 15:10:55,634] Trial 22 finished with value: 0.3925019209296302 and parameters: {'C': 0.0007494404627736503}. Best is trial 18 with value: 0.4336062557995663.
+[I 2026-11-10 15:11:03,213] Trial 23 finished with value: 0.4354549886724617 and parameters: {'C': 0.0067746102480358734}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:11:08,462] Trial 24 finished with value: 0.4286093327571699 and parameters: {'C': 0.0038881610081295823}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:11:21,801] Trial 25 finished with value: 0.41214884622614195 and parameters: {'C': 0.05582621497667257}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:11:24,605] Trial 26 finished with value: 0.37891194756872437 and parameters: {'C': 0.0004490601746426299}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:11:30,017] Trial 27 finished with value: 0.4352382505598107 and parameters: {'C': 0.005743806032422447}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:11:32,907] Trial 28 finished with value: 0.4080087265971617 and parameters: {'C': 0.0014849480577949347}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:11:39,933] Trial 29 finished with value: 0.4292700511346963 and parameters: {'C': 0.01296165544389242}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:12:05,115] Trial 30 finished with value: 0.37388591039501806 and parameters: {'C': 0.2951527842905573}. Best is trial 23 with value: 0.4354549886724617.
+[I 2026-11-10 15:12:10,937] Trial 31 finished with value: 0.43572804230518625 and parameters: {'C': 0.007415722933392335}. Best is trial 31 with value: 0.43572804230518625.
+[I 2026-11-10 15:12:16,493] Trial 32 finished with value: 0.4362269474936732 and parameters: {'C': 0.008011741176882461}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:12:24,066] Trial 33 finished with value: 0.43583203009087235 and parameters: {'C': 0.008498561777460896}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:12:36,878] Trial 34 finished with value: 0.4158837616472713 and parameters: {'C': 0.04206972937887008}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:12:42,283] Trial 35 finished with value: 0.41514671059617225 and parameters: {'C': 0.0017184086398744796}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:12:49,270] Trial 36 finished with value: 0.43432804180917534 and parameters: {'C': 0.010144704727710594}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:12:52,993] Trial 37 finished with value: 0.4141684293299794 and parameters: {'C': 0.0016733394020383534}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:13:09,738] Trial 38 finished with value: 0.4009567057380933 and parameters: {'C': 0.11251834414957021}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:13:11,871] Trial 39 finished with value: 0.36751074854473564 and parameters: {'C': 0.00027110575265427734}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:13:53,706] Trial 40 finished with value: 0.3141554226876227 and parameters: {'C': 99.12304431814084}. Best is trial 32 with value: 0.4362269474936732.
+[I 2026-11-10 15:14:00,574] Trial 41 finished with value: 0.4366462813535593 and parameters: {'C': 0.007725443697522373}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:14:07,105] Trial 42 finished with value: 0.43472720521030306 and parameters: {'C': 0.009660677813099604}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:14:16,839] Trial 43 finished with value: 0.4218703004235985 and parameters: {'C': 0.027333253783192287}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:14:21,671] Trial 44 finished with value: 0.41751921204938924 and parameters: {'C': 0.0018286703944693635}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:14:28,155] Trial 45 finished with value: 0.4362778278246286 and parameters: {'C': 0.008049220701308372}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:14:41,201] Trial 46 finished with value: 0.41194141889042085 and parameters: {'C': 0.06011645263599644}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:14:51,199] Trial 47 finished with value: 0.4268746315831141 and parameters: {'C': 0.01976020396131235}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:15:49,754] Trial 48 finished with value: 0.3330442103642463 and parameters: {'C': 7.0533625351738385}. Best is trial 41 with value: 0.4366462813535593.
+[I 2026-11-10 15:16:14,634] Trial 49 finished with value: 0.3805417455620147 and parameters: {'C': 0.23729103335149268}. Best is trial 41 with value: 0.4366462813535593.
+logreg_auprc: best 5-fold mean AUPRC 0.4366 (guessing 0.140); folds [0.441, 0.437, 0.389, 0.404, 0.513]; mean AUROC 0.8140
+best hyperparameters: {'C': 0.007725443697522373}
+===== step3_auprc.py svm  15:16:16
+[I 2026-11-10 15:16:21,649] A new study created in RDB with name: svm_auprc
+[I 2026-11-10 15:16:22,713] Trial 0 finished with value: 0.2848088272003197 and parameters: {'kernel': 'rbf', 'C': 1.330324510152291, 'gamma': 0.024810409748678097}. Best is trial 0 with value: 0.2848088272003197.
+[I 2026-11-10 15:16:23,321] Trial 1 finished with value: 0.32519491069132467 and parameters: {'kernel': 'linear', 'C': 2.550264850403285e-05}. Best is trial 1 with value: 0.32519491069132467.
+[I 2026-11-10 15:16:24,321] Trial 2 finished with value: 0.3243826942074982 and parameters: {'kernel': 'linear', 'C': 0.9047071957568393}. Best is trial 1 with value: 0.32519491069132467.
+[I 2026-11-10 15:16:24,874] Trial 3 finished with value: 0.44070488199232416 and parameters: {'kernel': 'rbf', 'C': 6.715811311069946, 'gamma': 0.0007068974950624604}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:25,712] Trial 4 finished with value: 0.3112364769639888 and parameters: {'kernel': 'rbf', 'C': 0.0013480180290890802, 'gamma': 0.012561043700013555}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:26,332] Trial 5 finished with value: 0.3535272354020941 and parameters: {'kernel': 'linear', 'C': 0.19185373703841915}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:27,179] Trial 6 finished with value: 0.3278990100847792 and parameters: {'kernel': 'rbf', 'C': 0.0036688748954991825, 'gamma': 0.006672367170464205}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:27,609] Trial 7 finished with value: 0.38969937703656293 and parameters: {'kernel': 'linear', 'C': 0.039777828308111905}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:28,196] Trial 8 finished with value: 0.35809150720343863 and parameters: {'kernel': 'linear', 'C': 0.17898389848671595}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:29,342] Trial 9 finished with value: 0.3114985561904795 and parameters: {'kernel': 'linear', 'C': 43.873144324354044}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:29,878] Trial 10 finished with value: 0.41617753687866726 and parameters: {'kernel': 'rbf', 'C': 82.75746465996832, 'gamma': 0.0001287790224034275}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:30,408] Trial 11 finished with value: 0.42862550923564824 and parameters: {'kernel': 'rbf', 'C': 71.77928423160519, 'gamma': 0.00011697788092539206}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:30,990] Trial 12 finished with value: 0.42538361729324575 and parameters: {'kernel': 'rbf', 'C': 4.785398812787133, 'gamma': 0.00013307430624290398}. Best is trial 3 with value: 0.44070488199232416.
+[I 2026-11-10 15:16:31,506] Trial 13 finished with value: 0.44236977569257424 and parameters: {'kernel': 'rbf', 'C': 9.248553519387645, 'gamma': 0.0008433492996539155}. Best is trial 13 with value: 0.44236977569257424.
+[I 2026-11-10 15:16:32,314] Trial 14 finished with value: 0.3283680120990427 and parameters: {'kernel': 'rbf', 'C': 0.07457940720817206, 'gamma': 0.0010350566841999893}. Best is trial 13 with value: 0.44236977569257424.
+[I 2026-11-10 15:16:32,888] Trial 15 finished with value: 0.44376224071658826 and parameters: {'kernel': 'rbf', 'C': 2.478360702044335, 'gamma': 0.0014689840374328827}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:33,703] Trial 16 finished with value: 0.2441871172432716 and parameters: {'kernel': 'rbf', 'C': 0.41893134272216465, 'gamma': 0.15123599955577494}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:34,346] Trial 17 finished with value: 0.4146728614028888 and parameters: {'kernel': 'rbf', 'C': 7.782531494198737, 'gamma': 0.0022948815477496845}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:35,267] Trial 18 finished with value: 0.14022830000766107 and parameters: {'kernel': 'rbf', 'C': 0.0039422654994470405, 'gamma': 0.8846283310423186}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:36,436] Trial 19 finished with value: 0.3114985561904795 and parameters: {'kernel': 'linear', 'C': 6.388265406414898}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:37,045] Trial 20 finished with value: 0.4300603617155622 and parameters: {'kernel': 'rbf', 'C': 1.4435995792876615, 'gamma': 0.0007144585687311119}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:37,572] Trial 21 finished with value: 0.4372439248679612 and parameters: {'kernel': 'rbf', 'C': 12.314271946593543, 'gamma': 0.0006337506700418052}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:38,276] Trial 22 finished with value: 0.4105548108109085 and parameters: {'kernel': 'rbf', 'C': 24.079900491251927, 'gamma': 0.0027337010430701024}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:38,862] Trial 23 finished with value: 0.44271725174366006 and parameters: {'kernel': 'rbf', 'C': 2.89148698733336, 'gamma': 0.0008093862438801853}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:39,710] Trial 24 finished with value: 0.3451282187846994 and parameters: {'kernel': 'rbf', 'C': 0.10396104802220572, 'gamma': 0.003113270803055326}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:40,452] Trial 25 finished with value: 0.3613504347148019 and parameters: {'kernel': 'rbf', 'C': 0.306449909039214, 'gamma': 0.00033947814699672723}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:41,294] Trial 26 finished with value: 0.3158977295722035 and parameters: {'kernel': 'rbf', 'C': 0.019991270007028276, 'gamma': 0.0017092886265306325}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:41,924] Trial 27 finished with value: 0.42779052212995594 and parameters: {'kernel': 'rbf', 'C': 2.0288682022875877, 'gamma': 0.0003245970588817289}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:42,734] Trial 28 finished with value: 0.3632917725728252 and parameters: {'kernel': 'rbf', 'C': 22.890175059840615, 'gamma': 0.007953180737704384}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:43,142] Trial 29 finished with value: 0.4180132112368013 and parameters: {'kernel': 'linear', 'C': 0.003707323412664756}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:44,084] Trial 30 finished with value: 0.26745736815751087 and parameters: {'kernel': 'rbf', 'C': 0.7028871831451563, 'gamma': 0.04823327213426918}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:44,710] Trial 31 finished with value: 0.4316185182114743 and parameters: {'kernel': 'rbf', 'C': 3.225687517397466, 'gamma': 0.0003684147136494573}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:45,517] Trial 32 finished with value: 0.32564764336081337 and parameters: {'kernel': 'rbf', 'C': 2.5579755121714534e-05, 'gamma': 0.0009761594910664207}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:46,679] Trial 33 finished with value: 0.3114985561904795 and parameters: {'kernel': 'linear', 'C': 16.35732084601326}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:47,811] Trial 34 finished with value: 0.326570471833615 and parameters: {'kernel': 'linear', 'C': 2.129450023719485}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:48,495] Trial 35 finished with value: 0.4117596022544629 and parameters: {'kernel': 'rbf', 'C': 1.2530165510605051, 'gamma': 0.004295485829327927}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:48,940] Trial 36 finished with value: 0.41717927875066235 and parameters: {'kernel': 'linear', 'C': 0.0012012659887046771}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:49,481] Trial 37 finished with value: 0.4283275858986618 and parameters: {'kernel': 'rbf', 'C': 7.601497016048431, 'gamma': 0.0014428562321661558}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:50,011] Trial 38 finished with value: 0.4286059755681221 and parameters: {'kernel': 'rbf', 'C': 21.14860153571714, 'gamma': 0.0004743013655713817}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:50,714] Trial 39 finished with value: 0.3977744292765647 and parameters: {'kernel': 'rbf', 'C': 0.8414648721751912, 'gamma': 0.0002597040156515281}. Best is trial 15 with value: 0.44376224071658826.
+[I 2026-11-10 15:16:51,303] Trial 40 finished with value: 0.4453894611903575 and parameters: {'kernel': 'rbf', 'C': 3.190020630734438, 'gamma': 0.0011238058606722597}. Best is trial 40 with value: 0.4453894611903575.
+[I 2026-11-10 15:16:51,898] Trial 41 finished with value: 0.44555305992685773 and parameters: {'kernel': 'rbf', 'C': 3.696013723771693, 'gamma': 0.0014161306024144049}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:52,494] Trial 42 finished with value: 0.4409762541098887 and parameters: {'kernel': 'rbf', 'C': 3.4598829548443524, 'gamma': 0.001591486757103726}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:53,322] Trial 43 finished with value: 0.3681538088858608 and parameters: {'kernel': 'rbf', 'C': 0.1845232021745508, 'gamma': 0.004656502676730484}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:53,867] Trial 44 finished with value: 0.41567131581452166 and parameters: {'kernel': 'rbf', 'C': 35.91347416415547, 'gamma': 0.0010371606426345526}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:54,733] Trial 45 finished with value: 0.3075772704839165 and parameters: {'kernel': 'rbf', 'C': 10.979655981780716, 'gamma': 0.016686620058123887}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:55,547] Trial 46 finished with value: 0.3229849771079216 and parameters: {'kernel': 'linear', 'C': 0.5380630737412894}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:56,193] Trial 47 finished with value: 0.429961503527794 and parameters: {'kernel': 'rbf', 'C': 3.2822864590641947, 'gamma': 0.00022994272518904075}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:56,739] Trial 48 finished with value: 0.4079172608587556 and parameters: {'kernel': 'rbf', 'C': 49.73091482161964, 'gamma': 0.0006150470506740908}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:57,383] Trial 49 finished with value: 0.4413023949591972 and parameters: {'kernel': 'rbf', 'C': 1.7437481956925325, 'gamma': 0.002004439820508697}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:58,182] Trial 50 finished with value: 0.3654795638311214 and parameters: {'kernel': 'rbf', 'C': 0.35202974025644374, 'gamma': 0.0068060511843152935}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:58,828] Trial 51 finished with value: 0.4391379717777764 and parameters: {'kernel': 'rbf', 'C': 1.9258792829790188, 'gamma': 0.0017673811323898536}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:16:59,525] Trial 52 finished with value: 0.4163900958322855 and parameters: {'kernel': 'rbf', 'C': 0.7420632498586328, 'gamma': 0.0010576082048913144}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:00,283] Trial 53 finished with value: 0.4001407089442033 and parameters: {'kernel': 'rbf', 'C': 4.525781074100606, 'gamma': 0.0034653397896303026}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:00,814] Trial 54 finished with value: 0.4391227281724627 and parameters: {'kernel': 'rbf', 'C': 11.876799512039899, 'gamma': 0.0007084834242999903}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:01,395] Trial 55 finished with value: 0.41867195640200927 and parameters: {'kernel': 'rbf', 'C': 5.704615426614945, 'gamma': 0.002136319730790212}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:02,594] Trial 56 finished with value: 0.3114985561904795 and parameters: {'kernel': 'linear', 'C': 81.83490118287281}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:03,273] Trial 57 finished with value: 0.4062842236194523 and parameters: {'kernel': 'rbf', 'C': 1.6444811153664416, 'gamma': 0.0001669386179408773}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:03,822] Trial 58 finished with value: 0.32519491069132467 and parameters: {'kernel': 'linear', 'C': 1.1874762944041775e-05}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:04,382] Trial 59 finished with value: 0.411663712370374 and parameters: {'kernel': 'rbf', 'C': 95.89826632019404, 'gamma': 0.0011218559621372806}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:05,185] Trial 60 finished with value: 0.3287145340053549 and parameters: {'kernel': 'rbf', 'C': 0.06947013520165263, 'gamma': 0.0004992085539085706}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:05,792] Trial 61 finished with value: 0.4315445423016896 and parameters: {'kernel': 'rbf', 'C': 3.1184530768043652, 'gamma': 0.002350084005784124}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:06,498] Trial 62 finished with value: 0.40766948698393024 and parameters: {'kernel': 'rbf', 'C': 0.4994240424738643, 'gamma': 0.0012358762934343071}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:07,693] Trial 63 finished with value: 0.3158067903195352 and parameters: {'kernel': 'linear', 'C': 4.069965894238373}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:08,265] Trial 64 finished with value: 0.4258633752073653 and parameters: {'kernel': 'rbf', 'C': 6.872049152166668, 'gamma': 0.001705844662395848}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:08,883] Trial 65 finished with value: 0.4336793694374258 and parameters: {'kernel': 'rbf', 'C': 1.3005864157617377, 'gamma': 0.0008656234594301379}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:10,113] Trial 66 finished with value: 0.3114985561904795 and parameters: {'kernel': 'linear', 'C': 30.333007540429833}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:11,218] Trial 67 finished with value: 0.3266387619322013 and parameters: {'kernel': 'linear', 'C': 1.1645012476210366}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:11,996] Trial 68 finished with value: 0.4123009229879755 and parameters: {'kernel': 'rbf', 'C': 2.557591295820775, 'gamma': 0.003844851060277014}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:12,741] Trial 69 finished with value: 0.4151224603760749 and parameters: {'kernel': 'rbf', 'C': 16.181424616173082, 'gamma': 0.0025416425992505353}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:13,530] Trial 70 finished with value: 0.3897666765171844 and parameters: {'kernel': 'rbf', 'C': 0.25482636915300005, 'gamma': 0.0015381159900676282}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:14,132] Trial 71 finished with value: 0.4449237662172248 and parameters: {'kernel': 'rbf', 'C': 4.71490744748625, 'gamma': 0.0007036978588866405}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:14,765] Trial 72 finished with value: 0.4362949853686445 and parameters: {'kernel': 'rbf', 'C': 4.324809385390427, 'gamma': 0.000508857185647236}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:15,327] Trial 73 finished with value: 0.44177363344794235 and parameters: {'kernel': 'rbf', 'C': 10.313411924039508, 'gamma': 0.000750152490753755}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:15,909] Trial 74 finished with value: 0.444146766102416 and parameters: {'kernel': 'rbf', 'C': 8.31090129532719, 'gamma': 0.0007924300638778427}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:16,482] Trial 75 finished with value: 0.4426181651761888 and parameters: {'kernel': 'rbf', 'C': 9.113275318601076, 'gamma': 0.0008453626385502759}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:17,040] Trial 76 finished with value: 0.40932381463286127 and parameters: {'kernel': 'rbf', 'C': 35.86836285550521, 'gamma': 0.0004912198066839608}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:17,615] Trial 77 finished with value: 0.4325937011201192 and parameters: {'kernel': 'rbf', 'C': 18.615639700599235, 'gamma': 0.0003517611912463196}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:18,201] Trial 78 finished with value: 0.44035891997673 and parameters: {'kernel': 'rbf', 'C': 7.51402285375566, 'gamma': 0.0006743154811113036}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:19,383] Trial 79 finished with value: 0.3114985561904795 and parameters: {'kernel': 'linear', 'C': 9.460030639820676}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:20,009] Trial 80 finished with value: 0.4320240308203237 and parameters: {'kernel': 'rbf', 'C': 5.270942389975154, 'gamma': 0.000244506053245021}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:20,569] Trial 81 finished with value: 0.43644840011973907 and parameters: {'kernel': 'rbf', 'C': 10.300381811210427, 'gamma': 0.0008022126358619186}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:21,118] Trial 82 finished with value: 0.42192054006798596 and parameters: {'kernel': 'rbf', 'C': 14.970084828851904, 'gamma': 0.00080554240581607}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:22,087] Trial 83 finished with value: 0.14022830000766107 and parameters: {'kernel': 'rbf', 'C': 49.50375673860329, 'gamma': 0.7876546496419815}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:22,712] Trial 84 finished with value: 0.42676019346649613 and parameters: {'kernel': 'rbf', 'C': 1.086814277901993, 'gamma': 0.0010975881084957582}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:23,257] Trial 85 finished with value: 0.412349096479155 and parameters: {'kernel': 'rbf', 'C': 28.855310608382233, 'gamma': 0.0006071954123114306}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:23,909] Trial 86 finished with value: 0.4339234644578773 and parameters: {'kernel': 'rbf', 'C': 2.193426285746878, 'gamma': 0.0004024125438622697}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:24,476] Trial 87 finished with value: 0.4265435446170295 and parameters: {'kernel': 'rbf', 'C': 8.35174007848208, 'gamma': 0.0012278655609206759}. Best is trial 41 with value: 0.44555305992685773.
+[I 2026-11-10 15:17:25,085] Trial 88 finished with value: 0.44624999429919765 and parameters: {'kernel': 'rbf', 'C': 3.768590961039162, 'gamma': 0.0013992306679618991}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:25,813] Trial 89 finished with value: 0.42448616520070803 and parameters: {'kernel': 'rbf', 'C': 0.5907760012018578, 'gamma': 0.0014244487420876086}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:26,273] Trial 90 finished with value: 0.42291434671952166 and parameters: {'kernel': 'linear', 'C': 0.011203093025913902}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:26,904] Trial 91 finished with value: 0.44219298240658345 and parameters: {'kernel': 'rbf', 'C': 2.6694957276356033, 'gamma': 0.0009130304325906966}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:27,646] Trial 92 finished with value: 0.41131469773290597 and parameters: {'kernel': 'rbf', 'C': 4.2725348901735005, 'gamma': 0.0028794091271401537}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:28,278] Trial 93 finished with value: 0.44303968617914347 and parameters: {'kernel': 'rbf', 'C': 2.4587142424252426, 'gamma': 0.0009749020352691859}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:28,814] Trial 94 finished with value: 0.37080360593130574 and parameters: {'kernel': 'linear', 'C': 0.00023904864327715377}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:29,508] Trial 95 finished with value: 0.42528422733603294 and parameters: {'kernel': 'rbf', 'C': 0.9646880910167991, 'gamma': 0.0014849903230167664}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:30,165] Trial 96 finished with value: 0.43906609500658644 and parameters: {'kernel': 'rbf', 'C': 1.6537636220099943, 'gamma': 0.0021180402108340224}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:30,851] Trial 97 finished with value: 0.4449420080676461 and parameters: {'kernel': 'rbf', 'C': 6.352608497220612, 'gamma': 0.0006198082533857494}. Best is trial 88 with value: 0.44624999429919765.
+[I 2026-11-10 15:17:31,479] Trial 98 finished with value: 0.4474553481945728 and parameters: {'kernel': 'rbf', 'C': 6.055286457910599, 'gamma': 0.0005741621088974824}. Best is trial 98 with value: 0.4474553481945728.
+[I 2026-11-10 15:17:32,098] Trial 99 finished with value: 0.4380528530091802 and parameters: {'kernel': 'rbf', 'C': 5.386274853928995, 'gamma': 0.00029289454935355866}. Best is trial 98 with value: 0.4474553481945728.
+svm_auprc: best 5-fold mean AUPRC 0.4475 (guessing 0.140); folds [0.477, 0.41, 0.391, 0.423, 0.537]; mean AUROC 0.8177
+best hyperparameters: {'kernel': 'rbf', 'C': 6.055286457910599, 'gamma': 0.0005741621088974824}
+===== step3_auprc.py knn  15:17:33
+[I 2026-11-10 15:17:39,012] A new study created in RDB with name: knn_auprc
+[I 2026-11-10 15:17:39,457] Trial 0 finished with value: 0.3411006413147347 and parameters: {'k': 47, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:39,674] Trial 1 finished with value: 0.2803575259811205 and parameters: {'k': 7, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:39,901] Trial 2 finished with value: 0.2859867724703852 and parameters: {'k': 15, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:40,131] Trial 3 finished with value: 0.31256313543216124 and parameters: {'k': 79, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:40,689] Trial 4 finished with value: 0.3056999269481998 and parameters: {'k': 65, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:40,911] Trial 5 finished with value: 0.3320010944035242 and parameters: {'k': 57, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:41,160] Trial 6 finished with value: 0.2998613555657526 and parameters: {'k': 35, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:41,390] Trial 7 finished with value: 0.30350295510181224 and parameters: {'k': 85, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:41,635] Trial 8 finished with value: 0.30288069397823303 and parameters: {'k': 87, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:41,871] Trial 9 finished with value: 0.3128801766255648 and parameters: {'k': 23, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:42,089] Trial 10 finished with value: 0.3115932581076662 and parameters: {'k': 33, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:42,302] Trial 11 finished with value: 0.2990342236807744 and parameters: {'k': 91, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:42,524] Trial 12 finished with value: 0.2953802390441417 and parameters: {'k': 83, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:42,723] Trial 13 finished with value: 0.32062973794978034 and parameters: {'k': 39, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:42,937] Trial 14 finished with value: 0.3029946895326273 and parameters: {'k': 93, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:43,177] Trial 15 finished with value: 0.3092313969309692 and parameters: {'k': 89, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:43,402] Trial 16 finished with value: 0.2887606262534899 and parameters: {'k': 29, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:43,639] Trial 17 finished with value: 0.29207938778627207 and parameters: {'k': 77, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:43,875] Trial 18 finished with value: 0.3108450844687237 and parameters: {'k': 41, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:44,127] Trial 19 finished with value: 0.2801320469805579 and parameters: {'k': 35, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:44,386] Trial 20 finished with value: 0.3060364619990013 and parameters: {'k': 63, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:44,617] Trial 21 finished with value: 0.22855804777145655 and parameters: {'k': 9, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:44,867] Trial 22 finished with value: 0.28555985836062 and parameters: {'k': 75, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:45,110] Trial 23 finished with value: 0.3172626860169888 and parameters: {'k': 47, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:45,352] Trial 24 finished with value: 0.30702468077153516 and parameters: {'k': 33, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:45,598] Trial 25 finished with value: 0.27320048525158463 and parameters: {'k': 31, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:45,839] Trial 26 finished with value: 0.2939765460933635 and parameters: {'k': 43, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 0 with value: 0.3411006413147347.
+[I 2026-11-10 15:17:46,072] Trial 27 finished with value: 0.3459934046747839 and parameters: {'k': 33, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:46,311] Trial 28 finished with value: 0.33103362371847134 and parameters: {'k': 63, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:46,547] Trial 29 finished with value: 0.31045451613548886 and parameters: {'k': 67, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:46,789] Trial 30 finished with value: 0.2414127030249155 and parameters: {'k': 5, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:47,007] Trial 31 finished with value: 0.26281120249945084 and parameters: {'k': 9, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:47,227] Trial 32 finished with value: 0.3407669159504057 and parameters: {'k': 27, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:47,448] Trial 33 finished with value: 0.3434424039527191 and parameters: {'k': 37, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:47,667] Trial 34 finished with value: 0.3112124718251854 and parameters: {'k': 75, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:47,908] Trial 35 finished with value: 0.3029344125661339 and parameters: {'k': 53, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:48,137] Trial 36 finished with value: 0.3313447636575897 and parameters: {'k': 67, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:48,383] Trial 37 finished with value: 0.32577581917484216 and parameters: {'k': 69, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:48,633] Trial 38 finished with value: 0.27278636071576995 and parameters: {'k': 83, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:48,875] Trial 39 finished with value: 0.2791114433773262 and parameters: {'k': 39, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 27 with value: 0.3459934046747839.
+[I 2026-11-10 15:17:49,104] Trial 40 finished with value: 0.35335106937424976 and parameters: {'k': 39, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:49,296] Trial 41 finished with value: 0.31301814503368175 and parameters: {'k': 99, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:49,457] Trial 42 finished with value: 0.2839155170612078 and parameters: {'k': 19, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:49,621] Trial 43 finished with value: 0.2504857085836907 and parameters: {'k': 13, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:49,803] Trial 44 finished with value: 0.29920955756220236 and parameters: {'k': 61, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:50,025] Trial 45 finished with value: 0.3442845645392616 and parameters: {'k': 97, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:50,256] Trial 46 finished with value: 0.2873394381941551 and parameters: {'k': 15, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:50,473] Trial 47 finished with value: 0.30407728077015966 and parameters: {'k': 9, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:50,687] Trial 48 finished with value: 0.33696961729785924 and parameters: {'k': 71, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:50,910] Trial 49 finished with value: 0.3081389819991954 and parameters: {'k': 43, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:51,139] Trial 50 finished with value: 0.3013315862199035 and parameters: {'k': 57, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:51,402] Trial 51 finished with value: 0.3040691038794469 and parameters: {'k': 87, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:51,675] Trial 52 finished with value: 0.23154225845007953 and parameters: {'k': 3, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:51,923] Trial 53 finished with value: 0.29491445807719385 and parameters: {'k': 63, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:52,175] Trial 54 finished with value: 0.3301488843904311 and parameters: {'k': 59, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:52,414] Trial 55 finished with value: 0.30575793362877435 and parameters: {'k': 37, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:52,654] Trial 56 finished with value: 0.2947764335778952 and parameters: {'k': 71, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:52,882] Trial 57 finished with value: 0.3092583341616195 and parameters: {'k': 49, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:53,146] Trial 58 finished with value: 0.2828194734024775 and parameters: {'k': 87, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:53,390] Trial 59 finished with value: 0.28968637855724216 and parameters: {'k': 49, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:53,642] Trial 60 finished with value: 0.2967177909984537 and parameters: {'k': 85, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:53,900] Trial 61 finished with value: 0.31541630382812497 and parameters: {'k': 49, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:54,118] Trial 62 finished with value: 0.3146442894554637 and parameters: {'k': 15, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:54,369] Trial 63 finished with value: 0.22231479812223864 and parameters: {'k': 7, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:54,591] Trial 64 finished with value: 0.32903185761541864 and parameters: {'k': 17, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:54,816] Trial 65 finished with value: 0.3368391185355065 and parameters: {'k': 59, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:55,054] Trial 66 finished with value: 0.2874873828447591 and parameters: {'k': 21, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:55,313] Trial 67 finished with value: 0.30930988379125035 and parameters: {'k': 95, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:55,537] Trial 68 finished with value: 0.3134496855374156 and parameters: {'k': 45, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:55,783] Trial 69 finished with value: 0.305477435720207 and parameters: {'k': 69, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:56,002] Trial 70 finished with value: 0.33514682468991513 and parameters: {'k': 25, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:56,231] Trial 71 finished with value: 0.3330873879854635 and parameters: {'k': 63, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:56,457] Trial 72 finished with value: 0.30173257122784025 and parameters: {'k': 81, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:56,704] Trial 73 finished with value: 0.30064649740492655 and parameters: {'k': 21, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:56,935] Trial 74 finished with value: 0.2987653768664217 and parameters: {'k': 59, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:57,183] Trial 75 finished with value: 0.33439764287000495 and parameters: {'k': 57, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:57,403] Trial 76 finished with value: 0.27252432788536163 and parameters: {'k': 13, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:57,633] Trial 77 finished with value: 0.3374634807441844 and parameters: {'k': 69, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:57,896] Trial 78 finished with value: 0.28972749699674194 and parameters: {'k': 51, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:58,127] Trial 79 finished with value: 0.3358614462652635 and parameters: {'k': 55, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:58,365] Trial 80 finished with value: 0.1628282006157673 and parameters: {'k': 1, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:58,633] Trial 81 finished with value: 0.3035277054139135 and parameters: {'k': 39, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:58,865] Trial 82 finished with value: 0.2882719112060829 and parameters: {'k': 23, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:59,110] Trial 83 finished with value: 0.3390822903933988 and parameters: {'k': 93, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:59,360] Trial 84 finished with value: 0.34374976115554273 and parameters: {'k': 95, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:59,615] Trial 85 finished with value: 0.31863306810238823 and parameters: {'k': 43, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:17:59,876] Trial 86 finished with value: 0.29848362649991644 and parameters: {'k': 81, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:00,119] Trial 87 finished with value: 0.2694560381323051 and parameters: {'k': 19, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:00,360] Trial 88 finished with value: 0.30874692381429425 and parameters: {'k': 95, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:00,622] Trial 89 finished with value: 0.3070437018315353 and parameters: {'k': 31, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:00,855] Trial 90 finished with value: 0.27404630048136613 and parameters: {'k': 11, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:01,116] Trial 91 finished with value: 0.3196023112646313 and parameters: {'k': 71, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:01,386] Trial 92 finished with value: 0.31900339046375853 and parameters: {'k': 51, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:01,648] Trial 93 finished with value: 0.30015094171713724 and parameters: {'k': 17, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:01,871] Trial 94 finished with value: 0.26462032497197613 and parameters: {'k': 5, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:02,127] Trial 95 finished with value: 0.3060453258773646 and parameters: {'k': 97, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:02,364] Trial 96 finished with value: 0.3489419528061487 and parameters: {'k': 79, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:02,590] Trial 97 finished with value: 0.20458021869423168 and parameters: {'k': 3, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:02,828] Trial 98 finished with value: 0.30633239362201403 and parameters: {'k': 13, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:03,069] Trial 99 finished with value: 0.3045939537729878 and parameters: {'k': 61, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:03,250] Trial 100 finished with value: 0.20041679232788484 and parameters: {'k': 3, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:03,444] Trial 101 finished with value: 0.26952129810512937 and parameters: {'k': 17, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:03,642] Trial 102 finished with value: 0.2996416278267159 and parameters: {'k': 71, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:03,939] Trial 103 finished with value: 0.3123797191387375 and parameters: {'k': 73, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:04,225] Trial 104 finished with value: 0.32497992077052357 and parameters: {'k': 55, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:04,489] Trial 105 finished with value: 0.28559240573118755 and parameters: {'k': 73, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:04,815] Trial 106 finished with value: 0.2231245597946004 and parameters: {'k': 5, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:05,111] Trial 107 finished with value: 0.30425320430693115 and parameters: {'k': 31, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:05,358] Trial 108 finished with value: 0.3043961697294551 and parameters: {'k': 57, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:05,597] Trial 109 finished with value: 0.30923086860359916 and parameters: {'k': 73, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:05,858] Trial 110 finished with value: 0.30619779830875393 and parameters: {'k': 83, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:06,117] Trial 111 finished with value: 0.1801980057583495 and parameters: {'k': 1, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:06,354] Trial 112 finished with value: 0.31625392819610293 and parameters: {'k': 99, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:06,636] Trial 113 finished with value: 0.3084545708207986 and parameters: {'k': 77, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:06,881] Trial 114 finished with value: 0.3092076875287264 and parameters: {'k': 35, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:07,113] Trial 115 finished with value: 0.335106296215592 and parameters: {'k': 61, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:07,378] Trial 116 finished with value: 0.28480977972762156 and parameters: {'k': 33, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:07,656] Trial 117 finished with value: 0.28315815095294666 and parameters: {'k': 23, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:07,895] Trial 118 finished with value: 0.34637111067750015 and parameters: {'k': 81, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:08,153] Trial 119 finished with value: 0.2657249949297481 and parameters: {'k': 15, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:08,407] Trial 120 finished with value: 0.27132623460324756 and parameters: {'k': 21, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:08,665] Trial 121 finished with value: 0.29807028482170295 and parameters: {'k': 55, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:08,908] Trial 122 finished with value: 0.3497589284549307 and parameters: {'k': 77, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:09,178] Trial 123 finished with value: 0.2794511275949926 and parameters: {'k': 79, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:09,428] Trial 124 finished with value: 0.28110937015419113 and parameters: {'k': 13, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:09,666] Trial 125 finished with value: 0.31247825365106296 and parameters: {'k': 11, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:09,930] Trial 126 finished with value: 0.28076380211977076 and parameters: {'k': 93, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:10,165] Trial 127 finished with value: 0.34123153020350944 and parameters: {'k': 73, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:10,428] Trial 128 finished with value: 0.31265133008443213 and parameters: {'k': 41, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:10,666] Trial 129 finished with value: 0.32233119135044525 and parameters: {'k': 19, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:10,932] Trial 130 finished with value: 0.27296553110336996 and parameters: {'k': 85, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:11,164] Trial 131 finished with value: 0.3245504217761697 and parameters: {'k': 23, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:11,398] Trial 132 finished with value: 0.3082318205269791 and parameters: {'k': 47, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:11,638] Trial 133 finished with value: 0.3115141130554196 and parameters: {'k': 77, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:11,876] Trial 134 finished with value: 0.32784016006119476 and parameters: {'k': 21, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:12,113] Trial 135 finished with value: 0.3050204805416743 and parameters: {'k': 69, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:12,355] Trial 136 finished with value: 0.1628282006157673 and parameters: {'k': 1, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:12,632] Trial 137 finished with value: 0.3279803163334587 and parameters: {'k': 53, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:12,894] Trial 138 finished with value: 0.3228412739930918 and parameters: {'k': 27, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:13,157] Trial 139 finished with value: 0.3361685807668359 and parameters: {'k': 67, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:13,427] Trial 140 finished with value: 0.2771251381262722 and parameters: {'k': 91, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:13,668] Trial 141 finished with value: 0.29590348633116664 and parameters: {'k': 89, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:13,935] Trial 142 finished with value: 0.30758821729245656 and parameters: {'k': 93, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:14,194] Trial 143 finished with value: 0.3115843463492889 and parameters: {'k': 25, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:14,456] Trial 144 finished with value: 0.2907131896197028 and parameters: {'k': 41, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:14,697] Trial 145 finished with value: 0.2916947769535917 and parameters: {'k': 17, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:14,943] Trial 146 finished with value: 0.23322785119344475 and parameters: {'k': 3, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:15,189] Trial 147 finished with value: 0.30866158233206936 and parameters: {'k': 55, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:15,432] Trial 148 finished with value: 0.34604608842302625 and parameters: {'k': 45, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:15,674] Trial 149 finished with value: 0.3487764275071088 and parameters: {'k': 41, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:15,950] Trial 150 finished with value: 0.2818097232302398 and parameters: {'k': 89, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:16,220] Trial 151 finished with value: 0.30504637548759217 and parameters: {'k': 91, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:16,476] Trial 152 finished with value: 0.33115040312393373 and parameters: {'k': 45, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:16,719] Trial 153 finished with value: 0.21102320526062468 and parameters: {'k': 5, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:16,923] Trial 154 finished with value: 0.2582408133630708 and parameters: {'k': 7, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:17,104] Trial 155 finished with value: 0.34264006668492597 and parameters: {'k': 29, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:17,294] Trial 156 finished with value: 0.34040414061674007 and parameters: {'k': 85, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:17,508] Trial 157 finished with value: 0.33102829817129836 and parameters: {'k': 65, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:17,763] Trial 158 finished with value: 0.26651473757058497 and parameters: {'k': 9, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:18,023] Trial 159 finished with value: 0.282264518559623 and parameters: {'k': 37, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:18,271] Trial 160 finished with value: 0.33613180961419686 and parameters: {'k': 87, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:18,520] Trial 161 finished with value: 0.2952523401693969 and parameters: {'k': 67, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:18,764] Trial 162 finished with value: 0.3443175259141154 and parameters: {'k': 83, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:19,012] Trial 163 finished with value: 0.33414528575770197 and parameters: {'k': 91, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:19,255] Trial 164 finished with value: 0.3426696425722001 and parameters: {'k': 31, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:19,592] Trial 165 finished with value: 0.3031298282834765 and parameters: {'k': 27, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:19,831] Trial 166 finished with value: 0.33802351341313147 and parameters: {'k': 53, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:20,069] Trial 167 finished with value: 0.29429970011691864 and parameters: {'k': 25, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:20,353] Trial 168 finished with value: 0.28778215745094166 and parameters: {'k': 99, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:20,612] Trial 169 finished with value: 0.31056492819712184 and parameters: {'k': 29, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:20,896] Trial 170 finished with value: 0.28341201195803495 and parameters: {'k': 25, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:21,152] Trial 171 finished with value: 0.30521453464471643 and parameters: {'k': 45, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:21,407] Trial 172 finished with value: 0.2733289647437552 and parameters: {'k': 11, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:21,669] Trial 173 finished with value: 0.3168875775643396 and parameters: {'k': 29, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:21,938] Trial 174 finished with value: 0.2792174301171152 and parameters: {'k': 81, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:22,209] Trial 175 finished with value: 0.2892430381803872 and parameters: {'k': 97, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:22,490] Trial 176 finished with value: 0.33607130392390283 and parameters: {'k': 65, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:22,758] Trial 177 finished with value: 0.3020526968067499 and parameters: {'k': 19, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:23,027] Trial 178 finished with value: 0.3062411234632778 and parameters: {'k': 79, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:23,304] Trial 179 finished with value: 0.31439419237959293 and parameters: {'k': 97, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:23,564] Trial 180 finished with value: 0.1801980057583495 and parameters: {'k': 1, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:23,830] Trial 181 finished with value: 0.29536767593099256 and parameters: {'k': 27, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:24,107] Trial 182 finished with value: 0.30692260249631864 and parameters: {'k': 75, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:24,351] Trial 183 finished with value: 0.2947425397181476 and parameters: {'k': 65, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:24,603] Trial 184 finished with value: 0.3474432547307634 and parameters: {'k': 75, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:24,862] Trial 185 finished with value: 0.3414469218502022 and parameters: {'k': 51, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:25,128] Trial 186 finished with value: 0.3390341574363668 and parameters: {'k': 49, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:25,425] Trial 187 finished with value: 0.30133333767045317 and parameters: {'k': 59, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:25,686] Trial 188 finished with value: 0.3418938398481161 and parameters: {'k': 43, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:25,931] Trial 189 finished with value: 0.3074218047829384 and parameters: {'k': 37, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:26,208] Trial 190 finished with value: 0.3318397207105138 and parameters: {'k': 61, 'weights': 'distance', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:26,470] Trial 191 finished with value: 0.35020353897359996 and parameters: {'k': 99, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:26,744] Trial 192 finished with value: 0.24229547618154718 and parameters: {'k': 11, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:27,025] Trial 193 finished with value: 0.2877151254574496 and parameters: {'k': 95, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:27,278] Trial 194 finished with value: 0.351078263564028 and parameters: {'k': 35, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:27,525] Trial 195 finished with value: 0.3060264940225927 and parameters: {'k': 53, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:27,763] Trial 196 finished with value: 0.24573538258669442 and parameters: {'k': 7, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:28,046] Trial 197 finished with value: 0.2930414351338403 and parameters: {'k': 47, 'weights': 'uniform', 'metric': 'euclidean'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:28,306] Trial 198 finished with value: 0.333211843904945 and parameters: {'k': 89, 'weights': 'distance', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+[I 2026-11-10 15:18:28,549] Trial 199 finished with value: 0.31542056929785034 and parameters: {'k': 51, 'weights': 'uniform', 'metric': 'cosine'}. Best is trial 40 with value: 0.35335106937424976.
+knn_auprc: best 5-fold mean AUPRC 0.3534 (guessing 0.140); folds [0.33, 0.308, 0.306, 0.434, 0.389]; mean AUROC 0.7490
+best hyperparameters: {'k': 39, 'weights': 'distance', 'metric': 'cosine'}
+===== step3_auprc.py mlp_small  15:18:30
+[I 2026-11-10 15:18:35,296] A new study created in RDB with name: mlp_small
+[I 2026-11-10 15:19:55,969] Trial 0 finished with value: 0.3614731991219605 and parameters: {'width1': 64, 'width2': 128, 'dropout': 0.42078050822024615, 'optimizer': 'sgd', 'lr': 7.068974950624602e-05, 'lr_schedule': 'plateau', 'weight_decay': 3.320559103751961e-05, 'l1': 1.4077923139972383e-05, 'batch_size': 128, 'loss': 'focal', 'pos_weight_scale': 1.4848857409987406, 'focal_gamma': 0.9991844553958993}. Best is trial 0 with value: 0.3614731991219605.
+[2026-11-10T15:21:57.390] error: *** JOB 19425082 ON cn004 CANCELLED AT 2026-11-10T15:21:57 DUE to SIGNAL Terminated ***
