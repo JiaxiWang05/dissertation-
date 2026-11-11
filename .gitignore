@@ -10,3 +10,8 @@ Icon?
 
 # QC montage of fundus crops: one crop shows a patient ID, exam date and MRN burned in by the camera
 disc_crops_qc.jpg
+
+# Harvard-FairVLMed (CC BY-NC-ND 4.0): no images, labels, features or per-image scores on GitHub
+fairvlmed/*.npz
+fairvlmed/fairvlmed_labels.csv
+fairvlmed/*_oof_scores.csv
