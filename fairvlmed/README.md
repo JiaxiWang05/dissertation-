@@ -39,3 +39,14 @@ https://huggingface.co/datasets/harvardairobotics/FairVLMed (FairCLIP, CVPR 2024
 ## Log
 
 - 11 Nov: download, unzip, label table (job 19429685 started with the label table and feature extraction).
+- Job 19429685 (one H200 slice): 10,000 images per input in 30 s; features (10,000 x 384) for `raw` and `stretch` in
+  `/nobackup/tggq61/retfound_green/features/fairvlmed_rfg_{raw,stretch}.npz`.
+- `choose_input.py` (8,000 training + validation patients, logistic regression, C chosen by 5-fold CV):
+  raw: C 0.0117, 5-fold mean AUPRC 0.796 (folds 0.785 / 0.794 / 0.805 / 0.794 / 0.801), AUROC 0.786;
+  stretch: C 0.0189, AUPRC 0.795 (0.773 / 0.789 / 0.810 / 0.799 / 0.803), AUROC 0.786.
+  A tie, so the simpler official input (`raw`) is used from here on (`PREPROC=raw`).
+  First result: frozen RETFound-Green features on SLO images reach AUROC about 0.79 with logistic regression,
+  close to Chakshu (0.81) even though RETFound-Green never saw SLO images. AUPRC is high (0.80) because glaucoma is
+  50 % here (guessing = 0.5), so AUPRC is not comparable with Chakshu's 0.41 (guessing 0.14).
+- Jobs 19429774 (logistic regression, kNN, SVM searches), 19429775 (small MLP, 16 workers, journal
+  `optuna_mlp_small_raw.log`), 19429776 (comparison, starts after both).
