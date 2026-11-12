@@ -1,0 +1,31 @@
+host: gn1.ham8.dur.ac.uk  Wed 11 Nov 11:09:56 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-6641fd34-66df-0e5a-2ba3-ef2ab814a79e)
+       images  glaucoma    mean
+part                           
+test     2000      1023  0.5115
+train    7000      3535  0.5050
+val      1000       490  0.4900
+race (0 Asian, 1 Black, 2 White): {0: 819, 1: 1491, 2: 7690} | gender (0 F, 1 M): {0: 5631, 1: 4369}
+/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/timm/models/_helpers.py:42: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=device)
+batch 1/157  14s
+batch 21/157  16s
+batch 41/157  18s
+batch 61/157  20s
+batch 81/157  22s
+batch 101/157  24s
+batch 121/157  26s
+batch 141/157  28s
+10000 images on cuda: saved (10000, 384) -> /nobackup/tggq61/retfound_green/features/fairvlmed_rfg_raw.npz in 30s
+/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/timm/models/_helpers.py:42: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=device)
+batch 1/157  1s
+batch 21/157  5s
+batch 41/157  8s
+batch 61/157  12s
+batch 81/157  15s
+batch 101/157  19s
+batch 121/157  23s
+batch 141/157  26s
+10000 images on cuda: saved (10000, 384) -> /nobackup/tggq61/retfound_green/features/fairvlmed_rfg_stretch.npz in 29s
+done Wed 11 Nov 11:13:11 GMT 2026

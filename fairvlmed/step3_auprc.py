@@ -101,6 +101,15 @@ if NAME == 'mlp_small':
         study.optimize(mlp_objective, callbacks=[MaxTrialsCallback(N_TRIALS, states=(TrialState.COMPLETE,))])
     else:
         print('study created; trials so far:', len(study.trials)); sys.exit()
+elif os.environ.get('RESUME'):
+    # Continue an unfinished search (the FairVLMed SVM search reached the job time limit after 48 of 100 trials):
+    # workers (job array) join the saved study and stop when N_TRIALS trials are complete. Same search space and
+    # objective; each worker has its own sampler seed.
+    from optuna.study import MaxTrialsCallback
+    from optuna.trial import TrialState
+    seed = SEED + 1 + int(os.environ.get('SLURM_ARRAY_TASK_ID', 0))
+    study = optuna.load_study(study_name=study_name, storage=STORAGE, sampler=optuna.samplers.TPESampler(seed=seed))
+    study.optimize(sklearn_objective, callbacks=[MaxTrialsCallback(N_TRIALS, states=(TrialState.COMPLETE,))])
 else:
     try:
         optuna.delete_study(study_name=study_name, storage=STORAGE)

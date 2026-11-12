@@ -1,0 +1,7 @@
+worker 15  host: cn118.ham8.dur.ac.uk  Wed 11 Nov 12:50:51 GMT 2026
+[I 2026-11-11 12:50:55,600] Using an existing study with `study_name='mlp_small'` instead of creating a new one.
+[I 2026-11-11 12:51:55,798] Trial 314 finished with value: 0.804084101384095 and parameters: {'width1': 128, 'width2': 128, 'dropout': 0.6667340121287482, 'optimizer': 'adamw', 'lr': 0.001306998698278923, 'lr_schedule': 'constant', 'weight_decay': 1.383349502267175e-06, 'l1': 7.088326109866047e-05, 'batch_size': 128, 'loss': 'weighted_bce', 'pos_weight_scale': 0.5254157972486608}. Best is trial 220 with value: 0.8077904386738706.
+mlp_small: best 5-fold mean AUPRC 0.8078 (guessing 0.503); folds [0.804, 0.812, 0.816, 0.798, 0.809]; mean AUROC 0.7928
+best hyperparameters: {'width1': 128, 'width2': 64, 'dropout': 0.6739736523086844, 'optimizer': 'adamw', 'lr': 3.963586972350996e-05, 'lr_schedule': 'constant', 'weight_decay': 1.4434390998541623e-06, 'l1': 0.00011196611476327227, 'batch_size': 128, 'loss': 'weighted_bce', 'pos_weight_scale': 0.5344710115706194}
+kept epoch per fold: [175, 264, 210, 134, 163]  loss gap: 0.055  trainable parameters: 57601
+done Wed 11 Nov 12:51:56 GMT 2026

@@ -1,0 +1,40 @@
+{
+  "best hyperparameters": {
+    "logreg": {
+      "C": 0.015199855220182483
+    },
+    "svm": {
+      "kernel": "rbf",
+      "C": 14.440901518085306,
+      "gamma": 0.00024733089650481573
+    },
+    "knn": {
+      "k": 63,
+      "weights": "distance",
+      "metric": "cosine"
+    },
+    "mlp_small": {
+      "width1": 128,
+      "width2": 64,
+      "dropout": 0.6739736523086844,
+      "optimizer": "adamw",
+      "lr": 3.963586972350996e-05,
+      "lr_schedule": "constant",
+      "weight_decay": 1.4434390998541623e-06,
+      "l1": 0.00011196611476327227,
+      "batch_size": 128,
+      "loss": "weighted_bce",
+      "pos_weight_scale": 0.5344710115706194
+    }
+  },
+  "mlp_small trainable parameters": 57601,
+  "mlp_small kept epochs per fold": [
+    175,
+    264,
+    210,
+    134,
+    163
+  ],
+  "highest AUPRC": "mlp_small",
+  "chosen (simplest tied)": "svm"
+}

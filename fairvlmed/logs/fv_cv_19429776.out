@@ -1,0 +1,78 @@
+host: cn010.ham8.dur.ac.uk  PREPROC=raw  Wed 11 Nov 20:10:57 GMT 2026
+===== step5_compare.py  20:10:57
+classifier  AUPRC  AUPRC CI low  AUPRC CI high  AUROC  AUROC CI low  AUROC CI high  best minus this (AUPRC)  diff CI low  diff CI high  tied with best                         fold AUPRC
+    logreg  0.796         0.783          0.809  0.785         0.775          0.795                    0.010        0.005         0.014           False  [0.785, 0.794, 0.805, 0.795, 0.8]
+       svm  0.802         0.790          0.814  0.791         0.781          0.801                    0.003       -0.000         0.007            True [0.796, 0.803, 0.81, 0.796, 0.805]
+       knn  0.733         0.719          0.748  0.723         0.713          0.734                    0.072        0.062         0.082           False  [0.727, 0.718, 0.75, 0.73, 0.744]
+ mlp_small  0.805         0.793          0.818  0.791         0.782          0.801                    0.000        0.000         0.000            True  [0.802, 0.81, 0.814, 0.797, 0.81]
+classifier  threshold rule   TP   FN   FP   TN  sensitivity  specificity   PPV    F1   MCC
+    logreg 90% sensitivity 3623  402 2429 1546        0.900        0.389 0.599 0.719 0.337
+    logreg      Youden's J 2556 1469  800 3175        0.635        0.799 0.762 0.693 0.439
+       svm 90% sensitivity 3623  402 2348 1627        0.900        0.409 0.607 0.725 0.356
+       svm      Youden's J 2855 1170 1061 2914        0.709        0.733 0.729 0.719 0.442
+       knn 90% sensitivity 3623  402 2824 1151        0.900        0.290 0.562 0.692 0.240
+       knn      Youden's J 2686 1339 1313 2662        0.667        0.670 0.672 0.669 0.337
+ mlp_small 90% sensitivity 3623  402 2379 1596        0.900        0.402 0.604 0.723 0.348
+ mlp_small      Youden's J 2630 1395  855 3120        0.653        0.785 0.755 0.700 0.442
+{
+  "best hyperparameters": {
+    "logreg": {
+      "C": 0.015199855220182483
+    },
+    "svm": {
+      "kernel": "rbf",
+      "C": 14.440901518085306,
+      "gamma": 0.00024733089650481573
+    },
+    "knn": {
+      "k": 63,
+      "weights": "distance",
+      "metric": "cosine"
+    },
+    "mlp_small": {
+      "width1": 128,
+      "width2": 64,
+      "dropout": 0.6739736523086844,
+      "optimizer": "adamw",
+      "lr": 3.963586972350996e-05,
+      "lr_schedule": "constant",
+      "weight_decay": 1.4434390998541623e-06,
+      "l1": 0.00011196611476327227,
+      "batch_size": 128,
+      "loss": "weighted_bce",
+      "pos_weight_scale": 0.5344710115706194
+    }
+  },
+  "mlp_small trainable parameters": 57601,
+  "mlp_small kept epochs per fold": [
+    175,
+    264,
+    210,
+    134,
+    163
+  ],
+  "highest AUPRC": "mlp_small",
+  "chosen (simplest tied)": "svm"
+}
+attribute  group  patients  glaucoma classifier  AUROC  AUPRC
+     race  Asian       661       320     logreg  0.819  0.802
+     race  Asian       661       320        svm  0.821  0.815
+     race  Asian       661       320        knn  0.746  0.733
+     race  Asian       661       320  mlp_small  0.820  0.817
+     race  Black      1186       772     logreg  0.767  0.867
+     race  Black      1186       772        svm  0.769  0.868
+     race  Black      1186       772        knn  0.715  0.828
+     race  Black      1186       772  mlp_small  0.773  0.875
+     race  White      6153      2933     logreg  0.784  0.778
+     race  White      6153      2933        svm  0.790  0.785
+     race  White      6153      2933        knn  0.718  0.709
+     race  White      6153      2933  mlp_small  0.790  0.789
+   gender female      4535      2235     logreg  0.783  0.789
+   gender female      4535      2235        svm  0.788  0.795
+   gender female      4535      2235        knn  0.722  0.725
+   gender female      4535      2235  mlp_small  0.789  0.799
+   gender   male      3465      1790     logreg  0.788  0.804
+   gender   male      3465      1790        svm  0.793  0.811
+   gender   male      3465      1790        knn  0.725  0.743
+   gender   male      3465      1790  mlp_small  0.794  0.812
+done Wed 11 Nov 20:26:42 GMT 2026

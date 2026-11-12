@@ -1,0 +1,8 @@
+worker 13  host: cn031.ham8.dur.ac.uk  Wed 11 Nov 12:38:40 GMT 2026
+[I 2026-11-11 12:38:47,418] Using an existing study with `study_name='mlp_small'` instead of creating a new one.
+[I 2026-11-11 12:43:55,767] Trial 250 finished with value: 0.8061056259176282 and parameters: {'width1': 128, 'width2': 128, 'dropout': 0.5878302842167064, 'optimizer': 'adamw', 'lr': 9.316810178073862e-05, 'lr_schedule': 'constant', 'weight_decay': 1.4338550479609831e-05, 'l1': 0.0001835989372374153, 'batch_size': 128, 'loss': 'weighted_bce', 'pos_weight_scale': 0.5573105339835563}. Best is trial 220 with value: 0.8077904386738706.
+[I 2026-11-11 12:53:48,379] Trial 280 finished with value: 0.8069676343574039 and parameters: {'width1': 128, 'width2': 64, 'dropout': 0.6991829589728438, 'optimizer': 'adamw', 'lr': 3.619794807982386e-05, 'lr_schedule': 'constant', 'weight_decay': 2.987491679852398e-06, 'l1': 0.0001426111931631408, 'batch_size': 128, 'loss': 'weighted_bce', 'pos_weight_scale': 0.5365707346026629}. Best is trial 220 with value: 0.8077904386738706.
+mlp_small: best 5-fold mean AUPRC 0.8078 (guessing 0.503); folds [0.804, 0.812, 0.816, 0.798, 0.809]; mean AUROC 0.7928
+best hyperparameters: {'width1': 128, 'width2': 64, 'dropout': 0.6739736523086844, 'optimizer': 'adamw', 'lr': 3.963586972350996e-05, 'lr_schedule': 'constant', 'weight_decay': 1.4434390998541623e-06, 'l1': 0.00011196611476327227, 'batch_size': 128, 'loss': 'weighted_bce', 'pos_weight_scale': 0.5344710115706194}
+kept epoch per fold: [175, 264, 210, 134, 163]  loss gap: 0.055  trainable parameters: 57601
+done Wed 11 Nov 12:53:51 GMT 2026
