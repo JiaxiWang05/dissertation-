@@ -1,9 +1,5 @@
-# Not uploaded: department templates, ethics and risk forms, notes, the old pipeline backup, caches.
+# Repo made PRIVATE on 15 Nov 2026; templates, forms, notes and the old pipeline backup are now included.
 # Fundus images are not in this folder (download them from the dataset pages in DATA_LICENSES.md).
-/template/
-/result/
-/notes/
-/archive/
 __pycache__/
 .DS_Store
 Icon?
