@@ -65,7 +65,7 @@ https://huggingface.co/datasets/harvardairobotics/FairVLMed (FairCLIP, CVPR 2024
   the missing trials were unlikely to change the result (they were finished on 12 Nov: next entry).
 - Job 19429776 (20:10-20:27): `step5_compare.py`, started when 19429774 ended.
 - Job 19433239 (21:24, 2 min): `step6_fairness_ci.py`.
-- Job array 19438500 (`run_svm_resume.slurm`, 6 workers x 2 CPUs, 12 Nov 12:26-14:45): finished the SVM search in
+- Job array 19438500 (`run_svm_resume.slurm`, 6 workers x 2 CPUs, 12 Nov 12:27-14:45): finished the SVM search in
   the same study (`RESUME=1 python step3_auprc.py svm`; same search space, each worker its own sampler seed 43-48).
   105 trials complete (the workers stop at 100, trials already started are finished and count); trial 48 from the
   first job stays marked "running" in the study file and is ignored. In all: 82 RBF trials (69 minutes together),
@@ -103,7 +103,8 @@ AUPRC of guessing is 0.50 here (Chakshu: 0.14), so AUPRC values are not comparab
   AdamW in 252 trials; SGD (6 trials) was worst.
 - **Several best MLP values lie at or near the edge of the search range**: first layer 128 (largest allowed), dropout
   0.67 (limit 0.7), L2 0.0000014 (limit 0.000001), weight scale 0.53 (limit 0.5). By the rule used on Chakshu (best
-  at the edge: widen and search again) a wider search is an open item; the MLP is only 0.002 AUPRC above the SVM.
+  at the edge: widen and search again) a wider search is an open item; out-of-fold the MLP is only 0.003 AUPRC above
+  the SVM.
 - Loss in the search: weighted cross-entropy in 294 trials, focal 13, plain cross-entropy 8.
 
 ## Result 2: comparison and confusion matrices (step5_compare.py; out-of-fold; `figures/fig1_comparison.png`)
@@ -144,7 +145,7 @@ Confusion matrices (out-of-fold; `figures/fig2_confusion_sens90.png`, `fig2_conf
 - Fixed split of the dataset (7,000 training, 1,000 validation patients), all 300 epochs: the validation loss is lowest
   at epoch 214 (0.381) and is still 0.385 at epoch 300; the training loss falls slowly to 0.302. Validation AUROC 0.802,
   AUPRC 0.806 at epoch 214, flat afterwards.
-- No overfitting: the gap between the losses opens slowly (0.06 at epoch 214, 0.08 at 300) and the validation loss
+- No overfitting: the gap between the losses opens slowly (0.055 at epoch 214, 0.08 at 300) and the validation loss
   does not rise. With 8,000 patients and strong dropout the small MLP behaves like the Chakshu small MLP, but stops much
   later (epoch 214 against 92) because of the small learning rate.
 
@@ -159,10 +160,10 @@ Confusion matrices (out-of-fold; `figures/fig2_confusion_sens90.png`, `fig2_conf
 | Weighted cross-entropy, weight 2 x | 0.8059 (0.8052-0.8062) | 0.7923 (0.7917-0.7934) | 166 | 0.098 |
 
 - **The loss function does not matter here**: all five are within 0.002 AUPRC. Here healthy / glaucoma is about 0.99,
-  so "weight 1 x" is the same as no weight (the two rows are equal to 4 decimals). This is the opposite of Chakshu
+  so "weight 1 x" is practically the same as no weight (same means to 4 decimals: AUPRC 0.8069, AUROC 0.7928). This is the opposite of Chakshu
   (14 % glaucoma), where leaving out the class weight cost 0.11 AUPRC and focal loss was clearly worse: the class
   weight matters because of the imbalance, not because of the loss itself.
-- The seed ranges are narrow (about 0.001), much narrower than on Chakshu (0.03), because each fold has 1,600
+- The seed ranges are narrow (0.001-0.002), much narrower than on Chakshu (0.03), because each fold has 1,600
   validation patients.
 
 ## Result 5: race and gender (step5_compare.py, step6_fairness_ci.py; out-of-fold)
