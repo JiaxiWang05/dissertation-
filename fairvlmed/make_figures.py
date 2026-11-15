@@ -214,7 +214,7 @@ def losses():
         v = per_seed.loc[per_seed['loss'] == l, 'auprc']
         ax.plot([v.min(), v.max()], [i, i], c='tab:blue')
         ax.plot(v.mean(), i, 'o', c='tab:blue')
-        ax.text(v.max() + 0.0003, i, f'{v.mean():.3f}', va='center', fontsize=8.5)
+        ax.text(v.max() + 0.00005, i, f'{v.mean():.4f}', va='center', fontsize=8.5)
     ax.set_yticks(range(len(order)), order, fontsize=8.5)
     ax.set_xlabel('kept-model validation AUPRC, mean of 5 folds (dot = mean of 5 seeds, line = range over seeds)')
     ax.set_title('FairVLMed: best small MLP trained with different loss functions', fontsize=10)

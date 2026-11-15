@@ -1,0 +1,6 @@
+worker 2  host: cn086.ham8.dur.ac.uk  PREPROC=raw  Thu 12 Nov 12:26:58 GMT 2026
+[I 2026-11-12 12:28:29,981] Trial 51 finished with value: 0.7916700923075517 and parameters: {'kernel': 'rbf', 'C': 2.7094100112218427, 'gamma': 0.00018706788413115272}. Best is trial 43 with value: 0.8020439291661996.
+[I 2026-11-12 12:56:22,500] Trial 57 finished with value: 0.7829397924257459 and parameters: {'kernel': 'linear', 'C': 12.372599102331264}. Best is trial 81 with value: 0.8027542767752847.
+svm_auprc: best 5-fold mean AUPRC 0.8028 (guessing 0.503); folds [0.798, 0.802, 0.81, 0.797, 0.806]; mean AUROC 0.7910
+best hyperparameters: {'kernel': 'rbf', 'C': 4.061563159912893, 'gamma': 0.0006427425090953928}
+done Thu 12 Nov 12:56:23 GMT 2026

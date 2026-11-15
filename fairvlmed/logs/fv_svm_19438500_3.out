@@ -1,0 +1,19 @@
+worker 3  host: cn087.ham8.dur.ac.uk  PREPROC=raw  Thu 12 Nov 12:26:58 GMT 2026
+[I 2026-11-12 12:28:38,391] Trial 53 finished with value: 0.7844102654712689 and parameters: {'kernel': 'rbf', 'C': 3.092481583995698, 'gamma': 0.00010225543057668638}. Best is trial 43 with value: 0.8020439291661996.
+[I 2026-11-12 12:29:21,672] Trial 58 finished with value: 0.8020937674228932 and parameters: {'kernel': 'rbf', 'C': 8.14291154196443, 'gamma': 0.0002933089446094591}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:30:04,685] Trial 62 finished with value: 0.8013653757021357 and parameters: {'kernel': 'rbf', 'C': 16.119488002275986, 'gamma': 0.00033579603378677}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:30:50,957] Trial 67 finished with value: 0.796537785514867 and parameters: {'kernel': 'rbf', 'C': 52.026744858775615, 'gamma': 0.0002768159885660959}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:31:34,583] Trial 72 finished with value: 0.8024982796694342 and parameters: {'kernel': 'rbf', 'C': 4.184382647272242, 'gamma': 0.0004802045669951952}. Best is trial 72 with value: 0.8024982796694342.
+[I 2026-11-12 12:32:18,355] Trial 76 finished with value: 0.8012098373313072 and parameters: {'kernel': 'rbf', 'C': 3.64979435292991, 'gamma': 0.00042720224290678394}. Best is trial 72 with value: 0.8024982796694342.
+[I 2026-11-12 12:33:01,465] Trial 80 finished with value: 0.801809958899768 and parameters: {'kernel': 'rbf', 'C': 7.338400753008432, 'gamma': 0.00028282234823721685}. Best is trial 72 with value: 0.8024982796694342.
+[I 2026-11-12 12:33:43,896] Trial 82 finished with value: 0.7973025644828905 and parameters: {'kernel': 'rbf', 'C': 7.989531202078809, 'gamma': 0.00013225884860518832}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:34:26,154] Trial 85 finished with value: 0.7937768916128851 and parameters: {'kernel': 'rbf', 'C': 1.2506342532603345, 'gamma': 0.0004296930762359353}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:35:05,189] Trial 87 finished with value: 0.8010004780774336 and parameters: {'kernel': 'rbf', 'C': 21.563157797293247, 'gamma': 0.0002672616242454234}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:35:43,965] Trial 88 finished with value: 0.8016319498611784 and parameters: {'kernel': 'rbf', 'C': 12.09587249297975, 'gamma': 0.0003983781706493157}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:36:23,432] Trial 90 finished with value: 0.800208304677487 and parameters: {'kernel': 'rbf', 'C': 6.378410644505639, 'gamma': 0.00024395028107405582}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:37:07,497] Trial 92 finished with value: 0.7774367353978878 and parameters: {'kernel': 'rbf', 'C': 15.575485755971306, 'gamma': 0.0012923545865188262}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:37:48,780] Trial 94 finished with value: 0.7894856662162734 and parameters: {'kernel': 'rbf', 'C': 3.91272356283668, 'gamma': 0.0021223522999092004}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 14:44:50,937] Trial 96 finished with value: 0.7825976724220027 and parameters: {'kernel': 'linear', 'C': 56.017980331737}. Best is trial 81 with value: 0.8027542767752847.
+svm_auprc: best 5-fold mean AUPRC 0.8028 (guessing 0.503); folds [0.798, 0.802, 0.81, 0.797, 0.806]; mean AUROC 0.7910
+best hyperparameters: {'kernel': 'rbf', 'C': 4.061563159912893, 'gamma': 0.0006427425090953928}
+done Thu 12 Nov 14:45:05 GMT 2026

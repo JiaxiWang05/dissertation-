@@ -1,0 +1,23 @@
+host: cn025.ham8.dur.ac.uk  PREPROC=raw  Thu 12 Nov 12:26:58 GMT 2026
+===== check_losses.py  12:26:58
+plain cross-entropy (no class weight) done
+weighted cross-entropy, weight 1 x (healthy / glaucoma) done
+weighted cross-entropy, weight 2 x (healthy / glaucoma) done
+focal loss (gamma 2), weight 1 x (healthy / glaucoma) done
+as found by Optuna done
+best small MLP: {'dropout': 0.6739736523086844, 'optimizer': 'adamw', 'lr': 3.963586972350996e-05, 'lr_schedule': 'constant', 'weight_decay': 1.4434390998541623e-06, 'l1': 0.00011196611476327227, 'batch_size': 128, 'n_layers': 2, 'widths': [128, 64]}
+                                                          auprc                   auroc                 kept_epoch loss_gap
+                                                           mean     min     max    mean     min     max     median     mean
+loss                                                                                                                       
+as found by Optuna                                       0.8076  0.8071  0.8085  0.7932  0.7925  0.7938      190.0   0.0552
+focal loss (gamma 2), weight 1 x (healthy / glaucoma)    0.8069  0.8057  0.8076  0.7929  0.7919  0.7945      244.0   0.0153
+plain cross-entropy (no class weight)                    0.8069  0.8062  0.8077  0.7928  0.7920  0.7937      179.0   0.0781
+weighted cross-entropy, weight 1 x (healthy / glaucoma)  0.8069  0.8062  0.8080  0.7928  0.7921  0.7937      169.0   0.0782
+weighted cross-entropy, weight 2 x (healthy / glaucoma)  0.8059  0.8052  0.8062  0.7923  0.7917  0.7934      166.0   0.0979
+===== step4_learning_curve.py  15:44:39
+setting: {'dropout': 0.6739736523086844, 'optimizer': 'adamw', 'lr': 3.963586972350996e-05, 'lr_schedule': 'constant', 'weight_decay': 1.4434390998541623e-06, 'l1': 0.00011196611476327227, 'batch_size': 128, 'loss': 'weighted_bce', 'pos_weight_scale': 0.5344710115706194, 'n_layers': 2, 'widths': [128, 64]}
+training patients 7000 | validation patients 1000
+trainable parameters: 57601
+lowest validation loss at epoch 214 | validation loss there 0.381 | at epoch 300: 0.385 | training loss at 300: 0.302
+validation AUPRC at the lowest loss 0.806 | AUROC 0.802
+done Thu 12 Nov 15:49:06 GMT 2026

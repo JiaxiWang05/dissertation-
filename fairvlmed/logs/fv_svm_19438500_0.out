@@ -1,0 +1,13 @@
+worker 0  host: cn025.ham8.dur.ac.uk  PREPROC=raw  Thu 12 Nov 12:26:58 GMT 2026
+[I 2026-11-12 12:28:27,954] Trial 49 finished with value: 0.8011813855601553 and parameters: {'kernel': 'rbf', 'C': 12.162862760748224, 'gamma': 0.0001899539984372138}. Best is trial 43 with value: 0.8020439291661996.
+[I 2026-11-12 12:29:25,751] Trial 55 finished with value: 0.6550906098813678 and parameters: {'kernel': 'rbf', 'C': 61.34595164441893, 'gamma': 0.05030281097646157}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:30:06,261] Trial 63 finished with value: 0.7919078230741163 and parameters: {'kernel': 'rbf', 'C': 5.7023761696754205, 'gamma': 0.0015172692520627402}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:30:43,341] Trial 68 finished with value: 0.8018898700183626 and parameters: {'kernel': 'rbf', 'C': 8.540874206010331, 'gamma': 0.0004867116919500584}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:31:23,281] Trial 69 finished with value: 0.7969888634806466 and parameters: {'kernel': 'rbf', 'C': 1.5836906473988235, 'gamma': 0.00046195889847622636}. Best is trial 58 with value: 0.8020937674228932.
+[I 2026-11-12 12:40:03,624] Trial 74 finished with value: 0.7833179608676609 and parameters: {'kernel': 'linear', 'C': 4.456165462260259}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:41:01,061] Trial 100 finished with value: 0.6740169517154135 and parameters: {'kernel': 'rbf', 'C': 0.0011794226192159195, 'gamma': 0.0007272726996863663}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:41:39,225] Trial 102 finished with value: 0.7947926548769336 and parameters: {'kernel': 'rbf', 'C': 29.187964698675938, 'gamma': 0.00045071845270773774}. Best is trial 81 with value: 0.8027542767752847.
+[I 2026-11-12 12:42:16,255] Trial 104 finished with value: 0.7998559708324291 and parameters: {'kernel': 'rbf', 'C': 48.27456563677977, 'gamma': 0.00017208982211277616}. Best is trial 81 with value: 0.8027542767752847.
+svm_auprc: best 5-fold mean AUPRC 0.8028 (guessing 0.503); folds [0.798, 0.802, 0.81, 0.797, 0.806]; mean AUROC 0.7910
+best hyperparameters: {'kernel': 'rbf', 'C': 4.061563159912893, 'gamma': 0.0006427425090953928}
+done Thu 12 Nov 12:42:20 GMT 2026
