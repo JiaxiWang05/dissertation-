@@ -61,7 +61,7 @@ Where everything is, what is finished, what is still running, and the rules to k
 
 ## Rules the user set
 
-- Push every new change to GitHub (`JiaxiWang05/dissertation-`, public, branch main).
+- Push every new change to GitHub (`JiaxiWang05/dissertation-`, PRIVATE since 15 Nov 2026, branch main).
 - FairVLMed is CC BY-NC-ND 4.0: never push its images, label table, features or per-image scores (`.gitignore`).
 - Real data only; test sets are used once; the user approves downloads and the one-time test run.
 - Public Notion pages: clean, professional, no AI traces; no to-do reminders at the end of answers.
