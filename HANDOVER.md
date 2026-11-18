@@ -39,7 +39,22 @@ Where everything is, what is finished, what is still running, and the rules to k
   AUROC by race: Asian 0.82, White 0.79, Black 0.77 (only Asian-Black CI excludes 0); men = women.
 - The 2,000 FairVLMed test patients are not used until the user decides.
 
-## Open items for the next meeting (with Rahele)
+## To-do from the 17 Nov meeting (for the next meeting; RETFound-Green stays the one model)
+
+- [ ] Own small CNN from scratch (no foundation model) as the baseline for every comparison; Optuna chooses layers and
+      kernels; on Chakshu and FairVLMed.
+- [ ] Class weight: 6.1 looks too strong (healthy images called glaucoma, F1 about 0.39). Optuna tunes the weight,
+      including values below 1, objective F1 or AUPRC. (Already searched: scale 0.5-2 with AUPRC, Optuna chose 1.83.)
+- [ ] Confusion matrices as percentages so the two datasets compare; Chakshu matrices split by camera.
+- [ ] Repeat everything on FairVLMed (no class weight: 50 % glaucoma).
+- [ ] If time: unfreeze layers, Optuna chooses 0-3 open layers plus the MLP.
+- Notes: absolute loss values are not comparable between models / datasets (only trends); AUPRC only between equally
+  balanced sets; FairVLMed (grey SLO) -> Chakshu (colour) is a welcome external domain test; send the Draft Research
+  Proposal (due 7 Dec) and the literature review (due 1 Feb) to Rahele before submitting; she will sign support
+  letters the student drafts (big data, Hamilton, fine-tuning foundation models; read up on world models).
+- Overnight jobs were killed at about 8 h: that is the `--time` limit in the job script; request more or split work.
+
+## Older open items (with Rahele)
 
 - Flip all images to one side (only possible for Remidio, from `after_10_Nov/remidio_disc_side.csv`).
 - FairVLMed results (done 12 Nov): discuss; wider MLP search (best values at the edge); when to use its test set.
