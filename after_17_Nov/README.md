@@ -7,10 +7,10 @@ Status: IN PROGRESS (started 20 Nov; updated after every step). Test sets are no
 | Task | Script | State |
 | --- | --- | --- |
 | Confusion matrices as percentages (Chakshu and FairVLMed); Chakshu split by camera | `confusion_percent.py` | done |
-| Class weight: try smaller weights; let Optuna choose it with F1 or AUPRC | `weight_search.py grid` (job 19545173), `weight_search.py optuna` (array 19545174, F1 objective) | running |
-| Own small CNN from scratch as the baseline (Optuna: blocks, channels, kernel, ...), both datasets | `cache_images.py`, `img_common.py`, `cnn_cv.py` (arrays 19545210 Chakshu, 19545211 FairVLMed) | queued |
+| Class weight: try smaller weights; let Optuna choose it with F1 or AUPRC | `weight_search.py grid` (job 19545173), `weight_search.py optuna` (array 19545174, F1 objective) | done |
+| Own small CNN from scratch as the baseline (Optuna: blocks, channels, kernel, ...), both datasets | `cache_images.py`, `img_common.py`, `cnn_cv.py` (arrays 19545210 Chakshu, 19545211 FairVLMed) | searches done; fair comparison running |
 | Repeat on FairVLMed (no class weight: 50 % glaucoma) | percentages done; CNN queued | partly |
-| If time: open 0-3 RETFound-Green blocks (Optuna) | `unfreeze_cv.py` (array 19545212, 3 GPU workers) | queued |
+| If time: open 0-3 RETFound-Green blocks (Optuna) | `unfreeze_cv.py` (array 19545212, 3 GPU workers) | search done; fair comparison running |
 
 ## Result 1: confusion matrices in percent (`confusion_percent.csv`, `figures/fig1_confusion_percent_*.png`)
 
@@ -45,6 +45,56 @@ Logistic regression (the chosen model), each classifier's own out-of-fold thresh
   images flagged is similar on all three cameras (47-55 %), so the low specificity is not a Remidio effect.
 - Forus misses the most glaucoma (80 % found at the 90 % threshold, 60 % at Youden), but it has only 15 glaucoma images.
 - The same holds for the SVM and the small MLP (kNN flags 81 % of healthy Bosch images).
+
+## Result 3: class weight (`weight_grid.csv`; `weight_search.py`, jobs 19545173 and 19545174)
+
+Weight w on the glaucoma class (6.13 = healthy / glaucoma). Out-of-fold, 1,141 images; MLP = mean of 5 seeds.
+
+| Model | Weight | AUPRC | AUROC | Sensitivity at 0.5 | Specificity at 0.5 | F1 at 0.5 | Best F1 (any threshold) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Logistic regression | 0.25 | 0.384 | 0.806 | 0.000 | 1.000 | 0.000 | 0.460 |
+| Logistic regression | 1 | 0.405 | 0.813 | 0.112 | 0.983 | 0.185 | 0.470 |
+| Logistic regression | 2 | 0.410 | 0.814 | 0.375 | 0.936 | 0.424 | 0.477 |
+| Logistic regression | 4 | 0.414 | 0.814 | 0.588 | 0.847 | 0.465 | 0.474 |
+| Logistic regression | 6.13 | 0.414 | 0.813 | 0.688 | 0.788 | 0.460 | 0.474 |
+| Logistic regression | 12.27 | 0.412 | 0.811 | 0.812 | 0.667 | 0.421 | 0.479 |
+| Small MLP | 1 | 0.304 | 0.731 | 0.000 | 1.000 | 0.000 | 0.405 |
+| Small MLP | 4 | 0.325 | 0.756 | 0.454 | 0.847 | 0.332 | 0.428 |
+| Small MLP | 6.13 | 0.386 | 0.789 | 0.702 | 0.735 | 0.424 | 0.450 |
+| Small MLP | 12.27 | 0.406 | 0.804 | 0.842 | 0.591 | 0.387 | 0.467 |
+
+(all nine weights in `weight_grid.csv`)
+
+- **The weight moves the trade-off, not the ranking.** For logistic regression AUPRC, AUROC and the best possible F1
+  hardly change between weight 2 and 12; what changes is where the default 0.5 threshold falls: a lower weight gives
+  fewer false alarms (specificity 0.85 at w = 4 against 0.79 at 6.13) and fewer glaucoma found (0.59 against 0.69).
+  F1 at 0.5 is highest at w about 4 (0.465; 6.13 gives 0.460).
+- For the small MLP, weights below 4 make it call almost everything healthy (early stopping keeps an early epoch);
+  it needs the weight.
+- Optuna with the F1 objective (200 trials, 8 workers, 6 min): best F1 at 0.5 = 0.507 with weight 2.8 (scale 0.46),
+  64-64 neurons (search best on the same folds, so optimistic).
+- Because the evaluation thresholds (90 % sensitivity, Youden's J) are set on the scores anyway, the weight mainly
+  matters for a model used at its default threshold.
+
+## Result 4 (search stage): CNN from scratch and unfrozen RETFound-Green (5-fold mean validation AUPRC)
+
+| Search | Trials | Best setting | Search AUPRC (folds) | Mean AUROC | Parameters (trainable) |
+| --- | --- | --- | --- | --- | --- |
+| CNN, Chakshu | 61 | 5 blocks, 32 channels doubling, kernel 5, dropout 0.02, weight x 0.36 | 0.544 (0.513 / 0.530 / 0.519 / 0.479 / 0.678) | 0.857 | 4,356,897 |
+| CNN, FairVLMed | 31 | 5 blocks, 32 channels, kernel 5, dropout 0.23 | 0.818 (0.805 / 0.803 / 0.846 / 0.832 / 0.804) | 0.808 | 4,355,297 |
+| RETFound-Green, last 2 blocks open, Chakshu | 26 | linear head, dropout 0.37, weight x 0.30 | 0.592 (0.734 / 0.593 / 0.473 / 0.447 / 0.712) | 0.884 | 3,551,617 |
+
+- Frozen-feature reference: Chakshu SVM 0.427 / 0.817; FairVLMed small MLP 0.805 / 0.791.
+- Unfreezing search by depth: 2 blocks in 15 trials (best 0.592), 1 block in 9 (best 0.583), 3 blocks once (0.550),
+  0 blocks (frozen backbone, head trained on images) once: 0.382, AUROC 0.802 - the same level as the frozen-feature
+  classifiers, a useful sanity check.
+- CNN Chakshu: even the median trial (0.467) is above the frozen models.
+- **These are search scores and flatter the image models**: the best of many trials, scored on the folds that
+  chose them, with early stopping on the scored fold. `final_compare.py` therefore retrains each best setting with
+  3 seeds, each fold for the median kept epoch of the other folds (the scored images choose nothing), and compares
+  with the frozen models on the same images (jobs 19550043 Chakshu, 19550044 FairVLMed).
+- A second check (job 19550045, `GROUPS=pseudo`): the same comparison with the likely fellow eyes kept in the same
+  fold, because flexible image models could exploit a patient's other eye in training (frozen models did not: 0.004).
 
 ## Jobs (20 Nov)
 

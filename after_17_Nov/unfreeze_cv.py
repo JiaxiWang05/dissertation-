@@ -49,9 +49,10 @@ def prep(x):
     return (x.float() / 255.0 - 0.5) / 0.5          # official RETFound-Green normalisation (mean = std = 0.5)
 
 
-def run(p, X, y, splits, seed=0):
+def run(p, X, y, splits, seed=0, fixed=None):
+    """fixed: list of epochs per fold -> train exactly that many epochs, no early stopping (fair out-of-fold scores)."""
     ap, auc, epochs, oof = [], [], [], np.zeros(len(y))
-    for tr, va in splits:
+    for k, (tr, va) in enumerate(splits):
         ratio = (y[tr] == 0).sum() / (y[tr] == 1).sum()
         model = Net(p['k'], p['hidden'], p['dropout'])
         groups = [{'params': model.head.parameters(), 'lr': p['lr_head']}]
@@ -59,7 +60,8 @@ def run(p, X, y, splits, seed=0):
         if bb:
             groups.append({'params': bb, 'lr': p['lr_head'] * p['lr_ratio']})
         s, e, _ = fit(model, X[tr], y[tr], X[va], y[va], prep, p['lr_head'], p['wd'], 32,
-                      pos_weight=ratio * p['w_scale'], max_epochs=30, patience=6, seed=seed, param_groups=groups)
+                      pos_weight=ratio * p['w_scale'], max_epochs=fixed[k] if fixed else 30, patience=6, seed=seed,
+                      param_groups=groups, select=not fixed)
         oof[va] = s; ap.append(average_precision_score(y[va], s)); auc.append(roc_auc_score(y[va], s)); epochs.append(e)
     n_train = sum(q.numel() for q in model.parameters() if q.requires_grad)
     return ap, auc, epochs, oof, n_train

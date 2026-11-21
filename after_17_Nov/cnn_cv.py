@@ -50,14 +50,16 @@ def params_of(trial):
     return p
 
 
-def run(p, X, y, splits, seed=0):
+def run(p, X, y, splits, seed=0, fixed=None):
+    """fixed: list of epochs per fold -> train exactly that many epochs, no early stopping (fair out-of-fold scores)."""
     ap, auc, epochs, oof = [], [], [], np.zeros(len(y))
     from sklearn.metrics import average_precision_score, roc_auc_score
-    for tr, va in splits:
+    for k, (tr, va) in enumerate(splits):
         ratio = (y[tr] == 0).sum() / (y[tr] == 1).sum()
         model = CNN(X.shape[1], p['blocks'], p['c0'], p['k'], p['dropout'])
         s, e, _ = fit(model, X[tr], y[tr], X[va], y[va], prep, p['lr'], p['wd'], p['batch'],
-                      pos_weight=ratio * p['w_scale'], max_epochs=80, patience=10, seed=seed)
+                      pos_weight=ratio * p['w_scale'], max_epochs=fixed[k] if fixed else 80, patience=10, seed=seed,
+                      select=not fixed)
         oof[va] = s; ap.append(average_precision_score(y[va], s)); auc.append(roc_auc_score(y[va], s)); epochs.append(e)
     n_par = sum(q.numel() for q in model.parameters())
     return ap, auc, epochs, oof, n_par

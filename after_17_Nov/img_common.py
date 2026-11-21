@@ -37,6 +37,16 @@ def data(ds, size=256):
         import pandas as pd
         lab = pd.read_csv('fairvlmed_labels.csv'); y = lab['label'].to_numpy(); keep, splits = c.cv_split(lab); os.chdir(cwd)
         ids = np.load(CACHE / 'fairvlmed_ids.npy'); imgs = np.load(CACHE / 'fairvlmed_256.npy', mmap_mode='r')
+    if ds == 'chaksu' and os.environ.get('GROUPS') == 'pseudo':
+        # likely fellow eyes (consecutive Remidio numbers, opposite disc sides; ../after_10_Nov/pseudo_patients.csv)
+        # are kept in the same fold, on top of the Bosch pairs and copies
+        import pandas as pd
+        from sklearn.model_selection import StratifiedGroupKFold
+        pp = pd.read_csv(HERE.parent / 'after_10_Nov' / 'pseudo_patients.csv').set_index('image_id')['pseudo_patient']
+        sub = lab.loc[keep]
+        strata = sub['label_majority'].astype(str) + '_' + sub['camera']
+        splits = list(StratifiedGroupKFold(5, shuffle=True, random_state=42).split(sub, strata,
+                                                                                 sub['image_id'].map(pp)))
     pos = {k: i for i, k in enumerate(ids)}
     idx = np.array([pos[k] for k in lab.loc[keep, 'image_id']])
     X = torch.from_numpy(np.ascontiguousarray(imgs[idx]))
@@ -51,9 +61,12 @@ def augment(x):
     return torch.roll(x, shifts=(int(dy), int(dx)), dims=(2, 3))
 
 
-def fit(model, Xtr, ytr, Xva, yva, prep, lr, wd, batch, pos_weight, max_epochs, patience, seed, param_groups=None):
+def fit(model, Xtr, ytr, Xva, yva, prep, lr, wd, batch, pos_weight, max_epochs, patience, seed, param_groups=None,
+        select=True):
     """Weighted BCE; early stopping on validation loss; returns the validation scores of the kept epoch, the kept epoch
-    and the history (train / val loss, val AUROC / AUPRC per epoch)."""
+    and the history (train / val loss, val AUROC / AUPRC per epoch).
+    select=False: train exactly max_epochs and return the LAST epoch's scores (the validation images then choose nothing;
+    used for the fair out-of-fold comparison, with max_epochs = median kept epoch of the other folds)."""
     torch.manual_seed(seed); np.random.seed(seed)
     model = model.to(DEV)
     opt = torch.optim.AdamW(param_groups or model.parameters(), lr=lr, weight_decay=wd)
@@ -81,6 +94,9 @@ def fit(model, Xtr, ytr, Xva, yva, prep, lr, wd, batch, pos_weight, max_epochs, 
         p = sv.cpu().numpy()
         hist.append({'epoch': epoch, 'train_loss': tl / len(Xtr), 'val_loss': vl,
                      'val_auroc': roc_auc_score(yva, p), 'val_auprc': average_precision_score(yva, p)})
+        if not select:
+            keep, best_epoch = p, epoch
+            continue
         if vl < best:
             best, best_state, best_epoch, wait, keep = vl, copy.deepcopy(model.state_dict()), epoch, 0, p
         else:
