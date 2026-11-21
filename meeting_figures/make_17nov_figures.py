@@ -279,5 +279,63 @@ def weight_confusion():
     plt.close(fig)
 
 
-for f in [weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
+# ---------------------------------------------------------------- what "opening the last two blocks" means
+def finetune_diagram():
+    FROZEN, TRAIN, IO = '#ecebe6', '#f8e0d6', '#ffffff'
+    FE, TE = '#8a8a84', '#c0583a'
+    W, H = 12.0, 10.4
+    fig = plt.figure(figsize=(W, H)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis('off')
+    x, w = 0.6, 4.2
+    cx = x + w / 2
+
+    def box(y, h, t, fc, ec, bold=False, fs=11):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0,rounding_size=0.06', fc=fc, ec=ec, lw=1.0))
+        ax.text(cx, y + h / 2, t, ha='center', va='center', fontsize=fs, color=TEXT, fontweight='bold' if bold else 'normal')
+
+    def arrow(y1, y2):
+        ax.annotate('', xy=(cx, y2), xytext=(cx, y1), arrowprops=dict(arrowstyle='-|>', color=EDGE, lw=1.1, mutation_scale=11))
+
+    def note(y, title, lines, col):
+        ax.text(5.55, y, title, fontsize=12, fontweight='bold', color=col, va='top')
+        for i, l in enumerate(lines):
+            ax.text(5.55, y - 0.36 - 0.3 * i, l, fontsize=11, color=TEXT, va='top')
+
+    def bracket(y1, y2, col):
+        ax.plot([4.95, 5.1, 5.1, 4.95], [y2, y2, y1, y1], color=col, lw=1.2)
+
+    ax.text(0.6, H - 0.25, 'Opening the last two RETFound-Green blocks', fontsize=14, fontweight='bold', va='top', color=TEXT)
+    y = H - 1.25
+    box(y, 0.5, 'Fundus image, 392 x 392 px (flip and shift)', IO, EDGE); arrow(y, y - 0.25)
+    y -= 0.85; box(y, 0.6, 'Patch embedding: 784 patches, 384 numbers each', FROZEN, FE); top_frozen = y + 0.6; arrow(y, y - 0.25)
+    y -= 0.3
+    for b in range(1, 13):
+        y -= 0.34
+        fr = b <= 10
+        box(y, 0.28, f'Block {b}  ' + ('frozen' if fr else 'trained'), FROZEN if fr else TRAIN, FE if fr else TE,
+            bold=not fr, fs=10)
+        if b == 10:
+            bot_frozen = y
+        if b == 11:
+            top_train = y + 0.28
+    arrow(y, y - 0.25)
+    y -= 0.7; box(y, 0.45, 'Final norm  trained', TRAIN, TE, bold=True); bot_train = y; arrow(y, y - 0.25)
+    y -= 0.7; box(y, 0.45, 'Average of the patch tokens: 384 features', FROZEN, FE); arrow(y, y - 0.25)
+    y -= 0.75; box(y, 0.5, 'Linear head: 384 -> 1', TRAIN, TE, bold=True); head = y; arrow(y, y - 0.25)
+    y -= 0.75; box(y, 0.5, 'Glaucoma score', IO, EDGE); out = y
+    bracket(bot_frozen, top_frozen, FE)
+    note((top_frozen + bot_frozen) / 2 + 0.6, 'Frozen (about 18 M weights)',
+         ['Patch embedding and blocks 1-10', 'Locked: no gradient, never changed', 'Keep the general retinal features (vessels, disc, texture)',
+          'learned in pre-training on 75,000 public images'], '#5f5e5a')
+    bracket(bot_train, top_train, TE)
+    note(top_train + 0.25, 'Trained on Chákṣu (3.5 M weights)',
+         ['Blocks 11-12 and the final norm', 'Adapt the top features to glaucoma', 'Learning rate 0.00014 (0.3 x the head rate)'], TE)
+    bracket(head, head + 0.5, TE)
+    note(head + 0.55, 'Trained: linear head (385 weights)', ['Learning rate 0.00047, dropout 0.37'], TE)
+    note(out + 0.1, 'Training', ['Weighted cross-entropy, glaucoma x 1.8', 'AdamW, batch 32, 6-8 epochs per fold',
+                                 'Optuna chose 2 open blocks of 0-3 (26 trials)'], TEXT)
+    fig.savefig(HERE / 'finetune_diagram.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+for f in [finetune_diagram, weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
     f(); print('made', f.__name__)
