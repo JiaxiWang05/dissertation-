@@ -37,7 +37,7 @@ def data(ds, size=256):
         import pandas as pd
         lab = pd.read_csv('fairvlmed_labels.csv'); y = lab['label'].to_numpy(); keep, splits = c.cv_split(lab); os.chdir(cwd)
         ids = np.load(CACHE / 'fairvlmed_ids.npy'); imgs = np.load(CACHE / 'fairvlmed_256.npy', mmap_mode='r')
-    if ds == 'chaksu' and os.environ.get('GROUPS') == 'pseudo':
+    if ds == 'chaksu' and os.environ.get('FOLDS') == 'pseudo':
         # likely fellow eyes (consecutive Remidio numbers, opposite disc sides; ../after_10_Nov/pseudo_patients.csv)
         # are kept in the same fold, on top of the Bosch pairs and copies
         import pandas as pd

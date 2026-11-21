@@ -27,7 +27,7 @@ if DS == 'chaksu':
     models['unfreeze'] = unfreeze_cv
 ref_file = '../after_10_Nov/step5_oof_scores.csv' if DS == 'chaksu' else '../fairvlmed/step5_oof_scores.csv'
 ref = pd.read_csv(ref_file, float_precision='round_trip')
-PSEUDO = os.environ.get('GROUPS') == 'pseudo'
+PSEUDO = os.environ.get('FOLDS') == 'pseudo'
 TAG = f'{DS}_pseudo' if PSEUDO else DS
 if PSEUDO:
     # frozen-feature reference recomputed on the same fellow-eye-grouped folds: logistic regression (C 0.00725) and
