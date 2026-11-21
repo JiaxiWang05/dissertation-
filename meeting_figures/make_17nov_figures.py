@@ -337,5 +337,70 @@ def finetune_diagram():
     plt.close(fig)
 
 
-for f in [finetune_diagram, weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
+# ---------------------------------------------------------------- project timeline
+def timeline():
+    cards = [('16-20 Oct', 'PAPILA, frozen features', 'Trained on PAPILA, tested on\nChákṣu: AUROC 0.71-0.73', GRAY),
+             ('27 Oct', 'Chákṣu becomes main dataset', 'Test set held out; classifiers\ncompared; learning curves', GRAY),
+             ('3 Nov', 'Fixed split, MLP study', 'MLP overfits (best epoch 14);\none validation part is noisy', GRAY),
+             ('8 Nov', '5-fold CV, test used once', 'LR, SVM, MLP tie at AUROC 0.81;\ntest AUROC 0.872', BLUE),
+             ('10 Nov', 'AUPRC, small MLP, losses', 'AUPRC 0.43 (guessing 0.14);\nfellow eyes change AUROC 0.004', GRAY),
+             ('12 Nov', 'Second dataset: FairVLMed', '8,000 patients: AUROC 0.79;\nAsian 0.82, Black 0.77', GRAY),
+             ('17-21 Nov', 'CNN vs fine-tuning', 'Fine-tuned 2 blocks: AUPRC 0.52;\nCNN from scratch below frozen', RED),
+             ('Next', 'Planned', 'Fellow-eye check, fine-tune on\nFairVLMed, FairVLMed → Chákṣu', 'white')]
+    W, H = 14.0, 5.4
+    fig = plt.figure(figsize=(W, H)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis('off')
+    ax.text(0.3, H - 0.25, 'Project timeline', fontsize=14, fontweight='bold', va='top', color=TEXT)
+    cw, ch, gap = 3.15, 1.75, 0.27
+    for i, (date, title, res, col) in enumerate(cards):
+        r, c = divmod(i, 4)
+        x = 0.3 + c * (cw + gap); y = H - 1.0 - ch - r * (ch + 0.55)
+        ec = EDGE if col != 'white' else '#999999'
+        ax.add_patch(FancyBboxPatch((x, y), cw, ch, boxstyle='round,pad=0,rounding_size=0.08', fc='white', ec=ec, lw=1.0,
+                                    ls='-' if col != 'white' else (0, (4, 3))))
+        if col != 'white':
+            ax.add_patch(FancyBboxPatch((x, y + ch - 0.42), cw, 0.42, boxstyle='round,pad=0,rounding_size=0.08', fc=col, ec=ec, lw=1.0))
+        ax.text(x + 0.15, y + ch - 0.21, date, fontsize=11, fontweight='bold', va='center', color='white' if col != 'white' else MUTED)
+        ax.text(x + 0.15, y + ch - 0.68, title, fontsize=10.5, fontweight='bold', va='center', color=TEXT)
+        ax.text(x + 0.15, y + 0.5, res, fontsize=9.5, va='center', color=TEXT, linespacing=1.35)
+        if c < 3:
+            ax.annotate('', xy=(x + cw + gap - 0.03, y + ch / 2), xytext=(x + cw + 0.03, y + ch / 2),
+                        arrowprops=dict(arrowstyle='-|>', color=EDGE, lw=1.1, mutation_scale=11))
+    fig.savefig(HERE / 'timeline.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+# ---------------------------------------------------------------- cross-validation scheme
+def cv_scheme():
+    TR, VA, TE = '#7fa7c7', '#e8a07f', '#dddddd'
+    W, H = 13.0, 4.6
+    fig = plt.figure(figsize=(W, H)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis('off')
+    ax.text(0.3, H - 0.25, 'How every model is scored on Chákṣu (the same folds for every model)', fontsize=13,
+            fontweight='bold', va='top', color=TEXT)
+    x0, wtv, wte, h = 1.2, 5.6, 1.0, 0.42
+    for k in range(5):
+        y = H - 1.25 - k * 0.56
+        ax.text(x0 - 0.15, y + h / 2, f'Fold {k + 1}', ha='right', va='center', fontsize=10.5, color=TEXT)
+        for j in range(5):
+            ax.add_patch(FancyBboxPatch((x0 + j * wtv / 5 + 0.03, y), wtv / 5 - 0.06, h, boxstyle='round,pad=0,rounding_size=0.05',
+                                        fc=VA if j == k else TR, ec='white', lw=0))
+        ax.add_patch(FancyBboxPatch((x0 + wtv + 0.15, y), wte, h, boxstyle='round,pad=0,rounding_size=0.05', fc=TE, ec='white', lw=0))
+    ax.text(x0 + wtv / 2, H - 1.25 - 4 * 0.56 - 0.35, '1,141 training + validation images (160 glaucoma)', ha='center',
+            va='center', fontsize=10, color=MUTED)
+    ax.text(x0 + wtv + 0.15 + wte / 2, H - 1.25 - 4 * 0.56 - 0.35, 'test: 204', ha='center', va='center', fontsize=10, color=MUTED)
+    for i, (c, lab) in enumerate([(TR, 'train on these'), (VA, 'score these'), (TE, 'held out, used once')]):
+        ax.add_patch(FancyBboxPatch((x0 + i * 2.1, 0.3), 0.35, 0.25, boxstyle='round,pad=0,rounding_size=0.04', fc=c, ec='none'))
+        ax.text(x0 + i * 2.1 + 0.45, 0.425, lab, va='center', fontsize=10, color=MUTED)
+    tx = 8.6
+    notes = [('Optuna', 'Each trial is trained in all 5 folds;\nits score is the mean of the 5 fold scores'),
+             ('Out-of-fold score', 'Every image is scored once, by a model\nthat never saw it during training'),
+             ('Fair score (image models)', 'Fold k trains for the median best epoch\nof the other 4 folds: it chooses nothing')]
+    for i, (t, d) in enumerate(notes):
+        y = H - 1.0 - i * 1.15
+        ax.text(tx, y, t, fontsize=11, fontweight='bold', va='top', color=TEXT)
+        ax.text(tx, y - 0.32, d, fontsize=10, va='top', color=TEXT, linespacing=1.35)
+    fig.savefig(HERE / 'cv_scheme.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+for f in [timeline, cv_scheme, finetune_diagram, weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
     f(); print('made', f.__name__)
