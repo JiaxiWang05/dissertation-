@@ -25,10 +25,20 @@ models = {'cnn': cnn_cv}
 if DS == 'chaksu':
     import unfreeze_cv
     models['unfreeze'] = unfreeze_cv
+ONLY = [m for m in os.environ.get('MODELS', '').split(',') if m]      # e.g. MODELS=lora: run only these models
+if DS == 'chaksu' and 'lora' in ONLY:
+    import lora_cv
+    models['lora'] = lora_cv
+if ONLY:
+    models = {k: v for k, v in models.items() if k in ONLY}
+    if not models:
+        sys.exit(f'MODELS={ONLY} matches no model for {DS}')
 ref_file = '../after_10_Nov/step5_oof_scores.csv' if DS == 'chaksu' else '../fairvlmed/step5_oof_scores.csv'
 ref = pd.read_csv(ref_file, float_precision='round_trip')
 PSEUDO = os.environ.get('FOLDS') == 'pseudo'
 TAG = f'{DS}_pseudo' if PSEUDO else DS
+if ONLY:
+    TAG += '_' + '_'.join(ONLY)
 if PSEUDO:
     # frozen-feature reference recomputed on the same fellow-eye-grouped folds: logistic regression (C 0.00725) and
     # SVM (RBF, 10 Nov AUPRC-tuned setting) on the frozen RETFound-Green features
