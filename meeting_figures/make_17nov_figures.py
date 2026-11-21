@@ -258,5 +258,26 @@ def approaches():
     plt.close(fig)
 
 
-for f in [approaches, block_diagram, class_weight, searches, datasets, ladder]:
+# ---------------------------------------------------------------- confusion at 0.5 for several weights
+def weight_confusion():
+    g = pd.read_csv(A17 / 'weight_grid.csv')
+    g = g[g['model'] == 'logistic regression'].groupby('weight').mean(numeric_only=True)
+    ws = [6.13, 4.0, 2.0, 1.0]
+    fig, axs = plt.subplots(1, len(ws), figsize=(3.0 * len(ws), 3.1))
+    for ax, w in zip(axs, ws):
+        r = g.loc[min(g.index, key=lambda v: abs(v - w))]
+        m = 100 * np.array([[r['sens@0.5'], 1 - r['sens@0.5']], [1 - r['spec@0.5'], r['spec@0.5']]])
+        ax.imshow(m, cmap='Blues', vmin=0, vmax=100)
+        for (i, j), v in np.ndenumerate(m):
+            ax.text(j, i, f'{v:.0f} %', ha='center', va='center', fontsize=12, color='white' if v > 60 else 'black')
+        ax.set_xticks([0, 1], ['called\nglaucoma', 'called\nhealthy']); ax.set_yticks([0, 1], ['glaucoma', 'healthy'])
+        ax.set_title(f'weight {w:g}' + ('  (used so far)' if w == 6.13 else '') + f'\nF1 {r["F1@0.5"]:.2f}', fontsize=10)
+    fig.suptitle('Logistic regression on Chákṣu at the default 0.5 threshold: a smaller glaucoma weight flags fewer healthy '
+                 'images but misses more glaucoma', fontsize=10)
+    fig.tight_layout()
+    fig.savefig(HERE / 'weight_confusion.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+for f in [weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
     f(); print('made', f.__name__)
