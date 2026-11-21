@@ -1,0 +1,25 @@
+host: gn1.ham8.dur.ac.uk  MODE=final_compare.py fairvlmed  task=  Sat 21 Nov 15:20:44 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-4774138c-d22c-3ecd-4860-00ea5bd34eaa)
+cnn seed 0 fair AUPRC 0.7522 AUROC 0.7493 | early-stopped AUPRC 0.8021 | epochs [37, 37, 29, 24, 36] fixed [32, 32, 36, 36, 33]
+cnn seed 1 fair AUPRC 0.6685 AUROC 0.6909 | early-stopped AUPRC 0.7813 | epochs [19, 28, 33, 7, 20] fixed [24, 19, 19, 24, 23]
+cnn seed 2 fair AUPRC 0.7827 AUROC 0.7726 | early-stopped AUPRC 0.8007 | epochs [5, 44, 38, 22, 50] fixed [41, 30, 33, 41, 30]
+                                                                                                                                                                                                    0
+model                                                                                                                                                                                             cnn
+trials                                                                                                                                                                                             31
+best search AUPRC                                                                                                                                                                              0.8179
+setting                                        {'blocks': 5, 'c0': 32, 'k': 5, 'dropout': 0.23092346496775012, 'lr': 0.00022407659245752998, 'wd': 0.001750365052873381, 'batch': 64, 'w_scale': 1.0}
+parameters (trainable)                                                                                                                                                                        4355297
+AUPRC seed 0                                                                                                                                                                                 0.752187
+early-stopped AUPRC (optimistic), 3-seed mean                                                                                                                                                0.794659
+AUPRC CI                                                                                                                                                                               [0.739, 0.766]
+AUPRC 3 seeds mean                                                                                                                                                                           0.734466
+AUPRC 3 seeds range                                                                                                                                                                    [0.669, 0.783]
+AUROC seed 0                                                                                                                                                                                 0.749299
+AUROC CI                                                                                                                                                                                [0.739, 0.76]
+best frozen-feature model                                                                                                                                                                   mlp_small
+frozen AUPRC                                                                                                                                                                                 0.805195
+frozen AUROC                                                                                                                                                                                 0.791398
+this minus frozen AUPRC                                                                                                                                                                     -0.053008
+diff CI                                                                                                                                                                              [-0.065, -0.041]
+healthy flagged % at 90 % sens                                                                                                                                                              64.477987
+done Sat 21 Nov 16:11:55 GMT 2026

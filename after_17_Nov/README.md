@@ -8,9 +8,9 @@ Status: IN PROGRESS (started 20 Nov; updated after every step). Test sets are no
 | --- | --- | --- |
 | Confusion matrices as percentages (Chakshu and FairVLMed); Chakshu split by camera | `confusion_percent.py` | done |
 | Class weight: try smaller weights; let Optuna choose it with F1 or AUPRC | `weight_search.py grid` (job 19545173), `weight_search.py optuna` (array 19545174, F1 objective) | done |
-| Own small CNN from scratch as the baseline (Optuna: blocks, channels, kernel, ...), both datasets | `cache_images.py`, `img_common.py`, `cnn_cv.py` (arrays 19545210 Chakshu, 19545211 FairVLMed) | searches done; fair comparison running |
-| Repeat on FairVLMed (no class weight: 50 % glaucoma) | percentages done; CNN queued | partly |
-| If time: open 0-3 RETFound-Green blocks (Optuna) | `unfreeze_cv.py` (array 19545212, 3 GPU workers) | search done; fair comparison running |
+| Own small CNN from scratch as the baseline (Optuna: blocks, channels, kernel, ...), both datasets | `cache_images.py`, `img_common.py`, `cnn_cv.py`, `final_compare.py` | done (Result 5) |
+| Repeat on FairVLMed (no class weight: 50 % glaucoma) | `confusion_percent.py`, `cnn_cv.py`, `final_compare.py fairvlmed` | done |
+| If time: open 0-3 RETFound-Green blocks (Optuna) | `unfreeze_cv.py`, `final_compare.py chaksu` | done (Result 5) |
 
 ## Result 1: confusion matrices in percent (`confusion_percent.csv`, `figures/fig1_confusion_percent_*.png`)
 
@@ -93,7 +93,7 @@ Weight w on the glaucoma class (6.13 = healthy / glaucoma). Out-of-fold, 1,141 i
   chose them, with early stopping on the scored fold. `final_compare.py` therefore retrains each best setting with
   3 seeds, each fold for the median kept epoch of the other folds (the scored images choose nothing), and compares
   with the frozen models on the same images (jobs 19550043 Chakshu, 19550044 FairVLMed).
-- A second check (job 19550045, `GROUPS=pseudo`): the same comparison with the likely fellow eyes kept in the same
+- A second check (`FOLDS=pseudo`; first attempt 19550045 used the name `GROUPS`, a reserved bash variable, so it silently repeated the plain run - kept as `final_chaksu_run2.csv`; redone as job 19550114): the same comparison with the likely fellow eyes kept in the same
   fold, because flexible image models could exploit a patient's other eye in training (frozen models did not: 0.004).
 
 ## Jobs (20 Nov)
@@ -102,3 +102,24 @@ Weight w on the glaucoma class (6.13 = healthy / glaucoma). Out-of-fold, 1,141 i
 - 19545209 (CPU): image cache (Chakshu 256 and 392 px, FairVLMed 256 px, in `/nobackup/tggq61/retfound_green/cache`).
 - 19545210 / 19545211 (2 GPU workers each): CNN searches, 60 trials (Chakshu) and 30 (FairVLMed).
 - 19545212 (3 GPU workers): unfreezing search, 24 trials.
+
+## Result 5: fair comparison (`final_compare.py`, `final_<tag>.csv`, `figures/fig3_final_comparison.png`)
+
+Each best setting retrained in every fold with 3 seeds; each fold trains for the median kept epoch of the other four
+folds and is scored at its last epoch (the scored images choose nothing). Reference: the best frozen-feature model
+on the same images and folds. Difference and CI: seed 0, paired, 2,000 resamples of the image groups.
+
+| Data | Model | Trainable parameters | Search AUPRC | Fair AUPRC, 3 seeds (range) | AUROC (seed 0) | Healthy flagged at 90 % sens. | Minus frozen AUPRC (95 % CI) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Chakshu | Frozen features, SVM | - | 0.427 | 0.427 | 0.817 | 49 % | reference |
+| Chakshu | CNN from scratch | 4,356,897 | 0.544 | 0.371 (0.306-0.440) | 0.828 | 43 % | +0.013 (-0.076 to 0.106), tied |
+| Chakshu | RETFound-Green, last 2 blocks open | 3,551,617 | 0.592 | 0.521 (0.505-0.552) | 0.856 | 38 % | +0.078 (0.003 to 0.152), better |
+| FairVLMed | Frozen features, small MLP | - | 0.808 | 0.805 | 0.791 | 60 % | reference |
+| FairVLMed | CNN from scratch | 4,355,297 | 0.818 | 0.734 (0.669-0.783) | 0.749 | 64 % | -0.053 (-0.065 to -0.041), worse |
+
+- Repeat run on Chakshu (job 19550045, same settings, `final_chaksu_run2.csv`): CNN 0.408 (0.383-0.423), fine-tuned
+  0.522 (0.504-0.553). GPU training is not bit-reproducible; the fine-tuned model is stable, the CNN is not.
+- The search scores flatter the image models: the CNN drops by 0.13-0.17 (Chakshu) and 0.08 (FairVLMed) from search to
+  fair score; the fine-tuned model by 0.07.
+- **Fine-tuning the last two RETFound-Green blocks is the only change so far that beats the frozen features** (Chakshu).
+- A CNN from scratch does not reach the frozen features on either dataset, even with 8,000 FairVLMed patients.
