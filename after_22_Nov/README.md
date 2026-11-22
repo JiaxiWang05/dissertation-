@@ -36,7 +36,20 @@ LoRA 0.69-0.73; Forus: frozen 0.35-0.43, LoRA 0.55-0.61; Remidio (only 231 train
 LoRA 0.33-0.34. LoRA transfers to an unseen camera far better than the frozen classifiers; augmentation and the mask
 head change little (Bosch 18 and Forus 15 glaucoma images: noisy).
 
-## Result 4: where the evidence is (`attention_maps.csv`, `figures/attention_maps.png`)
-Fold 1, 229 validation images; the disc covers 1.8 % of an image. Share of positive glaucoma evidence inside the disc:
-frozen + logistic regression 2.1 % (mostly on the rim of the field of view), 2 open blocks 0.3 %, LoRA 0.8 %,
-LoRA + disc-mask head 30.8 % (45.5 % on glaucoma images, 17 times an even spread), CNN 5.6 % (8 x 8 grid).
+## Result 4: where the evidence is (`evidence_metrics.csv`, `figures/evidence_maps.png`, `evidence_figure.py`)
+Exact decomposition, no gradients: logit = bias + sum of per-patch contributions c (RETFound-Green models: c = w . t / 784
+on the mean-pooled patch tokens; CNN: class activation map on 8 x 8 cells). Signed maps, one symmetric colour scale per
+model. Fold 1, 229 validation images (32 glaucoma).
+
+| Model | Decision weight in disc, glaucoma / healthy (disc area 2.1 / 1.8 %) | Disc contrast (s.d.) | Positive patches | Positive / negative sum |
+| --- | --- | --- | --- | --- |
+| Frozen + logistic regression | 2.5 / 1.7 % | +0.45 / +0.29 | 72 % | +2.34 / -0.51 |
+| 2 open blocks | 2.5 / 2.2 % | -0.14 / -1.12 | 45 % | +0.40 / -0.85 |
+| LoRA | 2.0 / 1.5 % | +0.03 / +0.80 | 58 % | +0.65 / -0.61 |
+| LoRA + disc-mask head | 1.7 / 0.6 % | +2.71 / +5.29 | 4 % | +0.01 / -1.54 |
+| CNN (8 x 8) | 3.0 / 1.6 % | +2.02 / +0.99 | 17 % | +1.20 / -4.21 |
+
+The mask head makes the disc stand out (2.7 s.d.) but the decision weight in the disc stays near its area: the score
+comes from the whole image. Correction: the first version (`attention_maps.py` figure and csv) reported the share of
+POSITIVE evidence inside the disc (30.8 % for the mask head); with the mask head almost no patch is positive, so that
+share overstated the effect. The frozen model's evidence lies on the rim of the field of view.
