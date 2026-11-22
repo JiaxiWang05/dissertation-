@@ -14,9 +14,16 @@ plt.rcParams.update({'font.size': 9, 'axes.spines.top': False, 'axes.spines.righ
 PANELS = [('chaksu', 'Chákṣu, 5 folds (1,141 images)'),
           ('chaksu_pseudo', 'Chákṣu, likely fellow eyes in the same fold'),
           ('fairvlmed', 'FairVLMed, 5 folds (8,000 patients)')]
-NAMES = {'cnn': 'CNN from scratch', 'unfreeze': 'RETFound-Green,\nlast 2 blocks open'}
+NAMES = {'cnn': 'CNN from scratch', 'unfreeze': 'RETFound-Green,\nlast 2 blocks open', 'lora': 'RETFound-Green,\nLoRA, all 12 blocks'}
 REF = {'svm': 'SVM', 'logreg': 'Logistic regression', 'mlp_small': 'Small MLP', 'knn': 'kNN'}
-panels = [(t, title, pd.read_csv(f'final_{t}.csv')) for t, title in PANELS if Path(f'final_{t}.csv').exists()]
+def load(t):
+    d = pd.read_csv(f'final_{t}.csv')
+    if Path(f'final_{t}_lora.csv').exists():          # LoRA was run separately (MODELS=lora)
+        d = pd.concat([d, pd.read_csv(f'final_{t}_lora.csv')], ignore_index=True)
+    return d
+
+
+panels = [(t, title, load(t)) for t, title in PANELS if Path(f'final_{t}.csv').exists()]
 fig, axs = plt.subplots(1, len(panels), figsize=(3.9 * len(panels), 3.0), squeeze=False)
 for ax, (tag, title, d) in zip(axs[0], panels):
     ref_name = REF.get(d['best frozen-feature model'][0], d['best frozen-feature model'][0])

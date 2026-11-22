@@ -22,7 +22,13 @@ plt.rcParams.update({'font.size': 10, 'axes.spines.top': False, 'axes.spines.rig
 
 def final(tag):
     f = A17 / f'final_{tag}.csv'
-    return pd.read_csv(f).set_index('model') if f.exists() else None
+    if not f.exists():
+        return None
+    d = pd.read_csv(f)
+    lo = A17 / f'final_{tag}_lora.csv'                 # LoRA was run separately (MODELS=lora)
+    if lo.exists():
+        d = pd.concat([d, pd.read_csv(lo)], ignore_index=True)
+    return d.set_index('model')
 
 
 def fair_text(tag, model):
@@ -209,6 +215,8 @@ def ladder():
     if ch is not None:
         rows.append(('CNN from scratch (no foundation model)', ch.loc['cnn', 'AUPRC 3 seeds mean'], ch.loc['cnn', 'AUROC seed 0'], '#7fa7c7'))
         rows.append(('RETFound-Green, last 2 blocks opened', ch.loc['unfreeze', 'AUPRC 3 seeds mean'], ch.loc['unfreeze', 'AUROC seed 0'], BLUE))
+        if 'lora' in ch.index:
+            rows.append(('RETFound-Green, LoRA in all 12 blocks', ch.loc['lora', 'AUPRC 3 seeds mean'], ch.loc['lora', 'AUROC seed 0'], '#1d5f8a'))
     fig, ax = plt.subplots(figsize=(9, 0.42 * len(rows) + 1.0))
     ys = np.arange(len(rows))
     for y, (lab, ap, auc, c) in zip(ys, rows):
@@ -234,9 +242,13 @@ def approaches():
                                               ('Blocks 11-12\ntrained', LEARN), ('Linear head', LEARN)], unf, BLUE),
             ('C  From scratch (since 17 Nov)', [('Fundus image\n256 px', INP), ('5 conv blocks\n32-512 channels', LEARN),
                                                 ('Global pooling', LEARN), ('Linear head', LEARN)], cnn, '#7fa7c7')]
-    W, H = 13.0, 5.6
+    if ch is not None and 'lora' in ch.index:
+        rows.append(('D  LoRA (since 21 Nov)', [('Fundus image\n392 px', INP), ('RETFound-Green\n12 blocks, all frozen', FIX),
+                                              ('LoRA add-ons in\nall 12 blocks', LEARN), ('Linear head', LEARN)],
+                     f"{ch.loc['lora', 'AUPRC 3 seeds mean']:.2f}", '#1d5f8a'))
+    W, H = 13.0, 5.6 + 1.45 * (len(rows) - 3)
     fig = plt.figure(figsize=(W, H)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis('off')
-    ax.text(0.2, H - 0.3, 'Three ways to use the images (Chákṣu, out-of-fold AUPRC; guessing 0.14)', fontsize=13,
+    ax.text(0.2, H - 0.3, ('Three' if len(rows) == 3 else 'Four') + ' ways to use the images (Chákṣu, out-of-fold AUPRC; guessing 0.14)', fontsize=13,
             fontweight='bold', va='top', color=TEXT)
     bw, bh, gap, x0 = 1.75, 0.95, 0.38, 2.95
     for k, (title, boxes, score, col) in enumerate(rows):

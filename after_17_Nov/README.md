@@ -150,4 +150,15 @@ Every pre-trained weight frozen; low-rank add-ons on the attention layers (qkv, 
   alpha / r = 1, LoRA learning rate 0.00135, head 0.0010, class weight 0.28 x 6.13 = 1.7; 110,977 trainable weights
   (3.5 M for the 2 open blocks).
 - The top 8 trials all use attention-only add-ons with rank 4 or 8 and score 0.63-0.65 (2 open blocks: best 0.59).
-- Fair comparison (3 seeds, ordinary and fellow-eye folds): jobs 19551235, 19551236 (`MODELS=lora`).
+- Fair comparison (3 seeds; jobs 19551235, 19551236, `MODELS=lora`; `final_chaksu_lora.csv`, `final_chaksu_pseudo_lora.csv`):
+
+| Folds | LoRA fair AUPRC, 3 seeds (range) | AUROC (seed 0) | Healthy flagged at 90 % sens. | Minus frozen SVM (95 % CI) |
+| --- | --- | --- | --- | --- |
+| Ordinary | 0.544 (0.528-0.554) | 0.887 (0.861-0.910) | 27 % | +0.101 (0.026 to 0.177), better |
+| Likely fellow eyes together | 0.534 (0.471-0.610) | 0.812 (0.771-0.850) | 56 % (seed 0) | +0.049 (-0.033 to 0.135), tied |
+
+- LoRA against the 2 open blocks (seed 0 of each, paired, ordinary folds): AUPRC +0.024 (-0.032 to 0.085), tied;
+  AUROC +0.029 (0.006 to 0.052), better. LoRA trains 111k weights against 3.55 M.
+- On the fellow-eye folds the seed-0 LoRA run is the weakest of its three seeds (0.471 against 0.523 / 0.610), so its
+  paired test is a tie although the 3-seed mean stays above the frozen features; the 2 open blocks remain clearly
+  better there (+0.137). Both adaptations beat the frozen features on the ordinary folds.
