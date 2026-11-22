@@ -415,5 +415,82 @@ def cv_scheme():
     plt.close(fig)
 
 
-for f in [timeline, cv_scheme, finetune_diagram, weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
+# ---------------------------------------------------------------- every number of the results table
+def results_table_figure():
+    import ast
+    cp = pd.read_csv(A17 / 'confusion_percent.csv')
+    def frozen_flag(ds, clf):
+        r = cp[(cp['dataset'] == ds) & (cp['classifier'] == clf) & (cp['threshold rule'] == '90% sensitivity')]
+        return float(r['healthy flagged %'].iloc[0]) if len(r) else np.nan
+    names = {'cnn': 'CNN from scratch', 'unfreeze': '2 open blocks', 'lora': 'LoRA, all 12 blocks'}
+    cols = {'cnn': '#7fa7c7', 'unfreeze': BLUE, 'lora': '#1d5f8a'}
+    rows = []                                    # (group, label, dict)
+    for tag, group, ds in [('chaksu', 'Chákṣu', 'Chakshu'), ('chaksu_pseudo', 'Chákṣu, fellow-eye pairs together', None),
+                           ('fairvlmed', 'FairVLMed', 'FairVLMed')]:
+        d = final(tag)
+        if d is None:
+            continue
+        r0 = d.iloc[0]
+        fname = {'svm': 'SVM', 'mlp_small': 'small MLP', 'logreg': 'logistic regr.'}.get(r0['best frozen-feature model'], r0['best frozen-feature model'])
+        rows.append((group, f'Frozen features ({fname})', dict(ap=r0['frozen AUPRC'], rng=None, auc=r0['frozen AUROC'], auc_ci=None,
+                    flag=frozen_flag(ds, r0['best frozen-feature model']) if ds else np.nan, diff=0.0, dci=None, col=GRAY, ref=True)))
+        for m in ['cnn', 'unfreeze', 'lora']:
+            if m in d.index:
+                r = d.loc[m]
+                rows.append((group, names[m], dict(ap=r['AUPRC 3 seeds mean'], rng=ast.literal_eval(r['AUPRC 3 seeds range']),
+                            auc=r['AUROC seed 0'], auc_ci=ast.literal_eval(r['AUROC CI']), flag=r['healthy flagged % at 90 % sens'],
+                            diff=r['this minus frozen AUPRC'], dci=ast.literal_eval(r['diff CI']), col=cols[m], ref=False)))
+    # y positions with a gap between groups
+    ys, y, last = [], 0, None
+    for g, _, _ in rows:
+        if last is not None and g != last:
+            y += 0.8
+        ys.append(y); y += 1; last = g
+    ys = [max(ys) - v for v in ys]
+    fig, axs = plt.subplots(1, 4, figsize=(16, 0.42 * len(rows) + 1.8), sharey=True,
+                            gridspec_kw={'width_ratios': [1.1, 1, 0.9, 1.1]})
+    for yv, (g, lab, r) in zip(ys, rows):
+        a = axs[0]
+        a.barh(yv, r['ap'], color=r['col'], height=0.62)
+        if r['rng']:
+            a.plot(r['rng'], [yv, yv], c='k', lw=1.2)
+        a.text(r['ap'] + 0.015 if not r['rng'] else max(r['rng']) + 0.015, yv, f"{r['ap']:.2f}", va='center', fontsize=8.5)
+        a = axs[1]
+        a.plot(r['auc'], yv, 'o', color=r['col'] if not r['ref'] else '#666666', ms=7)
+        if r['auc_ci']:
+            a.plot(r['auc_ci'], [yv, yv], c=r['col'], lw=2)
+        a.text(0.955, yv, f"{r['auc']:.2f}", va='center', fontsize=8.5)
+        a = axs[2]
+        if not np.isnan(r['flag']):
+            a.barh(yv, r['flag'], color=r['col'], height=0.62)
+            a.text(r['flag'] + 1.5, yv, f"{r['flag']:.0f} %", va='center', fontsize=8.5)
+        else:
+            a.text(2, yv, 'not computed', va='center', fontsize=8, color=MUTED)
+        a = axs[3]
+        if r['ref']:
+            a.plot(0, yv, 'D', color='#666666', ms=5)
+            a.text(0.012, yv, 'reference', va='center', fontsize=8, color=MUTED)
+        else:
+            lo, hi = r['dci']
+            c = 'tab:green' if lo > 0 else 'tab:red' if hi < 0 else '#444444'
+            a.plot([lo, hi], [yv, yv], c=c, lw=2); a.plot(r['diff'], yv, 'o', color=c, ms=6)
+            a.text(hi + 0.01, yv, f"{r['diff']:+.2f}  " + ('better' if lo > 0 else 'worse' if hi < 0 else 'tied'), va='center', fontsize=8.5, color=c)
+    axs[0].set_yticks(ys, [lab for _, lab, _ in rows])
+    gy = {}
+    for yv, (g, _, _) in zip(ys, rows):
+        gy.setdefault(g, []).append(yv)
+    for g, v in gy.items():
+        axs[0].text(-0.62, max(v) + 0.55, g, transform=axs[0].get_yaxis_transform(), fontsize=10, fontweight='bold', color=TEXT)
+    axs[0].set_xlim(0, 0.95); axs[0].set_title('AUPRC (bar: mean of 3 seeds; line: seed range)', fontsize=10)
+    axs[1].set_xlim(0.6, 1.0); axs[1].set_title('AUROC, seed 0 (line: 95 % CI)', fontsize=10)
+    axs[2].set_xlim(0, 100); axs[2].set_title('Healthy flagged at 90 % sensitivity', fontsize=10)
+    axs[3].axvline(0, c=GRAY, ls='--', lw=1); axs[3].set_xlim(-0.25, 0.35)
+    axs[3].set_title('AUPRC minus best frozen model (seed 0, 95 % CI)', fontsize=10)
+    fig.suptitle('Every result of the fair comparison (out-of-fold; AUPRC of guessing: Chákṣu 0.14, FairVLMed 0.50)', fontsize=11, y=0.995)
+    fig.tight_layout(rect=(0.07, 0, 1, 0.97))
+    fig.savefig(HERE / 'results_table.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+for f in [results_table_figure, timeline, cv_scheme, finetune_diagram, weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
     f(); print('made', f.__name__)
