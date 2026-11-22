@@ -1,0 +1,11 @@
+host: cn027.ham8.dur.ac.uk  CMD=python cache_extra.py  Sun 22 Nov 11:24:49 GMT 2026
+0 Train/1.0_Original_Fundus_Images/Remidio/17521.jpg disc share 0.0137
+200 Train/1.0_Original_Fundus_Images/Remidio/IMG_2639.JPG disc share 0.0182
+400 Train/1.0_Original_Fundus_Images/Remidio/IMG_3214.JPG disc share 0.0214
+600 Train/1.0_Original_Fundus_Images/Remidio/IMG_3441.JPG disc share 0.0186
+800 Train/1.0_Original_Fundus_Images/Remidio/IMG_3692.JPG disc share 0.0174
+1000 Train/1.0_Original_Fundus_Images/Bosch/P6_Image1.JPG disc share 0.0098
+1200 Test/1.0_Original_Fundus_Images/Remidio/IMG_4434.JPG disc share 0.0234
+empty masks: 0 mean disc share 0.0182
+saved (1345, 392, 392) (1345, 3, 392, 392)
+done Sun 22 Nov 11:33:06 GMT 2026
