@@ -1,0 +1,62 @@
+host: gn1.ham8.dur.ac.uk  CMD=python layer_features.py  CFG=  Sun 22 Nov 11:23:17 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-136cc374-a944-b0eb-400f-16f434353783)
+  MIG 1g.18gb     Device  0: (UUID: MIG-bc48d007-31a3-5b73-9519-04c72a909f32)
+/nobackup/tggq61/envs/miniforge3/envs/glaucoma/lib/python3.11/site-packages/timm/models/_helpers.py:42: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  checkpoint = torch.load(checkpoint_path, map_location=device)
+block 12 vs model output, max abs diff 0.0
+block 12 vs stored 10 Nov features, max abs diff 0.03953394293785095
+check: 10 Nov SVM on block 12, AUPRC 0.4274 stored 0.4267
+block 1 logreg AUPRC 0.2292 AUROC 0.6731
+block 1 svm AUPRC 0.2516 AUROC 0.6718
+block 2 logreg AUPRC 0.2708 AUROC 0.6819
+block 2 svm AUPRC 0.2408 AUROC 0.6757
+block 3 logreg AUPRC 0.2962 AUROC 0.7392
+block 3 svm AUPRC 0.2625 AUROC 0.713
+block 4 logreg AUPRC 0.2799 AUROC 0.6927
+block 4 svm AUPRC 0.2552 AUROC 0.6991
+block 5 logreg AUPRC 0.3082 AUROC 0.7485
+block 5 svm AUPRC 0.3148 AUROC 0.7389
+block 6 logreg AUPRC 0.3057 AUROC 0.7365
+block 6 svm AUPRC 0.2829 AUROC 0.7326
+block 7 logreg AUPRC 0.3348 AUROC 0.7428
+block 7 svm AUPRC 0.3229 AUROC 0.7404
+block 8 logreg AUPRC 0.3084 AUROC 0.7306
+block 8 svm AUPRC 0.2934 AUROC 0.7453
+block 9 logreg AUPRC 0.2647 AUROC 0.6638
+block 9 svm AUPRC 0.27 AUROC 0.7165
+block 10 logreg AUPRC 0.2738 AUROC 0.7076
+block 10 svm AUPRC 0.3369 AUROC 0.7675
+block 11 logreg AUPRC 0.3265 AUROC 0.7826
+block 11 svm AUPRC 0.397 AUROC 0.8059
+block 12 logreg AUPRC 0.4118 AUROC 0.8108
+block 12 svm AUPRC 0.4132 AUROC 0.8115
+blocks 9-12 joined logreg AUPRC 0.3665 AUROC 0.7947
+blocks 9-12 joined svm AUPRC 0.4028 AUROC 0.8115
+              features classifier     AUPRC     AUROC        AUPRC CI  minus block 12           diff CI
+0              block 1     logreg  0.229178  0.673140  [0.188, 0.285]       -0.182657  [-0.263, -0.117]
+1              block 1        svm  0.251550  0.671757  [0.201, 0.314]       -0.161625  [-0.241, -0.091]
+2              block 2     logreg  0.270772  0.681925  [0.216, 0.339]       -0.141063  [-0.218, -0.068]
+3              block 2        svm  0.240769  0.675675    [0.194, 0.3]       -0.172406  [-0.246, -0.104]
+4              block 3     logreg  0.296209  0.739169  [0.241, 0.364]       -0.115626  [-0.191, -0.043]
+5              block 3        svm  0.262488  0.713016  [0.214, 0.324]       -0.150688  [-0.227, -0.081]
+6              block 4     logreg  0.279915  0.692750  [0.227, 0.352]       -0.131920  [-0.213, -0.057]
+7              block 4        svm  0.255189  0.699083   [0.21, 0.322]       -0.157986  [-0.231, -0.089]
+8              block 5     logreg  0.308246  0.748528  [0.253, 0.379]       -0.103589   [-0.178, -0.04]
+9              block 5        svm  0.314844  0.738883  [0.257, 0.388]       -0.098331  [-0.174, -0.025]
+10             block 6     logreg  0.305705  0.736519  [0.251, 0.377]       -0.106130  [-0.182, -0.039]
+11             block 6        svm  0.282882  0.732569  [0.234, 0.353]       -0.130293  [-0.201, -0.062]
+12             block 7     logreg  0.334787  0.742801  [0.275, 0.409]       -0.077048  [-0.153, -0.009]
+13             block 7        svm  0.322940  0.740386  [0.262, 0.397]       -0.090235  [-0.161, -0.023]
+14             block 8     logreg  0.308442  0.730575  [0.251, 0.387]       -0.103393  [-0.174, -0.036]
+15             block 8        svm  0.293414  0.745273  [0.244, 0.364]       -0.119762   [-0.18, -0.058]
+16             block 9     logreg  0.264715  0.663806   [0.21, 0.339]       -0.147120   [-0.218, -0.08]
+17             block 9        svm  0.269971  0.716539  [0.222, 0.335]       -0.143205  [-0.207, -0.086]
+18            block 10     logreg  0.273811  0.707620  [0.224, 0.345]       -0.138024  [-0.204, -0.079]
+19            block 10        svm  0.336904  0.767457  [0.279, 0.415]       -0.076271  [-0.131, -0.024]
+20            block 11     logreg  0.326472  0.782639  [0.272, 0.397]       -0.085363  [-0.144, -0.032]
+21            block 11        svm  0.397031  0.805861  [0.327, 0.476]       -0.016144   [-0.076, 0.041]
+22            block 12     logreg  0.411835  0.810761  [0.343, 0.501]        0.000000        [0.0, 0.0]
+23            block 12        svm  0.413176  0.811538  [0.345, 0.499]        0.000000        [0.0, 0.0]
+24  blocks 9-12 joined     logreg  0.366473  0.794667  [0.306, 0.446]       -0.045362    [-0.093, -0.0]
+25  blocks 9-12 joined        svm  0.402772  0.811468  [0.338, 0.485]       -0.010403   [-0.053, 0.029]
+done Sun 22 Nov 11:32:29 GMT 2026
