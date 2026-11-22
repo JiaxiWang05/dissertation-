@@ -205,9 +205,10 @@ def fig5_test():
                            (axs[2], "at Youden's J threshold (from out-of-fold scores)", "Youden's J threshold")]:
         r = res[key]
         m = np.array([[r['TP'], r['FN']], [r['FP'], r['TN']]])
-        ax.imshow(m, cmap='Blues', vmin=0, vmax=m.max() * 1.6)
+        pct = 100 * m / m.sum(axis=1, keepdims=True)              # percent of each true class (row)
+        ax.imshow(pct, cmap='Blues', vmin=0, vmax=160)
         for (i, j), v in np.ndenumerate(m):
-            ax.text(j, i, str(v), ha='center', va='center', fontsize=14)
+            ax.text(j, i, f'{v}\n({pct[i, j]:.0f} %)', ha='center', va='center', fontsize=13, linespacing=1.4)
         ax.set_xticks([0, 1])
         ax.set_xticklabels(['called glaucoma', 'called healthy'])
         ax.set_yticks([0, 1])
