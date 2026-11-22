@@ -123,3 +123,31 @@ on the same images and folds. Difference and CI: seed 0, paired, 2,000 resamples
   fair score; the fine-tuned model by 0.07.
 - **Fine-tuning the last two RETFound-Green blocks is the only change so far that beats the frozen features** (Chakshu).
 - A CNN from scratch does not reach the frozen features on either dataset, even with 8,000 FairVLMed patients.
+
+### Result 5b: likely fellow eyes kept in the same fold (`FOLDS=pseudo`, job 19550228, `final_chaksu_pseudo.csv`)
+
+Folds rebuilt with StratifiedGroupKFold on the pseudo-patients of `../after_10_Nov/pseudo_patients.csv` (433 likely
+fellow-eye pairs, plus the Bosch pairs and copies); the frozen models are refitted on the same new folds.
+
+| Model | Fair AUPRC, 3 seeds (range) | AUROC (seed 0) | Healthy flagged at 90 % sens. | Minus frozen SVM (95 % CI) | Same model, ordinary folds |
+| --- | --- | --- | --- | --- | --- |
+| Frozen SVM | 0.421 | 0.809 | - | reference | 0.427 |
+| Frozen logistic regression | 0.418 | 0.811 | - | - | 0.415 |
+| CNN from scratch | 0.322 (0.299-0.363) | 0.693 | 82 % | -0.122 (-0.207 to -0.035), worse | 0.371 / 0.408 |
+| RETFound-Green, last 2 blocks open | 0.508 (0.453-0.558) | 0.881 | 29 % | +0.137 (0.060 to 0.210), better | 0.521 / 0.522 |
+
+- The frozen models do not change (0.421 against 0.427): as found on 10 Nov, fellow eyes hardly matter for them.
+- The fine-tuned model keeps its advantage (0.51 against 0.52 on the ordinary folds; still clearly above the frozen
+  features), so its gain is not explained by fellow eyes on both sides of the split.
+- The CNN drops further (0.32) and is now clearly worse than the frozen features.
+
+## Result 6 (search stage): LoRA on all 12 RETFound-Green blocks (`lora_cv.py`, array 19550229, 45 trials)
+
+Every pre-trained weight frozen; low-rank add-ons on the attention layers (qkv, proj) or also the MLP layers of all
+12 blocks; linear head. 6 workers on 18 GB H200 slices, 75 min.
+
+- Best search AUPRC 0.653 (folds 0.767 / 0.674 / 0.625 / 0.487 / 0.712), mean AUROC 0.911: rank 4, attention only,
+  alpha / r = 1, LoRA learning rate 0.00135, head 0.0010, class weight 0.28 x 6.13 = 1.7; 110,977 trainable weights
+  (3.5 M for the 2 open blocks).
+- The top 8 trials all use attention-only add-ons with rank 4 or 8 and score 0.63-0.65 (2 open blocks: best 0.59).
+- Fair comparison (3 seeds, ordinary and fellow-eye folds): jobs 19551235, 19551236 (`MODELS=lora`).
