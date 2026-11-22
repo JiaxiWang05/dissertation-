@@ -492,5 +492,107 @@ def results_table_figure():
     plt.close(fig)
 
 
-for f in [results_table_figure, timeline, cv_scheme, finetune_diagram, weight_confusion, approaches, block_diagram, class_weight, searches, datasets, ladder]:
+# ---------------------------------------------------------------- LoRA, technical diagram
+def lora_diagram():
+    FROZEN, TRAIN, IO = '#ecebe6', '#f8e0d6', '#ffffff'
+    FE, TE = '#8a8a84', '#c0583a'
+    W, H = 13.0, 7.6
+    fig = plt.figure(figsize=(W, H + 1.3)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(-1.3, H); ax.axis('off')
+
+    def rbox(x, y, w, h, t, fc, ec, bold=False, fs=10.5):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle='round,pad=0,rounding_size=0.06', fc=fc, ec=ec, lw=1.0))
+        ax.text(x + w / 2, y + h / 2, t, ha='center', va='center', fontsize=fs, color=TEXT,
+                fontweight='bold' if bold else 'normal')
+
+    def arr(x1, y1, x2, y2, col=EDGE):
+        ax.annotate('', xy=(x2, y2), xytext=(x1, y1), arrowprops=dict(arrowstyle='-|>', color=col, lw=1.1, mutation_scale=11))
+
+    ax.text(0.4, H - 0.25, 'LoRA: what is added to each attention layer', fontsize=14, fontweight='bold', va='top', color=TEXT)
+    # left: one linear layer with its LoRA branch
+    ax.text(0.4, H - 0.85, 'One linear layer (here attn.qkv, 384 -> 1152)', fontsize=11.5, fontweight='bold', va='top', color=TEXT)
+    rbox(2.3, 5.55, 2.4, 0.5, 'input x: 384 numbers per token', IO, EDGE, fs=10)
+    arr(3.5, 5.55, 2.2, 4.75); arr(3.5, 5.55, 4.8, 4.75)
+    rbox(0.6, 3.55, 2.9, 1.15, 'W  (pre-trained)\n1152 x 384 = 442,368\nfrozen', FROZEN, FE, fs=10)
+    rbox(3.9, 4.25, 1.9, 0.45, 'A: 384 -> 4', TRAIN, TE, bold=True, fs=10)
+    arr(4.85, 4.25, 4.85, 3.95, TE)
+    rbox(3.9, 3.5, 1.9, 0.45, 'B: 4 -> 1152', TRAIN, TE, bold=True, fs=10)
+    ax.text(5.95, 4.0, 'rank r = 4\nscale alpha / r = 1\nB starts at 0', fontsize=9.5, color=TE, va='center')
+    arr(2.05, 3.55, 3.2, 2.75); arr(4.85, 3.5, 3.7, 2.75, TE)
+    ax.add_patch(Circle((3.45, 2.55), 0.22, fc='white', ec=EDGE, lw=1.0)); ax.text(3.45, 2.55, '+', ha='center', va='center', fontsize=14)
+    arr(3.45, 2.33, 3.45, 1.95)
+    rbox(1.9, 1.45, 3.1, 0.5, 'y = W x + B(A x)', IO, EDGE, bold=True, fs=11)
+    ax.text(0.6, 1.05, 'A and B together: 384 x 4 + 4 x 1152 = 6,144 weights (1.4 % of W).', fontsize=10, color=TEXT, va='top')
+    ax.text(0.6, 0.7, 'Because B starts at zero, training starts exactly from the pre-trained model.', fontsize=10, color=TEXT, va='top')
+
+    # right: where it sits and the training recipe
+    x0 = 7.6
+    ax.text(x0, H - 0.85, 'Where it sits', fontsize=11.5, fontweight='bold', va='top', color=TEXT)
+    rows = [('Image 392 x 392 px -> 784 patches', IO, EDGE, False)] + \
+           [(f'Block {b}: LoRA on qkv and proj', TRAIN, TE, True) for b in (1, 2)] + [('...', 'white', 'white', False)] + \
+           [(f'Block {b}: LoRA on qkv and proj', TRAIN, TE, True) for b in (11, 12)] + \
+           [('Average of patch tokens: 384 features', FROZEN, FE, False), ('Linear head 384 -> 1 (trained)', TRAIN, TE, True)]
+    y = H - 1.55
+    for t, fc, ec, b in rows:
+        rbox(x0, y, 4.9, 0.36, t, fc, ec, bold=b, fs=9.8); y -= 0.48
+    ax.text(x0, y + 0.05, 'MLP layers, norms, patch embedding: frozen', fontsize=9.5, color=MUTED, va='top')
+    y -= 0.5
+    ax.text(x0, y, 'Trained weights', fontsize=11.5, fontweight='bold', va='top', color=TE)
+    for i, l in enumerate(['qkv 6,144 + proj 3,072 = 9,216 per block', 'x 12 blocks = 110,592, + head 385 = 110,977',
+                           '(2 open blocks: 3.55 M; whole network: 22 M)']):
+        ax.text(x0, y - 0.36 - 0.29 * i, l, fontsize=10, color=TEXT, va='top')
+    y -= 1.45
+    ax.text(x0, y, 'Training (Optuna, 45 trials)', fontsize=11.5, fontweight='bold', va='top', color=TEXT)
+    for i, l in enumerate(['Searched: rank 4/8/16, alpha/r 1/2, attention or attention + MLP',
+                           'Chosen: rank 4, alpha/r 1, attention only',
+                           'AdamW: LoRA lr 0.00135, head lr 0.0010, wd 0.0007',
+                           'Weighted cross-entropy, glaucoma x 1.7; batch 32; 5-8 epochs']):
+        ax.text(x0, y - 0.36 - 0.29 * i, l, fontsize=10, color=TEXT, va='top')
+    fig.savefig(HERE / 'lora_diagram.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+# ---------------------------------------------------------------- CNN from scratch, technical diagram
+def cnn_diagram():
+    TRAIN, IO, TE = '#dde8f2', '#ffffff', BLUE
+    W, H = 13.0, 5.6
+    fig = plt.figure(figsize=(W, H)); ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis('off')
+    ax.text(0.4, H - 0.25, 'CNN from scratch: the architecture Optuna chose (Chákṣu)', fontsize=14, fontweight='bold', va='top',
+            color=TEXT)
+    stages = [('Image', '3 x 256 x 256', None), ('Block 1', '32 x 128 x 128', '2,464'), ('Block 2', '64 x 64 x 64', '51,328'),
+              ('Block 3', '128 x 32 x 32', '205,056'), ('Block 4', '256 x 16 x 16', '819,712'),
+              ('Block 5', '512 x 8 x 8', '3,277,824'), ('Average pool', '512', None), ('Head', '1 score', '513')]
+    x, y0 = 0.4, 3.15
+    for i, (name, shape, n) in enumerate(stages):
+        h = 2.2 if i == 0 else (max(0.5, 2.2 / 2 ** (i - 0.0) * 1.6) if i <= 5 else 0.5)
+        h = [2.2, 2.0, 1.75, 1.5, 1.25, 1.0, 0.55, 0.45][i]
+        w = 1.25
+        fc = IO if name == 'Image' else TRAIN
+        ax.add_patch(FancyBboxPatch((x, y0 - h / 2), w, h, boxstyle='round,pad=0,rounding_size=0.06', fc=fc,
+                                    ec=EDGE if name == 'Image' else TE, lw=1.0))
+        ax.text(x + w / 2, y0 + h / 2 + 0.22, name, ha='center', fontsize=10.5, fontweight='bold', color=TEXT)
+        ax.text(x + w / 2, y0, shape.replace(' x ', '\nx ', 1) if i <= 5 else shape, ha='center', va='center', fontsize=9.5,
+                color=TEXT)
+        if n:
+            ax.text(x + w / 2, y0 - h / 2 - 0.25, n, ha='center', va='top', fontsize=9, color=MUTED)
+        if i < len(stages) - 1:
+            ax.annotate('', xy=(x + w + 0.27, y0), xytext=(x + w + 0.03, y0),
+                        arrowprops=dict(arrowstyle='-|>', color=EDGE, lw=1.1, mutation_scale=11))
+        x += w + 0.3
+    ax.text(0.4, 1.6, 'Grey numbers: weights per stage; total 4,356,897, all trained from random start (FairVLMed: 1 grey '
+            'channel, 4,355,297).', fontsize=10, color=MUTED, va='top')
+    ax.text(0.4, 1.17, 'Each block: 5 x 5 convolution -> batch norm -> ReLU -> 2 x 2 max-pool (halves the size); channels double '
+            'from 32 to 512.', fontsize=10.5, color=TEXT, va='top')
+    ax.text(0.4, 0.8, 'Searched (Optuna, 61 trials Chákṣu / 31 FairVLMed): 2-5 blocks, first channels 8/16/32, kernel 3/5, '
+            'dropout, lr, wd, batch.', fontsize=10.5, color=TEXT, va='top')
+    ax.text(0.4, 0.43, 'Chákṣu: AdamW lr 0.00014, wd 0.018, batch 32, dropout 0.02, glaucoma x 2.2, 22-42 epochs; '
+            'flips and shifts of up to 8 px.', fontsize=10.5, color=TEXT, va='top')
+    fig.savefig(HERE / 'cnn_diagram.png', dpi=200, facecolor='white')
+    plt.close(fig)
+
+
+ALL = [results_table_figure, timeline, cv_scheme, finetune_diagram, lora_diagram, cnn_diagram, weight_confusion, approaches,
+       block_diagram, class_weight, searches, datasets, ladder]
+for f in ALL:
+    if len(sys.argv) > 1 and f.__name__ not in sys.argv[1:]:
+        continue
     f(); print('made', f.__name__)
