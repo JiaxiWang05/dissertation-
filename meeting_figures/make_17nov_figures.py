@@ -48,9 +48,10 @@ def block_diagram():
         return f'fair AUPRC {r["AUPRC 3 seeds mean"]:.2f}\n(3 seeds {ast.literal_eval(r["AUPRC 3 seeds range"])[0]:.2f}-' \
                f'{ast.literal_eval(r["AUPRC 3 seeds range"])[1]:.2f});\n{v} {frozen_label} {r["frozen AUPRC"]:.2f}'
 
-    pseudo = 'running' if ps is None else \
-        '; '.join(f'{ {"cnn": "CNN", "unfreeze": "unfrozen"}[m]} {ps.loc[m, "AUPRC 3 seeds mean"]:.2f}' for m in ps.index) + \
-        f'\nfrozen SVM / LR {ps["frozen AUPRC"].iloc[0]:.2f}'
+    pseudo = 'running' if ps is None else (
+        f"fine-tuned {ps.loc['unfreeze', 'AUPRC 3 seeds mean']:.2f}: still better\n"
+        f"than frozen {ps['frozen AUPRC'].iloc[0]:.2f}; CNN {ps.loc['cnn', 'AUPRC 3 seeds mean']:.2f} (worse).\n"
+        "Not a fellow-eye effect")
     rows = [
         ('Confusion matrices in %;\nChákṣu split by camera',
          'Rows normalised by the true\nclass; out-of-fold scores;\nthree Chákṣu cameras',
