@@ -12,6 +12,23 @@ All image models are LoRA RETFound-Green with its 17 Nov Optuna setting unchange
 | `attention_maps.py` | exact per-patch evidence maps; share of evidence inside the expert disc |
 | `summarise.py`, `make_figures.py` | statistics (`grounding_summary.csv`, `camera_holdout.csv`) and figures |
 
+## Ground-truth disc masks (what the mask head learns from)
+- Source: the masks shipped with Ch&aacute;k&#7779;u, `Chaksu/{Train|Test}/5.0_OD_OC_Mean_Median_Majority_STAPLE/<camera>/Disc/Majority/<stem>.tif`
+  = the dataset's majority fusion of the experts' optic-disc segmentations (the Mean, Median and STAPLE versions are not
+  used). Ch&aacute;k&#7779;u has disc masks only, no cup masks. No mask is generated here: nothing is derived from a box or from
+  pixel contrast.
+- Reading (`cache_extra.py`): PIL, 8-bit greyscale, values 0 / 255; each mask must have the exact pixel size of its photo
+  (all 1,345 do); divided by 255, bilinear resize to 392 x 392 (the same plain resize as the photos), stored as 0-255 in
+  `chaksu_mask392.npy` in the same row order as the cached photos. 0 empty masks; disc = 1.8 % of an image on average.
+- Training (`grounding_cv.py`): same flip / shift (or rotation) as the photo, then 14 x 14 average pooling -> 28 x 28 grid
+  matching the ViT patches; each value = share of that patch inside the disc (soft target). Loss = lambda x (BCE + soft
+  Dice). Validation Dice counts a patch as disc when >= 50 % of it is inside.
+- Checks (`mask_check.py`, 24 Nov): 215 of 1,345 masks have more than one connected region (Remidio 191, Bosch 21,
+  Forus 3); the extra regions are tiny (median 0.002 %, max 0.8 % of the disc pixels) and are kept as they are. No photo
+  has an EXIF rotation, so masks and cached photos are aligned.
+- The expert disc BOX (disc-crop input only, `pipeline/disc_boxes.py`) comes from the same masks: threshold > 127, largest
+  connected region, bounding box; centre = box centre, diameter = mean of box width and height; crop side = 3 diameters.
+
 ## Result 1: earlier blocks are worse (`layer_features.csv`, `figures/layers.png`)
 Block 12 (the features used so far): AUPRC 0.41 (logistic regression and SVM). Block 11: 0.33 / 0.40. Blocks 1-10:
 0.23-0.34, all worse (paired CI below 0). Blocks 9-12 joined: 0.37 / 0.40, not better. Check: the 10 Nov SVM setting
