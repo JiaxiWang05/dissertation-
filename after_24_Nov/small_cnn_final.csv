@@ -1,0 +1,2 @@
+setting,parameters,search AUPRC,trials,AUPRC 3 seeds mean,AUPRC range,AUROC seed 0,AUROC CI,minus frozen SVM AUPRC,CI,healthy flagged % at 90 % sens
+"{'blocks': 2, 'c0': 16, 'k': 5, 'pool': 'p4', 'dropout': 0.4363789828794351, 'lr': 0.0007264325636583583, 'wd': 0.04376022291489408, 'batch': 32}",14609,0.22713928622642485,43,0.15419811057357014,"[0.15, 0.158]",0.5260798929663608,"[0.474, 0.575]",-0.2690705698846095,"[-0.351, -0.199]",90.41794087665647

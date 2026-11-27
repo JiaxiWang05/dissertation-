@@ -1,0 +1,10 @@
+host: gn1.ham8.dur.ac.uk  CMD=python small_cnn.py  CFG=  Fri 27 Nov 22:46:14 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-136cc374-a944-b0eb-400f-16f434353783)
+  MIG 1g.18gb     Device  0: (UUID: MIG-a8533a2c-463f-57f9-9ab8-a9c5a0335c51)
+[I 2026-11-27 22:46:16,526] Using an existing study with `study_name='small_cnn_chaksu'` instead of creating a new one.
+best setting {'blocks': 2, 'c0': 16, 'k': 5, 'pool': 'p4', 'dropout': 0.4363789828794351, 'lr': 0.0007264325636583583, 'wd': 0.04376022291489408, 'batch': 32} search AUPRC 0.2271 trials 43
+seed 0 fair AUPRC 0.1576 AUROC 0.5261 | epochs [11, 8, 16, 4, 45] fixed [12, 13, 9, 13, 9]
+seed 1 fair AUPRC 0.1499 AUROC 0.5159 | epochs [1, 27, 6, 5, 6] fixed [6, 5, 5, 6, 5]
+seed 2 fair AUPRC 0.1551 AUROC 0.5387 | epochs [7, 23, 26, 10, 26] fixed [24, 18, 16, 24, 16]
+{'setting': {'blocks': 2, 'c0': 16, 'k': 5, 'pool': 'p4', 'dropout': 0.4363789828794351, 'lr': 0.0007264325636583583, 'wd': 0.04376022291489408, 'batch': 32}, 'parameters': 14609, 'search AUPRC': 0.22713928622642485, 'trials': 43, 'AUPRC 3 seeds mean': 0.15419811057357014, 'AUPRC range': [0.15, 0.158], 'AUROC seed 0': 0.5260798929663608, 'AUROC CI': [0.474, 0.575], 'minus frozen SVM AUPRC': -0.2690705698846095, 'CI': [-0.351, -0.199], 'healthy flagged % at 90 % sens': 90.41794087665647}
+done Fri 27 Nov 22:56:37 GMT 2026

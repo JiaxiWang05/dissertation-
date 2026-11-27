@@ -30,9 +30,7 @@ CUR = [('small_cnn', 'Small CNN from scratch'), ('blocks2', '2 open blocks'), ('
 FAIR = {'blocks2': (6, 8), 'lora': (5, 8), 'mask025': (5, 8)}         # fixed epochs of the fair runs (17 / 22 Nov logs)
 if (HERE / 'g_lora_blocks.npz').exists():
     g = np.load(HERE / 'g_lora_blocks.npz'); f = np.concatenate([g[f'fixed{i}'] for i in range(3)]); FAIR['lora_blocks'] = (f.min(), f.max())
-if (HERE / 'small_cnn_final.csv').exists():
-    import ast
-    FAIR['small_cnn'] = tuple(ast.literal_eval(pd.read_csv(HERE / 'small_cnn_final.csv')['fixed epochs'][0])) if 'fixed epochs' in pd.read_csv(HERE / 'small_cnn_final.csv') else None
+FAIR['small_cnn'] = (5, 24)                                          # fixed epochs of the small-CNN fair runs (logs/final_cnn, 3 seeds)
 avail = [(k, n) for k, n in CUR if (HERE / f'curves_{k}.json').exists()]
 if avail:
     fig, axes = plt.subplots(2, len(avail), figsize=(3.6 * len(avail), 6.4), squeeze=False)
@@ -50,16 +48,25 @@ if avail:
             b.plot(ep, va[f_], color=RED, alpha=0.18, lw=0.8)
         b.plot(ep, va.mean(0), color=RED, lw=2, label='validation AUPRC'); b.axhline(0.14, color='#999999', ls=':', lw=1)
         best = int(ep[np.argmin(vl.mean(0))])
+        after = ep >= best                                   # gap between the mean curves after the lowest validation loss
+        a.fill_between(ep[after], tl.mean(0)[after], vl.mean(0)[after], where=vl.mean(0)[after] > tl.mean(0)[after],
+                       color=ORANGE, alpha=0.13, lw=0, label='overfitting gap')
+        if k != 'small_cnn':
+            a.annotate('validation loss\nstarts rising', xy=(best, vl.mean(0)[best - 1]), xytext=(best + 7, a.get_ylim()[1] * 0.88 if False else vl.mean(0).max() * 1.02),
+                       fontsize=8, color='#2e8b57', arrowprops=dict(arrowstyle='->', color='#2e8b57', lw=0.8))
+        else:
+            a.text(0.55, 0.12, 'training loss stays flat:\nthe network does not learn\n(underfits, no overfitting)', transform=a.transAxes,
+                   ha='center', fontsize=8.5, color=TEXT)
         for a_ in (a, b):
             if FAIR.get(k):
                 a_.axvspan(FAIR[k][0], FAIR[k][1], color='#2e8b57', alpha=0.12, lw=0)
             a_.axvline(best, color='#2e8b57', ls='--', lw=1)
-        a.set_title(f"{name}\n{d.get('trainable', '')} trained weights" if d.get('trainable') else name, fontsize=10.5)
-        a.set_ylim(0, min(2.5, max(tl.max(), vl.max()) * 1.05)); b.set_ylim(0, 1); b.set_xlabel('epoch')
+        a.set_title(f"{name}\n{d['trainable']:,} trained weights" if d.get('trainable') else f"{name}\n14,609 trained weights", fontsize=10.5)
+        a.set_ylim(0, min(2.5, max(tl.max(), vl.max()) * 1.25)); b.set_ylim(0, 1); b.set_xlabel('epoch')
         if j == 0:
-            a.set_ylabel('weighted cross-entropy'); b.set_ylabel('validation AUPRC'); a.legend(frameon=False, fontsize=8.5)
+            a.set_ylabel('weighted cross-entropy'); b.set_ylabel('validation AUPRC'); a.legend(frameon=False, fontsize=8.5, loc='upper right')
     fig.suptitle('Training curves, seed 0, all 5 folds trained without early stopping (thin: each fold; thick: mean). Dashed: epoch of the lowest mean '
-                 'validation loss; green band: epochs used in the fair runs; dotted: AUPRC of guessing (0.14)', fontsize=10, y=0.995)
+                 'validation loss;\ngreen band: epochs used in the fair runs; shaded orange: overfitting gap; dotted: AUPRC of guessing (0.14)', fontsize=10, y=0.995)
     fig.tight_layout(rect=(0, 0, 1, 0.95)); fig.savefig(OUT / 'training_curves.png', dpi=170); plt.close(fig)
     print('curves:', [k for k, _ in avail])
 

@@ -1,0 +1,35 @@
+after_17_Nov/logs/n17cpu_19545173.out:Fri 20 Nov 11:27:45
+after_17_Nov/logs/n17cpu_19545209.out:Fri 20 Nov 11:29:02
+after_17_Nov/logs/n17gpu_19545210_0.out:MODE=cnn_cv.py chaksu  task=0  Fri 20 Nov 12:24:30
+after_17_Nov/logs/n17gpu_19545210_1.out:MODE=cnn_cv.py chaksu  task=1  Fri 20 Nov 12:34:00
+after_17_Nov/logs/n17gpu_19545211_0.out:MODE=cnn_cv.py fairvlmed  task=0  Fri 20 Nov 13:09:31
+after_17_Nov/logs/n17gpu_19545211_1.out:MODE=cnn_cv.py fairvlmed  task=1  Fri 20 Nov 13:10:10
+after_17_Nov/logs/n17gpu_19545212_0.out:MODE=unfreeze_cv.py  task=0  Fri 20 Nov 14:52:08
+after_17_Nov/logs/n17gpu_19545212_1.out:MODE=unfreeze_cv.py  task=1  Fri 20 Nov 14:56:40
+after_17_Nov/logs/n17gpu_19545212_2.out:MODE=unfreeze_cv.py  task=2  Fri 20 Nov 15:04:22
+after_17_Nov/logs/n17gpu_19550043_4294967294.out:MODE=final_compare.py chaksu  task=  Sat 21 Nov 15:20:43
+after_17_Nov/logs/n17gpu_19550044_4294967294.out:MODE=final_compare.py fairvlmed  task=  Sat 21 Nov 15:20:44
+after_17_Nov/logs/n17gpu_19550045_4294967294.out:MODE=final_compare.py chaksu  task=  Sat 21 Nov 15:34:52
+after_17_Nov/logs/n17gpu_19550102_4294967294.out:MODE=final_compare.py chaksu  task=  Sat 21 Nov 16:11:56
+after_17_Nov/logs/n17gpu_19550227_4294967294.out:MODE=lora_cv.py  task=  Sat 21 Nov 20:12:47
+after_17_Nov/logs/n17gpu_19550228_4294967294.out:MODE=final_compare.py chaksu  task=  Sat 21 Nov 20:12:47
+after_17_Nov/logs/n17gpu_19550229_0.out:MODE=lora_cv.py  task=0  Sat 21 Nov 20:15:39
+after_17_Nov/logs/n17gpu_19550229_1.out:MODE=lora_cv.py  task=1  Sat 21 Nov 20:15:39
+after_17_Nov/logs/n17gpu_19550229_2.out:MODE=lora_cv.py  task=2  Sat 21 Nov 20:15:39
+after_17_Nov/logs/n17gpu_19550229_3.out:MODE=lora_cv.py  task=3  Sat 21 Nov 20:15:39
+after_17_Nov/logs/n17gpu_19550229_4.out:MODE=lora_cv.py  task=4  Sat 21 Nov 20:15:39
+after_17_Nov/logs/n17gpu_19550229_5.out:MODE=lora_cv.py  task=5  Sat 21 Nov 21:02:51
+after_17_Nov/logs/n17gpu_19551235_4294967294.out:MODE=final_compare.py chaksu  task=  Sun 22 Nov 03:37:15
+after_17_Nov/logs/n17gpu_19551236_4294967294.out:MODE=final_compare.py chaksu  task=  Sun 22 Nov 03:37:15
+after_22_Nov/logs/attn_19551426.out:CMD=python attention_maps.py  CFG=  Sun 22 Nov 11:57:36
+after_22_Nov/logs/g_base_19551420.out:CMD=python grounding_cv.py  CFG=base  Sun 22 Nov 11:35:05
+after_22_Nov/logs/g_camera_19551425.out:CMD=python grounding_cv.py  CFG=camera_base camera_strong camera_mask1  Sun 22 Nov 11:35:05
+after_22_Nov/logs/g_disc_19551424.out:CMD=python grounding_cv.py  CFG=disc  Sun 22 Nov 11:35:05
+after_22_Nov/logs/g_mask025_19551422.out:CMD=python grounding_cv.py  CFG=mask025  Sun 22 Nov 11:35:05
+after_22_Nov/logs/g_mask1_19551423.out:CMD=python grounding_cv.py  CFG=mask1  Sun 22 Nov 11:35:05
+after_22_Nov/logs/g_strong_19551421.out:CMD=python grounding_cv.py  CFG=strong  Sun 22 Nov 11:35:05
+after_22_Nov/logs/n22cpu_19551412.out:CMD=python cache_extra.py  Sun 22 Nov 11:23:12
+after_22_Nov/logs/n22cpu_19551416.out:CMD=python cache_extra.py  Sun 22 Nov 11:24:49
+after_22_Nov/logs/n22cpu_19551442.out:CMD=python summarise.py  Sun 22 Nov 12:36:10
+after_22_Nov/logs/n22gpu_19551413.out:CMD=python layer_features.py  CFG=  Sun 22 Nov 11:23:17
+after_22_Nov/logs/n22gpu_19551419.out:CMD=python grounding_cv.py  CFG=mask1 strong disc camera_mask1  Sun 22 Nov 11:33:49

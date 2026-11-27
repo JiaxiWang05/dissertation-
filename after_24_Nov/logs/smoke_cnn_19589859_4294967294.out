@@ -1,0 +1,6 @@
+host: gn1.ham8.dur.ac.uk  CMD=python small_cnn.py  CFG=  Fri 27 Nov 21:15:48 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-136cc374-a944-b0eb-400f-16f434353783)
+  MIG 1g.18gb     Device  0: (UUID: MIG-349c06a0-cef1-5f06-940f-2bf219606ef0)
+[I 2026-11-27 21:16:44,189] Using an existing study with `study_name='small_cnn_chaksu'` instead of creating a new one.
+smoke ok 0.182 parameters 4105
+done Fri 27 Nov 21:17:41 GMT 2026
