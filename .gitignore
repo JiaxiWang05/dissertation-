@@ -14,3 +14,4 @@ fairvlmed/*_oof_scores.csv
 
 # per-image out-of-fold scores of the image models (FairVLMed ones must stay on Hamilton)
 after_17_Nov/final_*_oof.npz
+after_24_Nov/examples/ex*
