@@ -1,0 +1,5 @@
+host: gn1.ham8.dur.ac.uk  CMD=python data_size.py  CFG=  Fri 27 Nov 23:23:43 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-136cc374-a944-b0eb-400f-16f434353783)
+  MIG 1g.18gb     Device  0: (UUID: MIG-bc48d007-31a3-5b73-9519-04c72a909f32)
+smoke ok cnn n_train [92] pos [14] val {'auprc': 0.15096968955044826, 'auroc': 0.49651015228426393} train {'auprc': 0.31628899171776226, 'auroc': 0.5082417582417582} 2 s
+done Fri 27 Nov 23:23:48 GMT 2026

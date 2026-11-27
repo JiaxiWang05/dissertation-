@@ -1,0 +1,2 @@
+AUPRC 3-seed mean,range,AUROC seed 0,AUPRC minus LoRA rerun,AUROC minus LoRA rerun,AUPRC minus frozen SVM,AUROC minus frozen SVM
+0.557626406071075,"[0.498, 0.594]",0.8835180937818551,+0.062 (-0.013 to 0.132),+0.019 (-0.007 to 0.046),+0.154 (0.067 to 0.233),+0.066 (0.036 to 0.097)
