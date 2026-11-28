@@ -57,7 +57,7 @@ def curves(df):
 def main_figure(s, prev):
     have = [mm for mm in MODELS if (s['model'] == mm[0]).any()]
     fig = plt.figure(figsize=(15, 9.6))
-    gs = fig.add_gridspec(2, 6, height_ratios=[1.35, 1], hspace=0.42, wspace=0.42)
+    gs = fig.add_gridspec(2, 6, height_ratios=[1.35, 1], hspace=0.42, wspace=0.55)
     axA = fig.add_subplot(gs[0, :4]); axB = fig.add_subplot(gs[0, 4:])
     for ax, key, lo, hi, ylab, base in ((axA, 'val', 'vlo', 'vhi', 'validation AUPRC (pooled out-of-fold)', prev),
                                          (axB, 'roc', 'rlo', 'rhi', 'validation AUROC', 0.5)):
@@ -80,7 +80,7 @@ def main_figure(s, prev):
         ax.axhline(base, color='#999999', ls=':', lw=1.2)
         ax.text(ax.get_xlim()[0] if False else 95, base + 0.012, 'guessing', color=MUTED, fontsize=8.5)
         ax.set_xscale('log'); ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter()); ax.set_xticks([90, 230, 460, 680, 910]); ax.set_xticklabels(['90', '230', '460', '680', '910'])
-        ax.set_xlim(80, 960 if ax is axB else 2900); ax.set_ylim(0 if ax is axA else 0.4, 0.8 if ax is axA else 1.0)
+        ax.set_xlim(80, 960 if ax is axB else 3600); ax.set_ylim(0 if ax is axA else 0.4, 0.8 if ax is axA else 1.0)
         ax.set_xlabel('training images per fold (log scale; 10 / 25 / 50 / 75 / 100 % of the fold)'); ax.set_ylabel(ylab)
         ax.grid(axis='y', color='#eeeeee', lw=0.8)
     axA.spines['bottom'].set_bounds(80, 920)

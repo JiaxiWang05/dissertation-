@@ -1,0 +1,8 @@
+host: gn1.ham8.dur.ac.uk  CMD=python data_size.py  CFG=  Fri 27 Nov 23:31:15 GMT 2026
+GPU 0: NVIDIA H200 NVL (UUID: GPU-136cc374-a944-b0eb-400f-16f434353783)
+  MIG 1g.18gb     Device  0: (UUID: MIG-78f75bdf-bedf-54dd-b5ec-77ebcc2f69a9)
+cnn 0.1 repeat 0 n [92, 92, 92, 93, 92] val AUPRC 0.1587 train AUPRC 0.4775 [11, 19, 11, 19, 15]
+cnn 0.1 repeat 1 n [93, 92, 91, 93, 91] val AUPRC 0.1569 train AUPRC 0.3792 [21, 21, 14, 14, 17]
+cnn 0.1 repeat 2 n [93, 93, 94, 92, 92] val AUPRC 0.1374 train AUPRC 0.3716 [5, 7, 5, 9, 9]
+saved cnn 0.1 371 s
+done Fri 27 Nov 23:37:28 GMT 2026
