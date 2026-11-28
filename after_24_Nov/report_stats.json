@@ -319,8 +319,8 @@
    ],
    "auprc_minus_rerun": 0.045,
    "auprc_minus_rerun_ci": [
-    -0.003,
-    0.087
+    -0.004,
+    0.09
    ],
    "auroc": 0.882,
    "auroc_per_seed": [
@@ -330,7 +330,7 @@
    ],
    "auroc_minus_rerun": 0.017,
    "auroc_minus_rerun_ci": [
-    0.001,
+    0.002,
     0.032
    ],
    "fpr90": 32.28,
@@ -341,8 +341,8 @@
    ],
    "fpr90_minus_rerun": -3.228,
    "fpr90_minus_rerun_ci": [
-    -12.446,
-    3.021
+    -12.26,
+    2.823
    ]
   },
   "LoRA + mask head 1": {
@@ -354,8 +354,8 @@
    ],
    "auprc_minus_rerun": 0.019,
    "auprc_minus_rerun_ci": [
-    -0.022,
-    0.058
+    -0.019,
+    0.057
    ],
    "auroc": 0.882,
    "auroc_per_seed": [
@@ -376,8 +376,8 @@
    ],
    "fpr90_minus_rerun": -6.728,
    "fpr90_minus_rerun_ci": [
-    -11.382,
-    -2.426
+    -11.317,
+    -2.408
    ]
   },
   "LoRA + stronger augmentation": {
@@ -389,8 +389,8 @@
    ],
    "auprc_minus_rerun": 0.039,
    "auprc_minus_rerun_ci": [
-    -0.002,
-    0.076
+    -0.001,
+    0.078
    ],
    "auroc": 0.883,
    "auroc_per_seed": [
@@ -401,7 +401,7 @@
    "auroc_minus_rerun": 0.018,
    "auroc_minus_rerun_ci": [
     0.003,
-    0.032
+    0.033
    ],
    "fpr90": 31.193,
    "fpr90_per_seed": [
@@ -411,8 +411,8 @@
    ],
    "fpr90_minus_rerun": -4.315,
    "fpr90_minus_rerun_ci": [
-    -11.102,
-    0.709
+    -10.963,
+    0.732
    ]
   },
   "LoRA + 2 open blocks": {
@@ -424,7 +424,7 @@
    ],
    "auprc_minus_rerun": 0.04,
    "auprc_minus_rerun_ci": [
-    -0.003,
+    -0.002,
     0.077
    ],
    "auroc": 0.884,
@@ -446,8 +446,75 @@
    ],
    "fpr90_minus_rerun": -6.66,
    "fpr90_minus_rerun_ci": [
-    -12.891,
-    -1.702
+    -12.753,
+    -1.813
+   ]
+  }
+ },
+ "e_vs_svm_seed_averaged": {
+  "LoRA rerun (22 Nov)": {
+   "auprc_minus_svm": 0.091,
+   "auprc_minus_svm_ci": [
+    0.025,
+    0.159
+   ],
+   "auroc_minus_svm": 0.048,
+   "auroc_minus_svm_ci": [
+    0.019,
+    0.078
+   ]
+  },
+  "LoRA + mask head 0.25": {
+   "auprc_minus_svm": 0.136,
+   "auprc_minus_svm_ci": [
+    0.063,
+    0.201
+   ],
+   "auroc_minus_svm": 0.065,
+   "auroc_minus_svm_ci": [
+    0.035,
+    0.096
+   ]
+  },
+  "LoRA + 2 open blocks": {
+   "auprc_minus_svm": 0.131,
+   "auprc_minus_svm_ci": [
+    0.062,
+    0.194
+   ],
+   "auroc_minus_svm": 0.067,
+   "auroc_minus_svm_ci": [
+    0.039,
+    0.095
+   ]
+  }
+ },
+ "e_camera_holdout_seed_averaged": {
+  "Remidio": {
+   "lora": 0.332,
+   "svm": 0.278,
+   "diff": 0.054,
+   "diff_ci": [
+    -0.004,
+    0.112
+   ]
+  },
+  "Bosch": {
+   "lora": 0.686,
+   "svm": 0.309,
+   "diff": 0.377,
+   "diff_ci": [
+    0.182,
+    0.515
+   ]
+  },
+  "Forus": {
+   "lora": 0.605,
+   "svm": 0.426,
+   "diff": 0.179,
+   "diff_ci": [
+    -0.012,
+    0.358
    ]
   }
  }

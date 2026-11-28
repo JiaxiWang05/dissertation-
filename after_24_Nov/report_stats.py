@@ -114,9 +114,34 @@ for n, f in models.items():
     for met, fn in (('auprc', ap), ('auroc', auc), ('fpr90', fpr90)):
         row[met] = round(mean_metric(fn, ss), 3); row[met + '_per_seed'] = [round(fn(y, s), 3) for s in ss]
         if n != 'LoRA rerun (22 Nov)':
-            d = [mean_metric(fn, ss, b) - mean_metric(fn, bs, b) for b in BOOT[:1000]]
+            d = [mean_metric(fn, ss, b) - mean_metric(fn, bs, b) for b in BOOT]
             row[met + '_minus_rerun'] = round(mean_metric(fn, ss) - mean_metric(fn, bs), 3)
             row[met + '_minus_rerun_ci'] = [round(float(np.percentile(d, 2.5)), 3), round(float(np.percentile(d, 97.5)), 3)]
     out['d_seed_averaged_metric'][n] = row
 json.dump(out, open(HERE / 'report_stats.json', 'w'), indent=1)
 print(json.dumps(out['d_seed_averaged_metric'], indent=0))
+
+# (e) frozen SVM against LoRA models with the metric averaged over seeds (same rule as d), and the camera hold-out with
+#     the metric averaged over seeds; 2,000 resamples of image groups (per camera for the hold-out)
+out['e_vs_svm_seed_averaged'] = {}
+for n in ('LoRA rerun (22 Nov)', 'LoRA + mask head 0.25', 'LoRA + 2 open blocks'):
+    ss = seeds(models[n]); row = {}
+    for met, fn in (('auprc', ap), ('auroc', auc)):
+        d = [mean_metric(fn, ss, b) - fn(y[b], svm[b]) for b in BOOT]
+        row[met + '_minus_svm'] = round(mean_metric(fn, ss) - fn(y, svm), 3)
+        row[met + '_minus_svm_ci'] = [round(float(np.percentile(d, 2.5)), 3), round(float(np.percentile(d, 97.5)), 3)]
+    out['e_vs_svm_seed_averaged'][n] = row
+out['e_camera_holdout_seed_averaged'] = {}
+S = [cb[f'seed{i}'] for i in range(3)]
+for c in ('Remidio', 'Bosch', 'Forus'):
+    va = np.where(cams == c)[0]; tr = np.where(cams != c)[0]; sc = StandardScaler().fit(X[tr])
+    s = SVC(kernel='rbf', C=6.055286457910599, gamma=0.0005741621088974824, class_weight='balanced').fit(sc.transform(X[tr]), y[tr]).decision_function(sc.transform(X[va]))
+    yy = y[va]; gv = groups[va]; ugv = np.unique(gv); gi = {g: np.where(gv == g)[0] for g in ugv}; r2 = np.random.default_rng(42)
+    bs = [np.concatenate([gi[g] for g in r2.choice(ugv, len(ugv))]) for _ in range(2000)]
+    m = lambda b: float(np.mean([ap(yy[b], q[va][b]) for q in S]))
+    d = [m(b) - ap(yy[b], s[b]) for b in bs if 0 < yy[b].sum() < len(b)]
+    out['e_camera_holdout_seed_averaged'][c] = {'lora': round(m(np.arange(len(va))), 3), 'svm': round(ap(yy, s), 3),
+        'diff': round(m(np.arange(len(va))) - ap(yy, s), 3), 'diff_ci': [round(float(np.percentile(d, 2.5)), 3), round(float(np.percentile(d, 97.5)), 3)]}
+json.dump(out, open(HERE / 'report_stats.json', 'w'), indent=1)
+print(json.dumps({k: out[k] for k in ('e_vs_svm_seed_averaged', 'e_camera_holdout_seed_averaged')}, indent=0))
+print(json.dumps({k: {m: v[m] for m in v if 'minus_rerun' in m} for k, v in out['d_seed_averaged_metric'].items()}, indent=0))

@@ -69,7 +69,7 @@ def task(r):
         return '24 Nov', 'Training curves (5 models)'
     if n in ('final_lb', 'smoke_vit'):
         return '24 Nov', 'LoRA + 2 open blocks: fair score'
-    if n.startswith('ds_'):
+    if n.startswith('ds_') or n.startswith('ds_smoke'):
         return '24 Nov', 'Training-set size experiment'
     return '?', f'{dr}/{n}'
 
